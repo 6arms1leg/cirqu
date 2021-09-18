@@ -1,0 +1,104 @@
+/** \file */
+
+#ifndef INCLUDE_BUFFER_H
+#define INCLUDE_BUFFER_H
+
+/* `"` used intentionally.  This allows the user to overwrite and provide his
+ * own implementation before falling back to libc.
+ */
+#include "stdint.h"
+#include "stddef.h"
+#include "stdbool.h"
+#include "assert.h" /* For sanity checks (Contract by Design) */
+
+/* Must be provided; application/project-specific */
+#include "cirquElemType.h"
+
+/* ATTRIBUTES
+ * ==========
+ */
+
+/* One excessive buffer element slot is used to distinguish full and empty fill
+ * level, instead of a dedicated state variable.
+ * This makes the buffer lock-free (no mutex needed) when there is only one
+ * producer and consumer respectively interacting with the buffer.
+ */
+typedef struct
+{
+    cirquElem_t* a_cirquElem_strg;
+    cirquElemIdx_t cirquElemIdx_strgSize;
+    cirquElemIdx_t cirquElemIdx_head;
+    cirquElemIdx_t cirquElemIdx_tail;
+}stc_bffr_t;
+
+/* OPERATIONS
+ * ==========
+ */
+
+/**
+ * \brief Initialize buffer
+ *
+ * *Buffer element capacity = storage size - 1*, since one element slot is used
+ * to distinguish full and empty fill level.
+ *
+ * \param me Pointer to a CirQu buffer object
+ * \param a_cirquElem_strg Pointer to allocated storage element array
+ * \param cirquElemIdx_strgSize Size (in count of element slots) of the
+ * allocated storage element array
+ */
+void fn_bffr_ini(stc_bffr_t* const me,
+                 cirquElem_t* const a_cirquElem_strg,
+                 const cirquElemIdx_t cirquElemIdx_strgSize);
+
+/**
+ * \brief Insert element into buffer
+ *
+ * If full, oldest element in buffer is overwritten.
+ * Conditional insertion (i.e, if buffer not full) can easily be implemented by
+ * checking if buffer is full first (via `fn_bffr_cntFree()`).
+ *
+ * \param me Pointer to a CirQu buffer object
+ * \param cirquElem_elem Element to be inserted into the CirQu buffer
+ */
+void fn_bffr_push(stc_bffr_t* const me, const cirquElem_t cirquElem_elem);
+
+/**
+ * \brief Retrieve and remove element from buffer
+ *
+ * \param me Pointer to a CirQu buffer object
+ * \param p_cirquElem_elem Pointer to another element storage location to save
+ * the retrieved element from the CirQu buffer
+ *
+ * \return Pull success indicator
+ */
+bool fn_bffr_pull(stc_bffr_t* const me, cirquElem_t* const p_cirquElem_elem);
+
+/**
+ * \brief Retrieve element (without removal) at given position from buffer
+ *
+ * Position is the index offset from tail (i.e. `0` corresponds to tail and
+ * retrieves the same element as `fn_bffr_pull()` but without removal, `1`
+ * corresponds to the next least recently inserted element after tail etc.).
+ *
+ * \param me Pointer to a CirQu buffer object
+ * \param p_cirquElem_elem Pointer to another element storage location to save
+ * the retrieved element from the CirQu buffer
+ * \param cirquElemIdx_elemPos Position of the element to retrieve from the
+ * CirQu buffer (index offset from head)
+ *
+ * \return Peek success indicator
+ */
+bool fn_bffr_peek(const stc_bffr_t* const me,
+                  cirquElem_t* const p_cirquElem_elem,
+                  const cirquElemIdx_t cirquElemIdx_elemPos);
+
+/**
+ * \brief Query fill level (in count of empty element slots) of buffer
+ *
+ * \param me Pointer to a CirQu buffer object
+ *
+ * \return Count of empty element slots
+ */
+cirquElemIdx_t fn_bffr_cntFree(const stc_bffr_t* const me);
+
+#endif /* INCLUDE_BUFFER_H */

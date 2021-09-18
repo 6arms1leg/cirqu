@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>11</zoom_level>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>539</x>
+      <y>154</y>
+      <w>330</w>
+      <h>506</h>
+    </coordinates>
+    <panel_attributes>pd CirQu
+/Library/
+/  dependencies/
+--
+fontsize=30</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>770</x>
+      <y>198</y>
+      <w>77</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>UML 2.0
+transparency=0
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>561</x>
+      <y>473</y>
+      <w>154</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>
+--
+*CirQu*
+valign=Top</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>583</x>
+      <y>539</y>
+      <w>110</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>
+--
+*Buffer*
+valign=Top</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>561</x>
+      <y>286</y>
+      <w>286</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>
+--
+**Application**
+valign=Top
+fg=Light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>715</x>
+      <y>352</y>
+      <w>110</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>
+--
+*Buffer*
+*object*
+valign=Top
+fg=Light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>583</x>
+      <y>352</y>
+      <w>110</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>
+--
+*CirQu*
+*element type*
+valign=Top
+fg=Light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>682</x>
+      <y>418</y>
+      <w>110</w>
+      <h>187</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;</panel_attributes>
+    <additional_attributes>80.0;10.0;80.0;150.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>627</x>
+      <y>418</y>
+      <w>33</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+</diagram>
