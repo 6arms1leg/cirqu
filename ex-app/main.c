@@ -34,6 +34,12 @@ int MAIN(void)
     printf( "CirQu: Count of free element slots in `buf0`: %i\n",
             (int)fn_bffr_cntFree(p_stc_bffr_g_buf0) );
 
+    puts("CirQu: Push element `d` to `buf0` ...");
+    fn_bffr_push(p_stc_bffr_g_buf0, (cirquElem_t)'d');
+
+    printf( "CirQu: Count of free element slots in `buf0`: %i\n",
+            (int)fn_bffr_cntFree(p_stc_bffr_g_buf0) );
+
     (void)fn_bffr_pull(p_stc_bffr_g_buf0, &cirquElem_elem);
     printf("CirQu: Pulled (tail) element from `buf0`: %c\n",
            (char)cirquElem_elem);
