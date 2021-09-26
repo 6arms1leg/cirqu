@@ -22,7 +22,8 @@ static void fn_pv_bffr_advHead(stc_bffr_t* const me)
      */
 
     /* If head points to last element */
-    if(me->cirquElemIdx_strgSize - (cirquElemIdx_t)1U == me->cirquElemIdx_head)
+    if( (cirquElemIdx_t)(me->cirquElemIdx_strgSize - (cirquElemIdx_t)1U) ==
+            me->cirquElemIdx_head )
     {
         /* Wrap head around to first element */
         me->cirquElemIdx_head = (cirquElemIdx_t)0U;
@@ -47,7 +48,8 @@ static void fn_pv_bffr_advTail(stc_bffr_t* const me)
      */
 
     /* If tail points to last element */
-    if(me->cirquElemIdx_strgSize - (cirquElemIdx_t)1U == me->cirquElemIdx_tail)
+    if( (cirquElemIdx_t)(me->cirquElemIdx_strgSize - (cirquElemIdx_t)1U) ==
+            me->cirquElemIdx_tail )
     {
         /* Wrap tail around to first element */
         me->cirquElemIdx_tail = (cirquElemIdx_t)0U;
@@ -106,7 +108,8 @@ bool fn_bffr_pull(stc_bffr_t* const me, cirquElem_t* const p_cirquElem_elem)
     bool b_result = false;
 
     /* If not empty */
-    if( me->cirquElemIdx_strgSize - (cirquElemIdx_t)1U > fn_bffr_cntFree(me) )
+    if( (cirquElemIdx_t)(me->cirquElemIdx_strgSize - (cirquElemIdx_t)1U) >
+            fn_bffr_cntFree(me) )
     {
         *p_cirquElem_elem = me->a_cirquElem_strg[me->cirquElemIdx_tail];
         fn_pv_bffr_advTail(me);
@@ -125,8 +128,8 @@ bool fn_bffr_peek(const stc_bffr_t* const me,
     /* Sanity check (Contract by Design) */
     assert( (NULL != me) &&
             (NULL != p_cirquElem_elem) &&
-            (me->cirquElemIdx_strgSize - (cirquElemIdx_t)1U >
-                cirquElemIdx_elemPos) );
+            ( (cirquElemIdx_t)(me->cirquElemIdx_strgSize - (cirquElemIdx_t)1U)
+              > cirquElemIdx_elemPos ) );
 
     bool b_result = false;
 
@@ -136,11 +139,13 @@ bool fn_bffr_peek(const stc_bffr_t* const me,
     /* If requested element position is in range (points to non-vacant element
      * slot)
      */
-    if(me->cirquElemIdx_strgSize - (cirquElemIdx_t)1U - fn_bffr_cntFree(me) >
-           cirquElemIdx_elemPos)
+    if( (cirquElemIdx_t)( me->cirquElemIdx_strgSize - (cirquElemIdx_t)1U
+                          - fn_bffr_cntFree(me) ) >
+            cirquElemIdx_elemPos )
     {
         /* Handle wrap around */
-        cirquElemIdx_diff = me->cirquElemIdx_strgSize - me->cirquElemIdx_tail;
+        cirquElemIdx_diff = (cirquElemIdx_t)(me->cirquElemIdx_strgSize
+                                             - me->cirquElemIdx_tail);
         if(cirquElemIdx_diff <= cirquElemIdx_elemPos)
         {
             *p_cirquElem_elem =
@@ -171,14 +176,15 @@ cirquElemIdx_t fn_bffr_cntFree(const stc_bffr_t* const me)
     if(me->cirquElemIdx_tail <= me->cirquElemIdx_head)
     {
         cirquElemIdx_elemFreeCnt =
-            me->cirquElemIdx_strgSize - (cirquElemIdx_t)1U
-            - (me->cirquElemIdx_head - me->cirquElemIdx_tail);
+            (cirquElemIdx_t)( me->cirquElemIdx_strgSize - (cirquElemIdx_t)1U
+                              - (me->cirquElemIdx_head - me->cirquElemIdx_tail)
+                              );
     }
     else
     {
         cirquElemIdx_elemFreeCnt =
-            me->cirquElemIdx_tail - me->cirquElemIdx_head
-            - (cirquElemIdx_t)1U;
+            (cirquElemIdx_t)(me->cirquElemIdx_tail - me->cirquElemIdx_head
+                             - (cirquElemIdx_t)1U);
     }
 
     return(cirquElemIdx_elemFreeCnt);
