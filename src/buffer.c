@@ -62,6 +62,58 @@ static void fn_pv_bffr_advTail(stc_bffr_t* const me)
     return;
 }
 
+/**
+ * \brief Retreat head pointer by one element (correctly handles wrap around)
+ *
+ * \param me Pointer to a CirQu buffer object
+ */
+static void fn_pv_bffr_retHead(stc_bffr_t* const me)
+{
+    /* No sanity check necessary since `me` argument was already checked in API
+     * functions
+     */
+
+    /* If head points to first element */
+    if( (cirquElemIdx_t)0U == me->cirquElemIdx_head )
+    {
+        /* Wrap head around to last element */
+        me->cirquElemIdx_head = (cirquElemIdx_t)(me->cirquElemIdx_strgSize
+                                                 - (cirquElemIdx_t)1U);
+    }
+    else
+    {
+        me->cirquElemIdx_head--;
+    }
+
+    return;
+}
+
+/**
+ * \brief Retreat tail pointer by one element (correctly handles wrap around)
+ *
+ * \param me Pointer to a CirQu buffer object
+ */
+static void fn_pv_bffr_retTail(stc_bffr_t* const me)
+{
+    /* No sanity check necessary since `me` argument was already checked in API
+     * functions
+     */
+
+    /* If tail points to first element */
+    if( (cirquElemIdx_t)0U == me->cirquElemIdx_tail )
+    {
+        /* Wrap tail around to last element */
+        me->cirquElemIdx_tail = (cirquElemIdx_t)(me->cirquElemIdx_strgSize
+                                                 - (cirquElemIdx_t)1U);
+    }
+    else
+    {
+        me->cirquElemIdx_tail--;
+    }
+
+    return;
+}
+
 void fn_bffr_ini(stc_bffr_t* const me,
                  cirquElem_t* const a_cirquElem_strg,
                  const cirquElemIdx_t cirquElemIdx_strgSize)
@@ -81,7 +133,7 @@ void fn_bffr_ini(stc_bffr_t* const me,
     return;
 }
 
-void fn_bffr_push(stc_bffr_t* const me, const cirquElem_t cirquElem_elem)
+void fn_bffr_pushHead(stc_bffr_t* const me, const cirquElem_t cirquElem_elem)
 {
     /* Sanity check (Contract by Design) */
     assert(NULL != me);
@@ -95,6 +147,24 @@ void fn_bffr_push(stc_bffr_t* const me, const cirquElem_t cirquElem_elem)
 
     me->a_cirquElem_strg[me->cirquElemIdx_head] = cirquElem_elem;
     fn_pv_bffr_advHead(me);
+
+    return;
+}
+
+void fn_bffr_pushTail(stc_bffr_t* const me, const cirquElem_t cirquElem_elem)
+{
+    /* Sanity check (Contract by Design) */
+    assert(NULL != me);
+
+    /* If full */
+    if( (cirquElemIdx_t)0U == fn_bffr_cntFree(me) )
+    {
+        fn_pv_bffr_retHead(me);
+    }
+    else {} /* Do nothing */
+
+    fn_pv_bffr_retTail(me);
+    me->a_cirquElem_strg[me->cirquElemIdx_tail] = cirquElem_elem;
 
     return;
 }

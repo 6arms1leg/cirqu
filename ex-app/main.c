@@ -24,10 +24,10 @@ int MAIN(void)
     printf( APPPROMPT CNTMSG "%i\n",
             (int)fn_bffr_cntFree(p_stc_bffr_g_buf0) );
 
-    puts(APPPROMPT "Push elements `a`, `b`, `c` to `buf0` ...");
-    fn_bffr_push(p_stc_bffr_g_buf0, (cirquElem_t)'a');
-    fn_bffr_push(p_stc_bffr_g_buf0, (cirquElem_t)'b');
-    fn_bffr_push(p_stc_bffr_g_buf0, (cirquElem_t)'c');
+    puts(APPPROMPT "Push (head) elements `a`, `b`, `c` to `buf0` ...");
+    fn_bffr_pushHead(p_stc_bffr_g_buf0, (cirquElem_t)'a');
+    fn_bffr_pushHead(p_stc_bffr_g_buf0, (cirquElem_t)'b');
+    fn_bffr_pushHead(p_stc_bffr_g_buf0, (cirquElem_t)'c');
 
     printf( APPPROMPT CNTMSG "%i\n",
             (int)fn_bffr_cntFree(p_stc_bffr_g_buf0) );
@@ -39,8 +39,21 @@ int MAIN(void)
     printf( APPPROMPT CNTMSG "%i\n",
             (int)fn_bffr_cntFree(p_stc_bffr_g_buf0) );
 
-    puts(APPPROMPT "Push element `d` to `buf0` ...");
-    fn_bffr_push(p_stc_bffr_g_buf0, (cirquElem_t)'d');
+    puts(APPPROMPT "Push (head) element `d` to `buf0` ...");
+    fn_bffr_pushHead(p_stc_bffr_g_buf0, (cirquElem_t)'d');
+
+    printf( APPPROMPT CNTMSG "%i\n",
+            (int)fn_bffr_cntFree(p_stc_bffr_g_buf0) );
+
+    (void)fn_bffr_pull(p_stc_bffr_g_buf0, &cirquElem_elem);
+    printf(APPPROMPT PULLMSG "%c\n",
+           (char)cirquElem_elem);
+
+    printf( APPPROMPT CNTMSG "%i\n",
+            (int)fn_bffr_cntFree(p_stc_bffr_g_buf0) );
+
+    puts(APPPROMPT "Push (tail) element `e` to `buf0` ...");
+    fn_bffr_pushTail(p_stc_bffr_g_buf0, (cirquElem_t)'e');
 
     printf( APPPROMPT CNTMSG "%i\n",
             (int)fn_bffr_cntFree(p_stc_bffr_g_buf0) );

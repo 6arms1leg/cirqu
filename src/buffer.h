@@ -29,7 +29,7 @@ typedef struct
     cirquElemIdx_t cirquElemIdx_strgSize;
     cirquElemIdx_t cirquElemIdx_head;
     cirquElemIdx_t cirquElemIdx_tail;
-}stc_bffr_t;
+} stc_bffr_t;
 
 /* OPERATIONS
  * ==========
@@ -51,16 +51,28 @@ void fn_bffr_ini(stc_bffr_t* const me,
                  const cirquElemIdx_t cirquElemIdx_strgSize);
 
 /**
- * \brief Insert element into buffer
+ * \brief Insert element into buffer (FIFO logic)
  *
- * If full, oldest element in buffer is overwritten.
- * Conditional insertion (i.e, if buffer not full) can easily be implemented by
- * checking if buffer is full first (via `fn_bffr_cntFree()`).
+ * If full, tail element in buffer is overwritten.
+ * Conditional insertion (i.e., if buffer not full) can easily be implemented
+ * by checking if buffer is full first (via `fn_bffr_cntFree()`).
  *
  * \param me Pointer to a CirQu buffer object
  * \param cirquElem_elem Element to be inserted into the CirQu buffer
  */
-void fn_bffr_push(stc_bffr_t* const me, const cirquElem_t cirquElem_elem);
+void fn_bffr_pushHead(stc_bffr_t* const me, const cirquElem_t cirquElem_elem);
+
+/**
+ * \brief Insert element into buffer (LIFO logic)
+ *
+ * If full, head element in buffer is overwritten.
+ * Conditional insertion (i.e., if buffer not full) can easily be implemented
+ * by checking if buffer is full first (via `fn_bffr_cntFree()`).
+ *
+ * \param me Pointer to a CirQu buffer object
+ * \param cirquElem_elem Element to be inserted into the CirQu buffer
+ */
+void fn_bffr_pushTail(stc_bffr_t* const me, const cirquElem_t cirquElem_elem);
 
 /**
  * \brief Retrieve and remove element from buffer

@@ -2,7 +2,7 @@
 
 This library employs a simple and tiny
 
-*circular/ring/FIFO buffer/queue*
+*circular/ring/FIFO/LIFO buffer/queue*
 
 to manage elements in a storage.
 
@@ -10,19 +10,19 @@ to manage elements in a storage.
 
 The following loosely lists requirements, constraints, features and goals.
 
-* Circular/ring/FIFO buffering/queueing management of multiple elements within
-  a storage in embedded systems for real-time applications
+* Circular/ring/FIFO/LIFO buffering/queueing management of multiple elements
+  within a storage in embedded systems for real-time applications
 * Element type can be chosen at compile time
-* A new element can be pushed into and the oldest element can be pulled from
-  the queue
 * Each stored element in the queue can be peeked at (i.e. pulled without
   removal) by its relative index starting from the tail position
+* A new element can be pushed into the queue at its head or tail and the next
+  element can be pulled from the tail of the queue
 * The buffer can be queried about its count of available free element slots
 * Queue size can be configured at buffer object instantiation by linking
   allocated memory (storage) to it
 * Lock-free access possible (with only one producer and consumer if the queue
-  never overflows, that is, if `push` never overwrites the oldest element at
-  the tail position)
+  never overflows, that is, if `pushHead`/`pushTail` is never issued on a full
+  queue
 * API (public function) names automatically adjust to element type via
   pre-processor macro to enable the use of multiple queues with different sizes
   within a project without name conflicts
