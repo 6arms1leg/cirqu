@@ -13,10 +13,11 @@ The following loosely lists requirements, constraints, features and goals.
 * Circular/ring/FIFO/LIFO buffering/queueing management of multiple elements
   within a storage in embedded systems for real-time applications
 * Element type can be chosen at compile time
-* Each stored element in the queue can be peeked at (i.e. pulled without
-  removal) by its relative index starting from the tail position
 * A new element can be pushed into the queue at its head or tail and the next
   element can be pulled from the tail of the queue
+* Each stored element in the queue can be peeked at (i.e. accessed through
+  pointer without removal) by its relative index starting from the tail
+  position
 * The buffer can be queried about its count of available free element slots
 * Queue size can be configured at buffer object instantiation by linking
   allocated memory (storage) to it

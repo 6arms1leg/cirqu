@@ -32,7 +32,7 @@ int MAIN(void)
     printf( APPPROMPT CNTMSG "%i\n",
             (int)fn_bffr_cntFree(p_stc_bffr_g_buf0) );
 
-    (void)fn_bffr_peek(p_stc_bffr_g_buf0, &cirquElem_elem, (cirquElemIdx_t)1U);
+    cirquElem_elem = *fn_bffr_peek(p_stc_bffr_g_buf0, (cirquElemIdx_t)1U);
     printf(APPPROMPT "Peeked tail+1 element in `buf0`: %c\n",
            (char)cirquElem_elem);
 

@@ -86,23 +86,23 @@ void fn_bffr_pushTail(stc_bffr_t* const me, const cirquElem_t cirquElem_elem);
 bool fn_bffr_pull(stc_bffr_t* const me, cirquElem_t* const p_cirquElem_elem);
 
 /**
- * \brief Retrieve element (without removal) at given position from buffer
+ * \brief Retrieve pointer to element (without removal) at given position from
+ * buffer
  *
  * Position is the index offset from tail (i.e. `0` corresponds to tail and
- * retrieves the same element as `fn_bffr_pull()` but without removal, `1`
- * corresponds to the next least recently inserted element after tail etc.).
+ * retrieves a pointer to the same element as `fn_bffr_pull()` would retrieve
+ * but without removal, `1` corresponds to the element next to tail, etc.).
+ * Returns `NULL` if requested element position is not in range (points to
+ * vacant element slot).
  *
  * \param me Pointer to a CirQu buffer object
- * \param p_cirquElem_elem Pointer to another element storage location to save
- * the retrieved element from the CirQu buffer
- * \param cirquElemIdx_elemPos Position of the element to retrieve from the
- * CirQu buffer (index offset from head)
+ * \param cirquElemIdx_elemPos Position of the element in the CirQu buffer to
+ * retrieve a pointer to (index offset from tail)
  *
- * \return Peek success indicator
+ * \return Read-only pointer to element in the CirQu buffer
  */
-bool fn_bffr_peek(const stc_bffr_t* const me,
-                  cirquElem_t* const p_cirquElem_elem,
-                  const cirquElemIdx_t cirquElemIdx_elemPos);
+const cirquElem_t* fn_bffr_peek(const stc_bffr_t* const me,
+                                const cirquElemIdx_t cirquElemIdx_elemPos);
 
 /**
  * \brief Query fill level (in count of empty element slots) of buffer

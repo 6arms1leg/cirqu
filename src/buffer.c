@@ -191,20 +191,19 @@ bool fn_bffr_pull(stc_bffr_t* const me, cirquElem_t* const p_cirquElem_elem)
     return(b_result);
 }
 
-bool fn_bffr_peek(const stc_bffr_t* const me,
-                  cirquElem_t* const p_cirquElem_elem,
-                  const cirquElemIdx_t cirquElemIdx_elemPos)
+const cirquElem_t* fn_bffr_peek(const stc_bffr_t* const me,
+                                const cirquElemIdx_t cirquElemIdx_elemPos)
 {
     /* Sanity check (Contract by Design) */
     assert( (NULL != me) &&
-            (NULL != p_cirquElem_elem) &&
             ( (cirquElemIdx_t)(me->cirquElemIdx_strgSize - (cirquElemIdx_t)1U)
               > cirquElemIdx_elemPos ) );
 
-    bool b_result = false;
-
-    /* Initialize variable used in peek element position calculation */
+    /* Initialize variable used in peek element position calculation and return
+     * pointer
+     */
     cirquElemIdx_t cirquElemIdx_diff = (cirquElemIdx_t)0U;
+    const cirquElem_t* p_cirquElem_elem = NULL;
 
     /* If requested element position is in range (points to non-vacant element
      * slot)
@@ -218,21 +217,18 @@ bool fn_bffr_peek(const stc_bffr_t* const me,
                                              - me->cirquElemIdx_tail);
         if(cirquElemIdx_diff <= cirquElemIdx_elemPos)
         {
-            *p_cirquElem_elem =
-                me->a_cirquElem_strg[cirquElemIdx_elemPos - cirquElemIdx_diff];
+            p_cirquElem_elem = &me->a_cirquElem_strg[cirquElemIdx_elemPos
+                                                     - cirquElemIdx_diff];
         }
         else
         {
-            *p_cirquElem_elem =
-                me->a_cirquElem_strg[me->cirquElemIdx_tail
-                + cirquElemIdx_elemPos];
+            p_cirquElem_elem = &me->a_cirquElem_strg[me->cirquElemIdx_tail
+                                                     + cirquElemIdx_elemPos];
         }
-
-        b_result = true;
     }
     else {} /* Do nothing */
 
-    return(b_result);
+    return(p_cirquElem_elem);
 }
 
 cirquElemIdx_t fn_bffr_cntFree(const stc_bffr_t* const me)

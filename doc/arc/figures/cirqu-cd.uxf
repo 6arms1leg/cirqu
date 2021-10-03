@@ -148,7 +148,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>330</x>
+      <x>360</x>
       <y>90</y>
       <w>600</w>
       <h>280</h>
@@ -176,9 +176,9 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>310</x>
+      <x>340</x>
       <y>0</y>
-      <w>720</w>
+      <w>690</w>
       <h>810</h>
     </coordinates>
     <panel_attributes>cd CirQu
@@ -190,7 +190,7 @@ fontsize=30</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>750</x>
+      <x>780</x>
       <y>20</y>
       <w>70</w>
       <h>30</h>
@@ -203,7 +203,7 @@ layer=1</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>840</x>
+      <x>870</x>
       <y>20</y>
       <w>100</w>
       <h>50</h>
@@ -215,9 +215,9 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>330</x>
+      <x>360</x>
       <y>390</y>
-      <w>440</w>
+      <w>410</w>
       <h>220</h>
     </coordinates>
     <panel_attributes>buffer
@@ -232,7 +232,7 @@ style=wordwrap</panel_attributes>
 +pushHead(me:bffr_t*, elem:cirquElem_t):void
 +pushTail(me:bffr_t*, elem:cirquElem_t):void
 +pull(me:bffr_t*, elem:cirquElem_t*):bool
-+peek(me:bffr_t*, elem:cirquElem_t*, elemPos:cirquElemIdx_t):bool
++peek(me:bffr_t*, elemPos:cirquElemIdx_t):cirquElem_t*
 +cntFree(me:bffr_t*):cirquElemIdx_t</panel_attributes>
     <additional_attributes/>
   </element>

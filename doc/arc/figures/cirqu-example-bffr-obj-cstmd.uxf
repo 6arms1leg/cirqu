@@ -831,10 +831,10 @@ fg=gray</panel_attributes>
     <coordinates>
       <x>790</x>
       <y>280</y>
-      <w>170</w>
+      <w>180</w>
       <h>60</h>
     </coordinates>
-    <panel_attributes>`peek` retrieves element from position in range (indexed from tail)
+    <panel_attributes>`peek` retrieves pointer to element from position in range (indexed from tail)
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
