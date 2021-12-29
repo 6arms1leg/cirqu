@@ -3,7 +3,22 @@ BUILD_DIR := $(BUILD_CONTEXT)/build
 SRC_DIR := $(BUILD_CONTEXT)/src
 
 CC := gcc
-CC_FLAGS := -pedantic -Wall -Wextra -Werror -Og -std=c99
+CC_FLAGS := -Wall \
+            -Wextra \
+            -pedantic \
+            -Wpointer-arith \
+            -Wuninitialized \
+            -Wcast-align \
+            -Wconversion \
+            -Wwrite-strings \
+            -Wno-comment \
+            -Wshadow \
+            -Og \
+            -g \
+            -std=c99 \
+            -Wredundant-decls \
+            -Wmissing-declarations \
+            -Werror
 LD := gcc
 LD_FLAGS := 
 

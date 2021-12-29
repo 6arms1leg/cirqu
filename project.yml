@@ -50,12 +50,22 @@
 
 :flags:
   :common_c_flags: &common_c_flags
-    - -pedantic
     - -Wall
-    #- -Wextra
-    - -Werror
+    - -Wextra
+    - -pedantic
+    - -Wpointer-arith
+    - -Wuninitialized
+    - -Wcast-align
+    - -Wconversion
+    - -Wwrite-strings
+    - -Wno-comment
+    - -Wshadow
     - -Og
+    - -g
     - -std=c99
+#    - -Wredundant-decls
+#    - -Wmissing-declarations
+#    - -Werror
   :common_link_flags: &common_link_flags
   :gcov:
     :compile:
