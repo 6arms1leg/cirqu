@@ -25,7 +25,7 @@ The following loosely lists requirements, constraints, features and goals.
   never overflows, that is, if `pushHead`/`pushTail` is never issued on a full
   queue
 * API (public function) names automatically adjust to element type via
-  pre-processor macro to enable the use of multiple queues with different sizes
+  preprocessor macro to enable the use of multiple queues with different sizes
   within a project without name conflicts
 
 * Library design
@@ -43,6 +43,9 @@ The following loosely lists requirements, constraints, features and goals.
     * Modular
     * Re-usable
     * Portable
+    * No unused ("dead") code: optional functionality in seperate translation
+      units (so it can be excluded by the linker) or conditionally included via
+      preprocessor defines
     * Unit tested with 100 % coverage (LOC executed, branches taken, functions
       called)
     * MISRA-C:2012 compliant
