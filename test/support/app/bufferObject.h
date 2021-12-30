@@ -3,8 +3,6 @@
 #ifndef INCLUDE_BUFFEROBJECT_H
 #define INCLUDE_BUFFEROBJECT_H
 
-#include <stdint.h>
-
 #include "buffer.h"
 
 /* ATTRIBUTES
