@@ -9,8 +9,8 @@
  * ==========
  */
 
-#define BUF0STRGSIZE ( (cirquElemIdx_t)4U )
-#define BUF0ELEMSIZE (BUF0STRGSIZE - (cirquElemIdx_t)1U)
+#define BUF0STRGSIZE (4U)
+#define BUF0ELEMSIZE (BUF0STRGSIZE - 1U)
     /* `-1` because one element slot is used to distinguish full and empty
        fill level */
 
