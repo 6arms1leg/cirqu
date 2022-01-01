@@ -115,7 +115,7 @@ static void fn_pv_bffr_retTail(stc_bffr_t* const me)
 }
 
 void fn_bffr_ini(stc_bffr_t* const me,
-                 cirquElem_t* const a_cirquElem_strg,
+                 CIRQUELEMQUAL_T cirquElem_t* const a_cirquElem_strg,
                  const cirquElemIdx_t cirquElemIdx_strgSize)
 {
     /* Sanity check (Contract by Design) */
@@ -217,13 +217,21 @@ const cirquElem_t* fn_bffr_peek(const stc_bffr_t* const me,
                                              - me->cirquElemIdx_tail);
         if(cirquElemIdx_diff <= cirquElemIdx_elemPos)
         {
-            p_cirquElem_elem = &me->a_cirquElem_strg[cirquElemIdx_elemPos
-                                                     - cirquElemIdx_diff];
+            /* Any optional type qualifier must be "cast away" here to return a
+             * (read-only) `const` pointer
+             */
+            p_cirquElem_elem =
+                (const cirquElem_t*)&me->a_cirquElem_strg[cirquElemIdx_elemPos
+                                                          - cirquElemIdx_diff];
         }
         else
         {
-            p_cirquElem_elem = &me->a_cirquElem_strg[me->cirquElemIdx_tail
-                                                     + cirquElemIdx_elemPos];
+            /* Any optional type qualifier must be "cast away" here to return a
+             * (read-only) `const` pointer
+             */
+            p_cirquElem_elem =
+                (const cirquElem_t*)&me->a_cirquElem_strg[me->cirquElemIdx_tail
+                                                          + cirquElemIdx_elemPos];
         }
     }
     else {} /* Do nothing */

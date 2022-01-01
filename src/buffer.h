@@ -25,10 +25,10 @@
  */
 typedef struct
 {
-    cirquElem_t* a_cirquElem_strg;
+    CIRQUELEMQUAL_T cirquElem_t* a_cirquElem_strg;
     cirquElemIdx_t cirquElemIdx_strgSize;
-    cirquElemIdx_t cirquElemIdx_head;
-    cirquElemIdx_t cirquElemIdx_tail;
+    CIRQUELEMQUAL_T cirquElemIdx_t cirquElemIdx_head;
+    CIRQUELEMQUAL_T cirquElemIdx_t cirquElemIdx_tail;
 } stc_bffr_t;
 
 /* OPERATIONS
@@ -47,7 +47,7 @@ typedef struct
  * allocated storage element array
  */
 void fn_bffr_ini(stc_bffr_t* const me,
-                 cirquElem_t* const a_cirquElem_strg,
+                 CIRQUELEMQUAL_T cirquElem_t* const a_cirquElem_strg,
                  const cirquElemIdx_t cirquElemIdx_strgSize);
 
 /**
