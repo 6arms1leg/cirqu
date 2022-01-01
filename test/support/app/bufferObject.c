@@ -2,8 +2,6 @@
 
 #include "bufferObject.h"
 
-#include "cirquElemType.h"
-
 /* ATTRIBUTES
  * ==========
  */
@@ -15,8 +13,8 @@ static stc_bffr_t stc_bffr_pv_buf0;
 stc_bffr_t* const p_stc_bffr_g_buf0 = &stc_bffr_pv_buf0;
 
 /* Private storage for buffer object "buffer 0" */
-static CIRQUELEMQUAL_T cirquElem_t a_cirquElem_pv_buf0Strg[BUF0STRGSIZE] =
-    { (cirquElem_t)0U };
+static cirquStrgElem_t a_cirquStrgElem_pv_buf0Strg[BUF0STRGSIZE] =
+    { (uint8_t)0U };
 
 /* OPERATIONS
  * ==========
@@ -24,8 +22,8 @@ static CIRQUELEMQUAL_T cirquElem_t a_cirquElem_pv_buf0Strg[BUF0STRGSIZE] =
 
 void fn_bffrObj_buf0Ctor(void)
 {
-    fn_bffr_ini(&stc_bffr_pv_buf0, a_cirquElem_pv_buf0Strg,
-                (cirquElemIdx_t)BUF0STRGSIZE);
+    fn_bffr_ini(&stc_bffr_pv_buf0, a_cirquStrgElem_pv_buf0Strg,
+                (uint8_t)BUF0STRGSIZE);
 
     return;
 }

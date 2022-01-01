@@ -2,8 +2,6 @@
 
 #include "main.h"
 
-#include "cirquElemType.h" /* Include the CirQu buffer
-                              application/project-specific interface */
 #include "bufferObject.h" /* Include application interfaces */
 
 /* Reoccurring strings */
@@ -14,7 +12,7 @@
 int MAIN(void)
 {
     /* Temporary storage for peeked/pulled CirQu element */
-    static cirquElem_t cirquElem_elem = 'z';
+    static uint8_t u8_elem = 'z';
 
     puts(APPPROMPT "~~ Welcome to the CirQu buffer example application! ~~");
 
@@ -25,48 +23,48 @@ int MAIN(void)
             (int)fn_bffr_cntFree(p_stc_bffr_g_buf0) );
 
     puts(APPPROMPT "Push (head) elements `a`, `b`, `c` to `buf0` ...");
-    fn_bffr_pushHead(p_stc_bffr_g_buf0, (cirquElem_t)'a');
-    fn_bffr_pushHead(p_stc_bffr_g_buf0, (cirquElem_t)'b');
-    fn_bffr_pushHead(p_stc_bffr_g_buf0, (cirquElem_t)'c');
+    fn_bffr_pushHead(p_stc_bffr_g_buf0, (uint8_t)'a');
+    fn_bffr_pushHead(p_stc_bffr_g_buf0, (uint8_t)'b');
+    fn_bffr_pushHead(p_stc_bffr_g_buf0, (uint8_t)'c');
 
     printf( APPPROMPT CNTMSG "%i\n",
             (int)fn_bffr_cntFree(p_stc_bffr_g_buf0) );
 
-    cirquElem_elem = *fn_bffr_peek(p_stc_bffr_g_buf0, (cirquElemIdx_t)1U);
+    u8_elem = *fn_bffr_peek(p_stc_bffr_g_buf0, (uint8_t)1U);
     printf(APPPROMPT "Peeked tail+1 element in `buf0`: %c\n",
-           (char)cirquElem_elem);
+           (char)u8_elem);
 
     printf( APPPROMPT CNTMSG "%i\n",
             (int)fn_bffr_cntFree(p_stc_bffr_g_buf0) );
 
     puts(APPPROMPT "Push (head) element `d` to `buf0` ...");
-    fn_bffr_pushHead(p_stc_bffr_g_buf0, (cirquElem_t)'d');
+    fn_bffr_pushHead(p_stc_bffr_g_buf0, (uint8_t)'d');
 
     printf( APPPROMPT CNTMSG "%i\n",
             (int)fn_bffr_cntFree(p_stc_bffr_g_buf0) );
 
-    (void)fn_bffr_pull(p_stc_bffr_g_buf0, &cirquElem_elem);
+    (void)fn_bffr_pull(p_stc_bffr_g_buf0, &u8_elem);
     printf(APPPROMPT PULLMSG "%c\n",
-           (char)cirquElem_elem);
+           (char)u8_elem);
 
     printf( APPPROMPT CNTMSG "%i\n",
             (int)fn_bffr_cntFree(p_stc_bffr_g_buf0) );
 
     puts(APPPROMPT "Push (tail) element `e` to `buf0` ...");
-    fn_bffr_pushTail(p_stc_bffr_g_buf0, (cirquElem_t)'e');
+    fn_bffr_pushTail(p_stc_bffr_g_buf0, (uint8_t)'e');
 
     printf( APPPROMPT CNTMSG "%i\n",
             (int)fn_bffr_cntFree(p_stc_bffr_g_buf0) );
 
-    (void)fn_bffr_pull(p_stc_bffr_g_buf0, &cirquElem_elem);
+    (void)fn_bffr_pull(p_stc_bffr_g_buf0, &u8_elem);
     printf(APPPROMPT PULLMSG "%c\n",
-           (char)cirquElem_elem);
-    (void)fn_bffr_pull(p_stc_bffr_g_buf0, &cirquElem_elem);
+           (char)u8_elem);
+    (void)fn_bffr_pull(p_stc_bffr_g_buf0, &u8_elem);
     printf(APPPROMPT PULLMSG "%c\n",
-           (char)cirquElem_elem);
-    (void)fn_bffr_pull(p_stc_bffr_g_buf0, &cirquElem_elem);
+           (char)u8_elem);
+    (void)fn_bffr_pull(p_stc_bffr_g_buf0, &u8_elem);
     printf(APPPROMPT PULLMSG "%c\n",
-           (char)cirquElem_elem);
+           (char)u8_elem);
 
     printf( APPPROMPT CNTMSG "%i\n",
             (int)fn_bffr_cntFree(p_stc_bffr_g_buf0) );

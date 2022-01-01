@@ -18,6 +18,9 @@
  * ==========
  */
 
+/* Buffer storage element (shorthand) */
+typedef CIRQUELEMQUAL_T cirquElem_t cirquStrgElem_t;
+
 /* One excessive buffer element slot is used to distinguish full and empty fill
  * level, instead of a dedicated state variable.
  * This makes the buffer lock-free (no mutex needed) when there is only one
