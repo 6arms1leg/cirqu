@@ -12,7 +12,7 @@ The following loosely lists requirements, constraints, features and goals.
 
 * Circular/ring/FIFO/LIFO buffering/queueing management of multiple elements
   within a storage in embedded systems for real-time applications
-* Element type can be chosen at compile time
+* Element type (and optional type qualifiers) can be chosen at compile time
 * A new element can be pushed into the queue at its head or tail and the next
   element can be pulled from the tail of the queue
 * Each stored element in the queue can be peeked at (i.e. accessed through
