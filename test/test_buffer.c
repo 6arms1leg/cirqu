@@ -43,7 +43,7 @@ void test_bffr_initializeBuffer(void)
 void test_bffr_bufferEmptyAfterInitialization(void)
 {
     const cirquElemIdx_t cirquElemIdx_elemFreeCntExpected = BUF0ELEMSIZE;
-    cirquElemIdx_t cirquElemIdx_elemFreeCntActual = (cirquElem_t)0U;
+    cirquElemIdx_t cirquElemIdx_elemFreeCntActual = (cirquElemIdx_t)0U;
 
     cirquElemIdx_elemFreeCntActual = fn_bffr_cntFree(p_stc_bffr_g_buf0);
 
