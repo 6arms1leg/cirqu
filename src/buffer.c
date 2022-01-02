@@ -115,15 +115,15 @@ static void fn_pv_bffr_retTail(stc_bffr_t* const me)
 }
 
 void fn_bffr_ini(stc_bffr_t* const me,
-                 CIRQUELEMQUAL_T cirquElem_t* const a_cirquElem_strg,
+                 cirquStrgElem_t* const a_cirquStrgElem_strg,
                  const cirquElemIdx_t cirquElemIdx_strgSize)
 {
     /* Sanity check (Contract by Design) */
     assert( (NULL != me) &&
-            (NULL != a_cirquElem_strg) &&
+            (NULL != a_cirquStrgElem_strg) &&
             ( (cirquElemIdx_t)1U < cirquElemIdx_strgSize ) );
 
-    me->a_cirquElem_strg = a_cirquElem_strg;
+    me->a_cirquElem_strg = a_cirquStrgElem_strg;
     me->cirquElemIdx_strgSize = cirquElemIdx_strgSize;
 
     /* Initialize buffer to empty state */

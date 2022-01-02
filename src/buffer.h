@@ -18,7 +18,7 @@
  * ==========
  */
 
-/* Buffer storage element (shorthand) */
+/* Buffer storage element */
 typedef CIRQUELEMQUAL_T cirquElem_t cirquStrgElem_t;
 
 /* One excessive buffer element slot is used to distinguish full and empty fill
@@ -45,12 +45,12 @@ typedef struct
  * to distinguish full and empty fill level.
  *
  * \param me Pointer to a CirQu buffer object
- * \param a_cirquElem_strg Pointer to allocated storage element array
+ * \param a_cirquStrgElem_strg Pointer to allocated storage element array
  * \param cirquElemIdx_strgSize Size (in count of element slots) of the
  * allocated storage element array
  */
 void fn_bffr_ini(stc_bffr_t* const me,
-                 CIRQUELEMQUAL_T cirquElem_t* const a_cirquElem_strg,
+                 cirquStrgElem_t* const a_cirquStrgElem_strg,
                  const cirquElemIdx_t cirquElemIdx_strgSize);
 
 /**
