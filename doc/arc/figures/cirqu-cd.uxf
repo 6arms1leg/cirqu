@@ -28,14 +28,15 @@ fontfamily=SansSerif //possible: SansSerif,Serif,Monospaced
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>830</x>
-      <y>390</y>
-      <w>180</w>
-      <h>90</h>
+      <x>870</x>
+      <y>430</y>
+      <w>220</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Type&gt;&gt;
 cirquElemType
 --
+#define CIRQUELEMQUAL_T ...
 typedef ... cirquElem_t;
 typedef ... cirquElemIdx_t;
 fg=light_gray</panel_attributes>
@@ -44,16 +45,16 @@ fg=light_gray</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>760</x>
-      <y>650</y>
-      <w>250</w>
+      <x>850</x>
+      <y>760</y>
+      <w>270</w>
       <h>130</h>
     </coordinates>
     <panel_attributes>bufferObject
 --
 -buf:bffr_t
 +p_buf:bffr_t*=&amp;buf
--bufStrg[BUFSTRGSIZE]:cirquElem_t
+-bufStrg[BUFSTRGSIZE]:cirquStrgElem_t
 
 --
 +bufCtor(void):void
@@ -63,21 +64,8 @@ fg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>910</x>
-      <y>470</y>
-      <w>70</w>
-      <h>200</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;use&gt;&gt;
-fg=light_gray</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>760</x>
-      <y>400</y>
+      <x>800</x>
+      <y>460</y>
       <w>90</w>
       <h>40</h>
     </coordinates>
@@ -88,22 +76,22 @@ fg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>700</x>
-      <y>600</y>
-      <w>80</w>
-      <h>100</h>
+      <x>800</x>
+      <y>620</y>
+      <w>110</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=me
 m1=*
 m2=1</panel_attributes>
-    <additional_attributes>60.0;70.0;10.0;70.0;10.0;10.0</additional_attributes>
+    <additional_attributes>70.0;140.0;70.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>790</x>
-      <y>600</y>
+      <x>890</x>
+      <y>640</y>
       <w>40</w>
       <h>30</h>
     </coordinates>
@@ -114,8 +102,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>790</x>
-      <y>500</y>
+      <x>830</x>
+      <y>550</y>
       <w>40</w>
       <h>30</h>
     </coordinates>
@@ -126,32 +114,32 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>700</x>
-      <y>610</y>
-      <w>110</w>
-      <h>60</h>
+      <x>860</x>
+      <y>650</y>
+      <w>50</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;40.0;90.0;10.0</additional_attributes>
+    <additional_attributes>10.0;20.0;30.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>780</x>
-      <y>410</y>
-      <w>50</w>
-      <h>110</h>
+      <x>830</x>
+      <y>470</y>
+      <w>40</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;30.0;90.0</additional_attributes>
+    <additional_attributes>10.0;10.0;20.0;80.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>360</x>
+      <x>380</x>
       <y>90</y>
       <w>600</w>
-      <h>280</h>
+      <h>320</h>
     </coordinates>
     <panel_attributes>*CirQu library interface (IF)*
 --
@@ -159,11 +147,12 @@ Items in grey are not part of the CirQu library (LIB) and have to be provided by
 The IF consists of the following parts:
 
 *IF0*
-The LIB provides a buffer type to instantiate a buffer object.
+The LIB provides a storage element type to allocate storage for a buffer and a buffer type to instantiate a buffer object.
 
 *IF1*
-The LIB requires a `cirquElemType.h` header file with `typedefs` for:
+The LIB requires a `cirquElemType.h` header file with `#define`s/`typedefs` for:
 
+* `CIRQUELEMQUAL_T` -- Optional type qualifier(s) for the buffer (e.g. `volatile`)
 * `cirquElem_t` -- The type of elements in the buffer to be managed by the LIB (e.g., `uint8_t`)
 * `cirquElemIdx_t` -- The type of the buffer index to be used by the LIB (must be an unsigned
    integer, i.e. `uint8_t`, `uint16_t`, ...)
@@ -176,10 +165,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>340</x>
+      <x>360</x>
       <y>0</y>
-      <w>690</w>
-      <h>810</h>
+      <w>780</w>
+      <h>940</h>
     </coordinates>
     <panel_attributes>cd CirQu
 /Core modules and supplements/
@@ -190,7 +179,7 @@ fontsize=30</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>780</x>
+      <x>800</x>
       <y>20</y>
       <w>70</w>
       <h>30</h>
@@ -203,7 +192,7 @@ layer=1</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>870</x>
+      <x>890</x>
       <y>20</y>
       <w>100</w>
       <h>50</h>
@@ -215,9 +204,9 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>360</x>
-      <y>390</y>
-      <w>410</w>
+      <x>380</x>
+      <y>430</y>
+      <w>430</w>
       <h>220</h>
     </coordinates>
     <panel_attributes>buffer
@@ -228,7 +217,7 @@ style=wordwrap</panel_attributes>
 -advTail(me:bffr_t*):void
 -retHead(me:bffr_t*):void
 -retTail(me:bffr_t*):void
-+ini(me:bffr_t*, strg:cirquElem_t*, strgSize:cirquElemIdx_t):void
++ini(me:bffr_t*, strg:cirquStrgElem_t*, strgSize:cirquElemIdx_t):void
 +pushHead(me:bffr_t*, elem:cirquElem_t):void
 +pushTail(me:bffr_t*, elem:cirquElem_t):void
 +pull(me:bffr_t*, elem:cirquElem_t*):bool
@@ -239,27 +228,27 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>490</x>
-      <y>640</y>
-      <w>190</w>
+      <x>460</x>
+      <y>680</y>
+      <w>310</w>
       <h>150</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Type&gt;&gt;
 bufferType
 --
 typedef struct {
-    cirquElem_t* strg;
+    CIRQUELEMQUAL_T cirquElem_t* strg;
     cirquElemIdx_t strgSize;
-    cirquElemIdx_t head;
-    cirquElemIdx_t tail;
+    CIRQUELEMQUAL_T cirquElemIdx_t head;
+    CIRQUELEMQUAL_T cirquElemIdx_t tail;
 } bffr_t;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>570</x>
-      <y>600</y>
+      <x>660</x>
+      <y>640</y>
       <w>70</w>
       <h>60</h>
     </coordinates>
@@ -270,8 +259,8 @@ typedef struct {
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>670</x>
-      <y>690</y>
+      <x>760</x>
+      <y>760</y>
       <w>110</w>
       <h>40</h>
     </coordinates>
@@ -282,8 +271,8 @@ typedef struct {
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>700</x>
-      <y>730</y>
+      <x>790</x>
+      <y>810</y>
       <w>40</w>
       <h>30</h>
     </coordinates>
@@ -294,12 +283,61 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>710</x>
-      <y>700</y>
+      <x>800</x>
+      <y>770</y>
       <w>40</w>
-      <h>50</h>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;30.0;20.0;10.0</additional_attributes>
+    <additional_attributes>10.0;40.0;20.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>380</x>
+      <y>850</y>
+      <w>390</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Type&gt;&gt;
+strgElemType
+--
+typedef CIRQUELEMQUAL_T cirquElem_t cirquStrgElem_t;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>390</x>
+      <y>640</y>
+      <w>70</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;use&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;210.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>760</x>
+      <y>850</y>
+      <w>110</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;use&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;90.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>810</x>
+      <y>830</y>
+      <w>40</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;20.0;40.0</additional_attributes>
   </element>
 </diagram>
