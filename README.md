@@ -28,10 +28,14 @@ The following loosely lists requirements, constraints, features and goals.
   preprocessor macro to enable the use of multiple queues with different sizes
   within a project without name conflicts
 
+<!-- Separator -->
+
 * Library design
 * Deployment in embedded systems
 * Code implementation in the C programming language ("C99", ISO/IEC 9899:1999)
 * Interfaces with the application software through element storage arrays
+
+<!-- Separator -->
 
 * Low impact on technical budgets
     * Low CPU utilization
