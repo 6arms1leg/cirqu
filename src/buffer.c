@@ -143,7 +143,6 @@ void fn_bffr_pushHead(stc_bffr_t* const me, const cirquElem_t cirquElem_elem)
     {
         fn_pv_bffr_advTail(me);
     }
-    else {} /* Do nothing */
 
     me->a_cirquElem_strg[me->cirquElemIdx_head] = cirquElem_elem;
     fn_pv_bffr_advHead(me);
@@ -161,7 +160,6 @@ void fn_bffr_pushTail(stc_bffr_t* const me, const cirquElem_t cirquElem_elem)
     {
         fn_pv_bffr_retHead(me);
     }
-    else {} /* Do nothing */
 
     fn_pv_bffr_retTail(me);
     me->a_cirquElem_strg[me->cirquElemIdx_tail] = cirquElem_elem;
@@ -186,7 +184,6 @@ bool fn_bffr_pull(stc_bffr_t* const me, cirquElem_t* const p_cirquElem_elem)
 
         b_result = true;
     }
-    else {} /* Do nothing */
 
     return(b_result);
 }
@@ -234,7 +231,6 @@ const cirquElem_t* fn_bffr_peek(const stc_bffr_t* const me,
                                                           + cirquElemIdx_elemPos];
         }
     }
-    else {} /* Do nothing */
 
     return(p_cirquElem_elem);
 }
