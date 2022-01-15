@@ -104,8 +104,9 @@ bool fn_bffr_pull(stc_bffr_t* const me, cirquElem_t* const p_cirquElem_elem);
  *
  * \return Read-only pointer to element in the CirQu buffer
  */
-const cirquElem_t* fn_bffr_peek(const stc_bffr_t* const me,
-                                const cirquElemIdx_t cirquElemIdx_elemPos);
+const CIRQUELEMQUAL_T cirquElem_t* fn_bffr_peek(const stc_bffr_t* const me,
+                                                const cirquElemIdx_t
+                                                    cirquElemIdx_elemPos);
 
 /**
  * \brief Query fill level (in count of empty element slots) of buffer

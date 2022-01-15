@@ -188,8 +188,9 @@ bool fn_bffr_pull(stc_bffr_t* const me, cirquElem_t* const p_cirquElem_elem)
     return(b_result);
 }
 
-const cirquElem_t* fn_bffr_peek(const stc_bffr_t* const me,
-                                const cirquElemIdx_t cirquElemIdx_elemPos)
+const CIRQUELEMQUAL_T cirquElem_t* fn_bffr_peek(const stc_bffr_t* const me,
+                                                const cirquElemIdx_t
+                                                    cirquElemIdx_elemPos)
 {
     /* Sanity check (Design by Contract) */
     assert( (NULL != me) &&
@@ -200,7 +201,7 @@ const cirquElem_t* fn_bffr_peek(const stc_bffr_t* const me,
      * pointer
      */
     cirquElemIdx_t cirquElemIdx_diff = (cirquElemIdx_t)0U;
-    const cirquElem_t* p_cirquElem_elem = NULL;
+    const CIRQUELEMQUAL_T cirquElem_t* p_cirquElem_elem = NULL;
 
     /* If requested element position is in range (points to non-vacant element
      * slot)
@@ -214,21 +215,13 @@ const cirquElem_t* fn_bffr_peek(const stc_bffr_t* const me,
                                              - me->cirquElemIdx_tail);
         if(cirquElemIdx_diff <= cirquElemIdx_elemPos)
         {
-            /* Any optional type qualifier must be "cast away" here to return a
-             * (read-only) `const` pointer
-             */
-            p_cirquElem_elem =
-                (const cirquElem_t*)&me->a_cirquElem_strg[cirquElemIdx_elemPos
-                                                          - cirquElemIdx_diff];
+            p_cirquElem_elem = &me->a_cirquElem_strg[cirquElemIdx_elemPos
+                                                     - cirquElemIdx_diff];
         }
         else
         {
-            /* Any optional type qualifier must be "cast away" here to return a
-             * (read-only) `const` pointer
-             */
-            p_cirquElem_elem =
-                (const cirquElem_t*)&me->a_cirquElem_strg[me->cirquElemIdx_tail
-                                                          + cirquElemIdx_elemPos];
+            p_cirquElem_elem = &me->a_cirquElem_strg[me->cirquElemIdx_tail
+                                                     + cirquElemIdx_elemPos];
         }
     }
 
