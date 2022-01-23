@@ -118,7 +118,7 @@ void fn_bffr_ini(stc_bffr_t* const me,
                  cirquStrgElem_t* const a_cirquStrgElem_strg,
                  const cirquElemIdx_t cirquElemIdx_strgSize)
 {
-    /* Sanity check (Contract by Design) */
+    /* Sanity check (Design by Contract) */
     assert( (NULL != me) &&
             (NULL != a_cirquStrgElem_strg) &&
             ( (cirquElemIdx_t)1U < cirquElemIdx_strgSize ) );
@@ -135,7 +135,7 @@ void fn_bffr_ini(stc_bffr_t* const me,
 
 void fn_bffr_pushHead(stc_bffr_t* const me, const cirquElem_t cirquElem_elem)
 {
-    /* Sanity check (Contract by Design) */
+    /* Sanity check (Design by Contract) */
     assert(NULL != me);
 
     /* If full */
@@ -152,7 +152,7 @@ void fn_bffr_pushHead(stc_bffr_t* const me, const cirquElem_t cirquElem_elem)
 
 void fn_bffr_pushTail(stc_bffr_t* const me, const cirquElem_t cirquElem_elem)
 {
-    /* Sanity check (Contract by Design) */
+    /* Sanity check (Design by Contract) */
     assert(NULL != me);
 
     /* If full */
@@ -169,7 +169,7 @@ void fn_bffr_pushTail(stc_bffr_t* const me, const cirquElem_t cirquElem_elem)
 
 bool fn_bffr_pull(stc_bffr_t* const me, cirquElem_t* const p_cirquElem_elem)
 {
-    /* Sanity check (Contract by Design) */
+    /* Sanity check (Design by Contract) */
     assert( (NULL != me) &&
             (NULL != p_cirquElem_elem) );
 
@@ -191,7 +191,7 @@ bool fn_bffr_pull(stc_bffr_t* const me, cirquElem_t* const p_cirquElem_elem)
 const cirquElem_t* fn_bffr_peek(const stc_bffr_t* const me,
                                 const cirquElemIdx_t cirquElemIdx_elemPos)
 {
-    /* Sanity check (Contract by Design) */
+    /* Sanity check (Design by Contract) */
     assert( (NULL != me) &&
             ( (cirquElemIdx_t)(me->cirquElemIdx_strgSize - (cirquElemIdx_t)1U)
               > cirquElemIdx_elemPos ) );
@@ -237,7 +237,7 @@ const cirquElem_t* fn_bffr_peek(const stc_bffr_t* const me,
 
 cirquElemIdx_t fn_bffr_cntFree(const stc_bffr_t* const me)
 {
-    /* Sanity check (Contract by Design) */
+    /* Sanity check (Design by Contract) */
     assert(NULL != me);
 
     /* Initialize variable used in free element count calculation */

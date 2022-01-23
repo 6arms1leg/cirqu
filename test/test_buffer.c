@@ -4,7 +4,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-#include "assert.h" /* For sanity checks (Contract by Design) */
+#include "assert.h" /* For sanity checks (Design by Contract) */
 
 #include "unity.h"
 
