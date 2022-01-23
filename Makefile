@@ -42,8 +42,7 @@ endif
         clean-misra \
         clean-metrics-cmplx \
         clean-metrics-loc \
-        clean-static \
-        clean-all
+        clean-static
 
 # Default target
 help:
@@ -70,7 +69,9 @@ help:
 
 $(BUILD_DIR)/cirqu/obj/buffer.o: $(SRC_DIR)/buffer.c
 	mkdir -p ./build/cirqu/obj/
-	$(CC) $(CC_FLAGS) -c \
+	$(CC) \
+	    $(CC_FLAGS) \
+	    -c \
 	    -I$(BUILD_CONTEXT)/test/support/app/ \
 	    $^ \
 	    -o $@
@@ -78,7 +79,9 @@ $(BUILD_DIR)/cirqu/obj/buffer.o: $(SRC_DIR)/buffer.c
 $(BUILD_DIR)/cirqu/obj/bufferObject.o: \
     $(BUILD_CONTEXT)/test/support/app/bufferObject.c
 	mkdir -p ./build/cirqu/obj/
-	$(CC) $(CC_FLAGS) -c \
+	$(CC) \
+	    $(CC_FLAGS) \
+	    -c \
 	    -I$(SRC_DIR)/ \
 	    -I$(BUILD_CONTEXT)/test/support/app/ \
 	    $^ \
@@ -86,17 +89,18 @@ $(BUILD_DIR)/cirqu/obj/bufferObject.o: \
 
 $(BUILD_DIR)/cirqu/obj/main.o: $(BUILD_CONTEXT)/ex-app/main.c
 	mkdir -p ./build/cirqu/obj/
-	$(CC) $(CC_FLAGS) -c \
+	$(CC) \
+	    $(CC_FLAGS) \
+	    -c \
 	    -I$(SRC_DIR)/ \
 	    -I$(BUILD_CONTEXT)/test/support/app/ \
 	    $^ \
 	    -o $@
 
 ex-app: $(BUILD_DIR)/cirqu/ex-app
-$(BUILD_DIR)/cirqu/ex-app: \
-    $(BUILD_DIR)/cirqu/obj/buffer.o \
-    $(BUILD_DIR)/cirqu/obj/bufferObject.o \
-    $(BUILD_DIR)/cirqu/obj/main.o
+$(BUILD_DIR)/cirqu/ex-app: $(BUILD_DIR)/cirqu/obj/buffer.o \
+                           $(BUILD_DIR)/cirqu/obj/bufferObject.o \
+                           $(BUILD_DIR)/cirqu/obj/main.o
 	$(LD) $(LD_FLAGS) $^ -o $@
 
 test:
@@ -112,18 +116,21 @@ doc-doxygen:
 doc-uml:
 	mkdir -p $(BUILD_DIR)/umlet/
 	@cp $(BUILD_CONTEXT)/doc/arc/figures/*.uxf $(BUILD_DIR)/umlet/
-	umlet -action=convert \
-	      -format=png \
-	      -filename=$(BUILD_DIR)/umlet/*.uxf
+	umlet \
+	    -action=convert \
+	    -format=png \
+	    -filename=$(BUILD_DIR)/umlet/*.uxf
 	@rm -rf $(BUILD_DIR)/umlet/*.uxf
 
 check-misra:
-	mkdir -p $(BUILD_DIR)/cppcheck/misra/out/ \
-	         $(BUILD_DIR)/cppcheck/misra/result/
+	mkdir -p \
+	    $(BUILD_DIR)/cppcheck/misra/out/ \
+	    $(BUILD_DIR)/cppcheck/misra/result/
 	cppcheck --dump $(SRC_DIR)/
-	@find $(SRC_DIR)/ -type f -name '*.dump' \
+	@find \
+	    $(SRC_DIR)/ -type f -name '*.dump' \
 	    -exec mv {} $(BUILD_DIR)/cppcheck/misra/out/ \;
-	python $(CPPCHECKMISRA) \
+	python3 $(CPPCHECKMISRA) \
 	    $(BUILD_DIR)/cppcheck/misra/out/*.dump \
 	    2>&1 | tee $(BUILD_DIR)/cppcheck/misra/result/cppcheck-misra-result.txt
 	@grep \
@@ -159,8 +166,7 @@ check-metrics-loc:
 	    --csv \
 	    --file-encoding=UTF-8 \
 	    --report-file=$(BUILD_DIR)/cloc/cloc-result.csv
-	@python \
-	    $(BUILD_CONTEXT)/util/chk-cloc-cmnt-rate.py \
+	@python3 $(BUILD_CONTEXT)/util/chk-cloc-cmnt-rate.py \
 	    $(BUILD_DIR)/cloc/cloc-result.csv \
 	    20
 
@@ -183,8 +189,9 @@ check-static:
 	    2>&1 | tee $(BUILD_DIR)/cppcheck/cppckeck-result.txt
 
 clean-ex-app:
-	rm -rf $(BUILD_DIR)/cirqu/obj/*.o \
-	       $(BUILD_DIR)/cirqu/ex-app
+	rm -rf \
+	    $(BUILD_DIR)/cirqu/obj/*.o \
+	    $(BUILD_DIR)/cirqu/ex-app
 
 clean-test:
 	ceedling clobber
@@ -196,8 +203,9 @@ clean-doc-uml:
 	rm -rf $(BUILD_DIR)/umlet/*.png
 
 clean-misra:
-	rm -rf $(BUILD_DIR)/cppcheck/misra/out/*.dump \
-	       $(BUILD_DIR)/cppcheck/misra/result/cppcheck-misra-result.txt
+	rm -rf \
+	    $(BUILD_DIR)/cppcheck/misra/out/*.dump \
+	    $(BUILD_DIR)/cppcheck/misra/result/cppcheck-misra-result.txt
 
 clean-metrics-cmplx:
 	rm -rf $(BUILD_DIR)/lizard/lizard-result.txt
@@ -208,13 +216,12 @@ clean-metrics-loc:
 clean-static:
 	rm -rf $(BUILD_DIR)/cppcheck/cppckeck-result.txt
 
-clean-all:
-	@echo "Make:  Cleanup all ..."
-	$(MAKE) clean-ex-app
-	$(MAKE) clean-test
-	$(MAKE) clean-doc-doxygen
-	$(MAKE) clean-doc-uml
-	$(MAKE) clean-misra
-	$(MAKE) clean-metrics-cmplx
-	$(MAKE) clean-metrics-loc
-	$(MAKE) clean-static
+clean-all: clean-ex-app \
+           clean-test \
+           clean-doc-doxygen \
+           clean-doc-uml \
+           clean-misra \
+           clean-metrics-cmplx \
+           clean-metrics-loc \
+           clean-static
+	@echo "Make:  All cleaned up"
