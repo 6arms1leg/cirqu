@@ -15,7 +15,7 @@
  *
  * \param me Pointer to a CirQu buffer object
  */
-static void fn_pv_bffr_advHead(stc_bffr_t* const me)
+static inline void fn_pv_bffr_advHead(stc_bffr_t* const me)
 {
     /* No sanity check necessary since `me` argument was already checked in API
      * functions
@@ -67,7 +67,7 @@ static void fn_pv_bffr_advTail(stc_bffr_t* const me)
  *
  * \param me Pointer to a CirQu buffer object
  */
-static void fn_pv_bffr_retHead(stc_bffr_t* const me)
+static inline void fn_pv_bffr_retHead(stc_bffr_t* const me)
 {
     /* No sanity check necessary since `me` argument was already checked in API
      * functions
@@ -93,7 +93,7 @@ static void fn_pv_bffr_retHead(stc_bffr_t* const me)
  *
  * \param me Pointer to a CirQu buffer object
  */
-static void fn_pv_bffr_retTail(stc_bffr_t* const me)
+static inline void fn_pv_bffr_retTail(stc_bffr_t* const me)
 {
     /* No sanity check necessary since `me` argument was already checked in API
      * functions
