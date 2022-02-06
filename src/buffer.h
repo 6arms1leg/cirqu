@@ -1,7 +1,7 @@
 /** \file */
 
-#ifndef INCLUDE_BUFFER_H
-#define INCLUDE_BUFFER_H
+#ifndef BUFFER_H
+#define BUFFER_H
 
 /* `"` used intentionally.  This allows the user to override and provide his
  * own implementation before falling back to libc.
@@ -117,4 +117,4 @@ const CIRQUELEMQUAL_T cirquElem_t* fn_bffr_peek(const stc_bffr_t* const me,
  */
 cirquElemIdx_t fn_bffr_cntFree(const stc_bffr_t* const me);
 
-#endif /* INCLUDE_BUFFER_H */
+#endif /* BUFFER_H */

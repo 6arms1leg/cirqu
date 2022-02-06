@@ -1,7 +1,7 @@
 /** \file */
 
-#ifndef INCLUDE_BUFFEROBJECT_H
-#define INCLUDE_BUFFEROBJECT_H
+#ifndef BUFFEROBJECT_H
+#define BUFFEROBJECT_H
 
 #include "buffer.h"
 
@@ -24,4 +24,4 @@ extern stc_bffr_t* const p_stc_bffr_g_buf0;
 /* Constructor of buffer object "buffer 0" */
 void fn_bffrObj_buf0Ctor(void);
 
-#endif /* INCLUDE_BUFFEROBJECT_H */
+#endif /* BUFFEROBJECT_H */

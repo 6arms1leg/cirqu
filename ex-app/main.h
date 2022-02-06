@@ -1,7 +1,7 @@
 /** \file */
 
-#ifndef INCLUDE_MAIN_H
-#define INCLUDE_MAIN_H
+#ifndef MAIN_H
+#define MAIN_H
 
 /* Include libc interfaces */
 #include <stdint.h>
@@ -19,4 +19,4 @@
 /** \brief Program entry point */
 int MAIN(void);
 
-#endif /* INCLUDE_MAIN_H */
+#endif /* MAIN_H */
