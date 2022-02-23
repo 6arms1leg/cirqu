@@ -2,12 +2,19 @@
 
 #include "buffer.h"
 
-/* Modulo operations intentionally not used to handle head/tail wrap around in
- * order to save CPU cycles
- */
+/* Setup template to allow multiple "instances" of this library */
+#include "templateSetup.h"
+#define fn_pv_bffr_advHead(a) CAT(fn_pv_bffr_advHead, CIRQUID)(a)
+#define fn_pv_bffr_advTail(a) CAT(fn_pv_bffr_advTail, CIRQUID)(a)
+#define fn_pv_bffr_retHead(a) CAT(fn_pv_bffr_retHead, CIRQUID)(a)
+#define fn_pv_bffr_retTail(a) CAT(fn_pv_bffr_retTail, CIRQUID)(a)
 
 /* OPERATIONS
  * ==========
+ */
+
+/* Modulo operations intentionally not used to handle head/tail wrap around in
+ * order to save CPU cycles
  */
 
 /**
@@ -252,3 +259,10 @@ cirquElemIdx_t fn_bffr_cntFree(const stc_bffr_t* const me)
 
     return(cirquElemIdx_elemFreeCnt);
 }
+
+/* Cleanup template (multiple "instances") */
+#include "templateCleanup.h"
+#undef fn_pv_bffr_advHead
+#undef fn_pv_bffr_advTail
+#undef fn_pv_bffr_retHead
+#undef fn_pv_bffr_retTail

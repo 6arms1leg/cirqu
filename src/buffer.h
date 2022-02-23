@@ -1,7 +1,8 @@
 /** \file */
 
-#ifndef BUFFER_H
-#define BUFFER_H
+/* No include guards here to allow multiple inclusions due to "template"
+ * feature
+ */
 
 /* `"` used intentionally.  This allows the user to override and provide his
  * own implementation before falling back to libc.
@@ -13,6 +14,9 @@
 
 /* Must be provided; application/project-specific */
 #include "cirquElemType.h"
+
+/* Setup template to allow multiple "instances" of this library */
+#include "templateSetup.h"
 
 /* ATTRIBUTES
  * ==========
@@ -117,4 +121,5 @@ const CIRQUELEMQUAL_T cirquElem_t* fn_bffr_peek(const stc_bffr_t* const me,
  */
 cirquElemIdx_t fn_bffr_cntFree(const stc_bffr_t* const me);
 
-#endif /* BUFFER_H */
+/* Cleanup template (multiple "instances") */
+#include "templateCleanup.h"

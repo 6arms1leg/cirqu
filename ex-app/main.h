@@ -7,8 +7,6 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "buffer.h" /* Include the CirQu buffer interface */
-
 /* Necessary to make `main()` function unit testable */
 #ifndef TEST
 #define MAIN main

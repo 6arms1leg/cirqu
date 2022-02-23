@@ -67,23 +67,25 @@ help:
 	@echo "Make:  * clean-static"
 	@echo "Make:  * clean-all"
 
-$(BUILD_DIR)/cirqu/obj/buffer.o: $(SRC_DIR)/buffer.c
-	mkdir -p ./build/cirqu/obj/
-	$(CC) \
-	    $(CC_FLAGS) \
-	    -c \
-	    -I$(BUILD_CONTEXT)/test/support/app/ \
-	    $^ \
-	    -o $@
-
-$(BUILD_DIR)/cirqu/obj/bufferObject.o: \
-    $(BUILD_CONTEXT)/test/support/app/bufferObject.c
+$(BUILD_DIR)/cirqu/obj/cirquBufferUnited.o: \
+    $(BUILD_CONTEXT)/ex-app/cirquBufferUnited.c
 	mkdir -p ./build/cirqu/obj/
 	$(CC) \
 	    $(CC_FLAGS) \
 	    -c \
 	    -I$(SRC_DIR)/ \
-	    -I$(BUILD_CONTEXT)/test/support/app/ \
+	    -I$(BUILD_CONTEXT)/ex-app/ \
+	    $^ \
+	    -o $@
+
+$(BUILD_DIR)/cirqu/obj/bufferObject.o: \
+    $(BUILD_CONTEXT)/ex-app/bufferObject.c
+	mkdir -p ./build/cirqu/obj/
+	$(CC) \
+	    $(CC_FLAGS) \
+	    -c \
+	    -I$(SRC_DIR)/ \
+	    -I$(BUILD_CONTEXT)/ex-app/ \
 	    $^ \
 	    -o $@
 
@@ -93,12 +95,12 @@ $(BUILD_DIR)/cirqu/obj/main.o: $(BUILD_CONTEXT)/ex-app/main.c
 	    $(CC_FLAGS) \
 	    -c \
 	    -I$(SRC_DIR)/ \
-	    -I$(BUILD_CONTEXT)/test/support/app/ \
+	    -I$(BUILD_CONTEXT)/ex-app/ \
 	    $^ \
 	    -o $@
 
 ex-app: $(BUILD_DIR)/cirqu/ex-app
-$(BUILD_DIR)/cirqu/ex-app: $(BUILD_DIR)/cirqu/obj/buffer.o \
+$(BUILD_DIR)/cirqu/ex-app: $(BUILD_DIR)/cirqu/obj/cirquBufferUnited.o \
                            $(BUILD_DIR)/cirqu/obj/bufferObject.o \
                            $(BUILD_DIR)/cirqu/obj/main.o
 	$(LD) $(LD_FLAGS) $^ -o $@

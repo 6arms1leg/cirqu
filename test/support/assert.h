@@ -3,7 +3,7 @@
 #ifndef ASSERT_H
 #define ASSERT_H
 
-/* libc */
+/* Include libc interfaces */
 #include <stdbool.h>
 
 #include "CException.h"
