@@ -4,14 +4,13 @@
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>539</x>
-      <y>154</y>
-      <w>330</w>
-      <h>506</h>
+      <x>462</x>
+      <y>198</y>
+      <w>495</w>
+      <h>473</h>
     </coordinates>
     <panel_attributes>pd CirQu
-/Library/
-/  dependencies/
+/Library dependencies/
 --
 fontsize=30</panel_attributes>
     <additional_attributes/>
@@ -19,8 +18,8 @@ fontsize=30</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>770</x>
-      <y>198</y>
+      <x>792</x>
+      <y>220</y>
       <w>77</w>
       <h>33</h>
     </coordinates>
@@ -32,8 +31,8 @@ layer=1</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>561</x>
-      <y>473</y>
+      <x>484</x>
+      <y>484</y>
       <w>154</w>
       <h>165</h>
     </coordinates>
@@ -46,8 +45,8 @@ valign=Top</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>583</x>
-      <y>539</y>
+      <x>506</x>
+      <y>550</y>
       <w>110</w>
       <h>77</h>
     </coordinates>
@@ -60,9 +59,9 @@ valign=Top</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>561</x>
-      <y>286</y>
-      <w>286</w>
+      <x>484</x>
+      <y>297</y>
+      <w>418</w>
       <h>165</h>
     </coordinates>
     <panel_attributes>
@@ -75,8 +74,8 @@ fg=Light_gray</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>715</x>
-      <y>352</y>
+      <x>638</x>
+      <y>363</y>
       <w>110</w>
       <h>77</h>
     </coordinates>
@@ -91,8 +90,8 @@ fg=Light_gray</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>583</x>
-      <y>352</y>
+      <x>506</x>
+      <y>363</y>
       <w>110</w>
       <h>77</h>
     </coordinates>
@@ -107,23 +106,75 @@ fg=Light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>682</x>
-      <y>418</y>
-      <w>110</w>
-      <h>187</h>
+      <x>583</x>
+      <y>429</y>
+      <w>99</w>
+      <h>165</h>
     </coordinates>
     <panel_attributes>lt=.&gt;</panel_attributes>
-    <additional_attributes>80.0;10.0;80.0;150.0;10.0;150.0</additional_attributes>
+    <additional_attributes>70.0;10.0;70.0;90.0;10.0;90.0;10.0;130.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>627</x>
-      <y>418</y>
+      <x>550</x>
+      <y>429</y>
       <w>33</w>
       <h>165</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>814</x>
+      <y>484</y>
+      <w>121</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>Optional, to simplify build process.
+Alternatively, build library multiple times with different configurations.
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>770</x>
+      <y>363</y>
+      <w>110</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>
+--
+*CirQu*
+*wrapper*
+valign=Top
+fg=Light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>605</x>
+      <y>429</y>
+      <w>209</w>
+      <h>187</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+fg=light_gray</panel_attributes>
+    <additional_attributes>170.0;10.0;170.0;150.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>825</x>
+      <y>429</y>
+      <w>44</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;20.0;50.0</additional_attributes>
   </element>
 </diagram>

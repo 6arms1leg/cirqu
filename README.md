@@ -18,12 +18,15 @@ The following loosely lists requirements, constraints, features and goals.
 * Circular/ring/FIFO/LIFO buffering/queueing management of multiple elements
   within a storage in embedded systems for real-time applications
 * Element type (and optional type qualifiers) can be chosen at compile time
+* Library can be "instantiated" multiple times in one project for different
+  element types via C++-like template imitation (facilitates type safety in
+  contrast to `void*` usage)
 * A new element can be pushed into the queue at its head or tail and the next
   element can be pulled from the tail of the queue
 * Each stored element in the queue can be peeked at (i.e. accessed through
   pointer without removal) by its relative index starting from the tail
   position
-* The buffer can be queried about its count of available free element slots
+* Buffer can be queried about its count of available free element slots
 * Queue size can be configured at buffer object instantiation by linking
   allocated memory (storage) to it
 * Lock-free access possible (with only one producer and consumer if the queue
@@ -77,6 +80,128 @@ Quality metrics:
 | Cyclomatic complexity number (per func.)     | \<= 10   |
 | Comment rate (per file)                      | \>= 20 % |
 | Unit test (decision) coverage                | = 100 %  |
+
+## How to deploy
+
+The library can be "instantiated" multiple times in one project for different
+element types via C++-like template imitation.
+In contrast to the alternative solution of using `void*` element types, this
+facilitates type safety.
+However, this comes with a slight increase in deployment complexity.
+
+There are two options to deploy this library:
+
+**Option A:  United buffers module with multiple library "instances"**
+
+> The example application uses this option.
+
+With this option, the library is not directly `#include`d and compiled but
+instead wrapped in another module, which unites all library "instances" by
+configuring and `#include`ing them.
+It unconventionally requires to include implementation files in *exactly one
+section* of the code as a tradeoff to keep the build process simple.
+
+Below is a header and implementation file of such a wrapper module for an
+example with two library "instances" with the suffix IDs `0` and `1`.
+Of course, there can be more or less "instances" and the ID names can be
+changed as well.
+
+Header file:
+
+```c
+#ifndef CIRQUBUFFERUNITED_H
+#define CIRQUBUFFERUNITED_H
+
+/* Include CirQu buffer interface (configured with ID 0) */
+#define CIRQUID 0
+#include "buffer.h"
+#undef CIRQUID
+
+/* Include CirQu buffer interface (configured with ID 1) */
+#define CIRQUID 1
+#include "buffer.h"
+#undef CIRQUID
+
+#endif /* CIRQUBUFFERUNITED_H */
+```
+
+Implementation file:
+
+```c
+/* Include CirQu buffer implementation (configured with ID 0) */
+#define CIRQUID 0
+#include "buffer.c"
+#undef CIRQUID
+
+/* Include CirQu buffer implementation (configured with ID 1) */
+#define CIRQUID 1
+#include "buffer.c"
+#undef CIRQUID
+```
+
+*Only* this wrapper module is then compiled and linked and its interface
+included, e.g.:
+
+```c
+/* Wrapper module with multiple "instances" of CirQu library */
+#include "cirquBufferUnited.h"
+```
+
+**Option B:  Build library multiple times with different configurations**
+
+> The unit tests use this option (as test coverage can only be measured this
+> way).
+
+With this option, the library is directly configured, `#include`d, compiled and
+linked multiple times.
+It unconventionally requires to wrap each interface inclusion in "external"
+include guards (since the interface has none to allow multiple inclusions) and
+to configure each interface beforehand.
+
+Below is an example code snipped of such `#include`s for two library
+"instances" with the suffix IDs `0` and `1`.
+Of course, there can be more or less "instances" and the ID names can be
+changed as well.
+
+```c
+/* Include CirQu buffer interface (configured with ID 0) */
+#ifndef BUFFER_H0
+#define BUFFER_H0
+#define CIRQUID 0
+#include "buffer.h"
+#undef CIRQUID
+#endif /* BUFFER_H0 */
+
+/* Include CirQu buffer interface (configured with ID 1) */
+#ifndef BUFFER_H1
+#define BUFFER_H1
+#define CIRQUID 1
+#include "buffer.h"
+#undef CIRQUID
+#endif /* BUFFER_H1 */
+```
+
+Each library "instance" must then be compiled into a separate object file by
+supplying the ID name to the compiler, e.g.:
+
+```sh
+$ gcc -DCIRQUID=0 ... -c -I... buffer.c -o buffer0.o
+$ gcc -DCIRQUID=1 ... -c -I... buffer.c -o buffer1.o
+```
+
+And then all those library "instance" obejct files must be provided to the
+linker when linking the application in which this library is used.
+
+**API usage for option A and B**
+
+To use a library "instance"’s API (e.g. function calls, variable
+declaration/definition), the ID suffix must be appended, e.g. for ID `0`:
+
+```c
+stc_bffr_t0 ...;
+
+fn_bffr_ini0(...);
+```
 
 ## Architecture
 
