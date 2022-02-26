@@ -1,6 +1,7 @@
 <!--
 Keywords:
-buffer, circular, embedded, embedded-systems, fifo, library, lifo, queue, ring
+buffer, circular, embedded, embedded-systems, fifo, library, lifo, queue, ring,
+template
 -->
 
 # CirQu - Simple circular queue library
