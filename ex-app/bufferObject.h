@@ -3,8 +3,8 @@
 #ifndef BUFFEROBJECT_H
 #define BUFFEROBJECT_H
 
-/* United buffers module with multiple "instances" of CirQu library */
-#include "cirquBufferUnited.h"
+/* Wrapper module with multiple "instances" of CirQu library */
+#include "cirquWrapper.h"
 
 /* ATTRIBUTES
  * ==========

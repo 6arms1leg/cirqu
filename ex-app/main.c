@@ -2,8 +2,8 @@
 
 #include "main.h"
 
-/* United buffers module with multiple "instances" of CirQu library */
-#include "cirquBufferUnited.h"
+/* Wrapper module with multiple "instances" of CirQu library */
+#include "cirquWrapper.h"
 
 /* Include application interfaces */
 #include "bufferObject.h"

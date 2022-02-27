@@ -67,8 +67,8 @@ help:
 	@echo "Make:  * clean-static"
 	@echo "Make:  * clean-all"
 
-$(BUILD_DIR)/cirqu/obj/cirquBufferUnited.o: \
-    $(BUILD_CONTEXT)/ex-app/cirquBufferUnited.c
+$(BUILD_DIR)/cirqu/obj/cirquWrapper.o: \
+    $(BUILD_CONTEXT)/ex-app/cirquWrapper.c
 	mkdir -p ./build/cirqu/obj/
 	$(CC) \
 	    $(CC_FLAGS) \
@@ -100,7 +100,7 @@ $(BUILD_DIR)/cirqu/obj/main.o: $(BUILD_CONTEXT)/ex-app/main.c
 	    -o $@
 
 ex-app: $(BUILD_DIR)/cirqu/ex-app
-$(BUILD_DIR)/cirqu/ex-app: $(BUILD_DIR)/cirqu/obj/cirquBufferUnited.o \
+$(BUILD_DIR)/cirqu/ex-app: $(BUILD_DIR)/cirqu/obj/cirquWrapper.o \
                            $(BUILD_DIR)/cirqu/obj/bufferObject.o \
                            $(BUILD_DIR)/cirqu/obj/main.o
 	$(LD) $(LD_FLAGS) $^ -o $@

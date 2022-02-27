@@ -1,7 +1,7 @@
 /** \file */
 
-#ifndef CIRQUBUFFERUNITED_H
-#define CIRQUBUFFERUNITED_H
+#ifndef CIRQUWRAPPER_H
+#define CIRQUWRAPPER_H
 
 /* Include CirQu buffer interface (configured with ID 0) */
 #define CIRQUID 0
@@ -13,4 +13,4 @@
 #include "buffer.h"
 #undef CIRQUID
 
-#endif /* CIRQUBUFFERUNITED_H */
+#endif /* CIRQUWRAPPER_H */

@@ -92,7 +92,7 @@ However, this comes with a slight increase in deployment complexity.
 
 There are two options to deploy this library:
 
-**Option A:  United buffers module with multiple library "instances"**
+**Option A:  Wrapper module with multiple library "instances"**
 
 > The example application uses this option.
 
@@ -110,8 +110,8 @@ changed as well.
 Header file:
 
 ```c
-#ifndef CIRQUBUFFERUNITED_H
-#define CIRQUBUFFERUNITED_H
+#ifndef CIRQUWRAPPER_H
+#define CIRQUWRAPPER_H
 
 /* Include CirQu buffer interface (configured with ID 0) */
 #define CIRQUID 0
@@ -123,7 +123,7 @@ Header file:
 #include "buffer.h"
 #undef CIRQUID
 
-#endif /* CIRQUBUFFERUNITED_H */
+#endif /* CIRQUWRAPPER_H */
 ```
 
 Implementation file:
@@ -145,7 +145,7 @@ included, e.g.:
 
 ```c
 /* Wrapper module with multiple "instances" of CirQu library */
-#include "cirquBufferUnited.h"
+#include "cirquWrapper.h"
 ```
 
 **Option B:  Build library multiple times with different configurations**
