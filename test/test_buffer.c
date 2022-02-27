@@ -41,10 +41,8 @@ void test_bffr_initializeBuffer(void)
 {
     TEST_ASSERT_EQUAL_UINT8(BUF0STRGSIZE,
                             p_stc_bffr_g_buf0->cirquElemIdx_strgSize);
-    TEST_ASSERT_EQUAL_UINT8( (uint8_t)0U,
-                             p_stc_bffr_g_buf0->cirquElemIdx_head );
-    TEST_ASSERT_EQUAL_UINT8( (uint8_t)0U,
-                             p_stc_bffr_g_buf0->cirquElemIdx_tail );
+    TEST_ASSERT_EQUAL_UINT8(0U, p_stc_bffr_g_buf0->cirquElemIdx_head);
+    TEST_ASSERT_EQUAL_UINT8(0U, p_stc_bffr_g_buf0->cirquElemIdx_tail);
 
     return;
 }
@@ -52,7 +50,7 @@ void test_bffr_initializeBuffer(void)
 void test_bffr_bufferEmptyAfterInitialization(void)
 {
     const uint8_t u8_elemFreeCntExpected = BUF0ELEMSIZE;
-    uint8_t u8_elemFreeCntActual = (uint8_t)0U;
+    uint8_t u8_elemFreeCntActual = 0U;
 
     u8_elemFreeCntActual = fn_bffr_cntFree0(p_stc_bffr_g_buf0);
 
@@ -65,7 +63,7 @@ void test_bffr_pullFromEmptyBufferReturnsFalse(void)
 {
     bool b_result = true;
 
-    uint8_t u8_elem = (uint8_t)0U;
+    uint8_t u8_elem = 0U;
     uint8_t* const p_u8_elem = &u8_elem;
 
     b_result = fn_bffr_pull0(p_stc_bffr_g_buf0, p_u8_elem);

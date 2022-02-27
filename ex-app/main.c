@@ -35,7 +35,7 @@ int MAIN(void)
     printf( APPPROMPT CNTMSG(0) "%i\n",
             (int)fn_bffr_cntFree0(p_stc_bffr_g_buf0) );
 
-    u8_elem = *fn_bffr_peek0(p_stc_bffr_g_buf0, (uint8_t)1U);
+    u8_elem = *fn_bffr_peek0(p_stc_bffr_g_buf0, 1U);
     printf(APPPROMPT "Peeked tail+1 element in `buf0`:  %c\n",
            (char)u8_elem);
 
@@ -81,14 +81,14 @@ int MAIN(void)
             (int)fn_bffr_cntFree1(p_stc_bffr_g_buf1) );
 
     puts(APPPROMPT "Push (head) elements `0`, `1`, `13` to `buf1` ...");
-    fn_bffr_pushHead1(p_stc_bffr_g_buf1, (uint32_t)0U);
-    fn_bffr_pushHead1(p_stc_bffr_g_buf1, (uint32_t)1U);
-    fn_bffr_pushHead1(p_stc_bffr_g_buf1, (uint32_t)13U);
+    fn_bffr_pushHead1(p_stc_bffr_g_buf1, 0U);
+    fn_bffr_pushHead1(p_stc_bffr_g_buf1, 1U);
+    fn_bffr_pushHead1(p_stc_bffr_g_buf1, 13U);
 
     printf( APPPROMPT CNTMSG(1) "%i\n",
             (int)fn_bffr_cntFree1(p_stc_bffr_g_buf1) );
 
     puts(APPPROMPT "~~ Bye! ~~");
 
-    return( (int)0 );
+    return(0);
 }
