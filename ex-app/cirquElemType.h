@@ -5,16 +5,17 @@
 
 /* Include libc interfaces */
 #include <stdint.h>
+#include <math.h>
 
 /* Optional type qualifiers, e.g. `volatile`.
  * Empty if unused (but must be defined).
  */
-#define CIRQUELEMQUAL_T0 volatile
-#define CIRQUELEMQUAL_T1
+#define CIRQUELEMQUAL_T0 /* Empty */
+#define CIRQUELEMQUAL_T1 volatile
 
 /* Buffer element types */
-typedef uint8_t cirquElem_t0;
-typedef uint32_t cirquElem_t1;
+typedef char cirquElem_t0;
+typedef float_t cirquElem_t1;
 
 /* Buffer index types.
  * Must be unsigned integer, i.e. `uint8_t`, `uint16_t`, ...

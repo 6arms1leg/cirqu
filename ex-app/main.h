@@ -4,8 +4,8 @@
 #define MAIN_H
 
 /* Include libc interfaces */
-#include <stdint.h>
 #include <stdio.h>
+#include <math.h>
 
 /* Necessary to make `main()` function unit testable */
 #ifndef TEST
