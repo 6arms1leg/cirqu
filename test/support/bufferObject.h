@@ -18,8 +18,8 @@
  * ==========
  */
 
-#define BUF0STRGSIZE (4U)
-#define BUF0ELEMSIZE (BUF0STRGSIZE - 1U)
+#define BUF0STRGSIZE (4u)
+#define BUF0ELEMSIZE (BUF0STRGSIZE - 1u)
     /* `-1` because one element slot is used to distinguish full and empty fill
        level */
 

@@ -29,10 +29,10 @@ static inline void fn_pv_bffr_advHead(stc_bffr_t* const me)
      */
 
     /* If head points to last element */
-    if(me->cirquElemIdx_strgSize - 1U == me->cirquElemIdx_head)
+    if(me->cirquElemIdx_strgSize - 1u == me->cirquElemIdx_head)
     {
         /* Wrap head around to first element */
-        me->cirquElemIdx_head = 0U;
+        me->cirquElemIdx_head = 0u;
     }
     else
     {
@@ -54,10 +54,10 @@ static void fn_pv_bffr_advTail(stc_bffr_t* const me)
      */
 
     /* If tail points to last element */
-    if(me->cirquElemIdx_strgSize - 1U == me->cirquElemIdx_tail)
+    if(me->cirquElemIdx_strgSize - 1u == me->cirquElemIdx_tail)
     {
         /* Wrap tail around to first element */
-        me->cirquElemIdx_tail = 0U;
+        me->cirquElemIdx_tail = 0u;
     }
     else
     {
@@ -79,10 +79,10 @@ static inline void fn_pv_bffr_retHead(stc_bffr_t* const me)
      */
 
     /* If head points to first element */
-    if(0U == me->cirquElemIdx_head)
+    if(0u == me->cirquElemIdx_head)
     {
         /* Wrap head around to last element */
-        me->cirquElemIdx_head = me->cirquElemIdx_strgSize - (cirquElemIdx_t)1U;
+        me->cirquElemIdx_head = me->cirquElemIdx_strgSize - (cirquElemIdx_t)1u;
     }
     else
     {
@@ -104,10 +104,10 @@ static inline void fn_pv_bffr_retTail(stc_bffr_t* const me)
      */
 
     /* If tail points to first element */
-    if(0U == me->cirquElemIdx_tail)
+    if(0u == me->cirquElemIdx_tail)
     {
         /* Wrap tail around to last element */
-        me->cirquElemIdx_tail = me->cirquElemIdx_strgSize - (cirquElemIdx_t)1U;
+        me->cirquElemIdx_tail = me->cirquElemIdx_strgSize - (cirquElemIdx_t)1u;
     }
     else
     {
@@ -124,14 +124,14 @@ void fn_bffr_ini(stc_bffr_t* const me,
     /* Sanity check (Design by Contract) */
     assert( (NULL != me) &&
             (NULL != a_cirquStrgElem_strg) &&
-            (1U < cirquElemIdx_strgSize) );
+            (1u < cirquElemIdx_strgSize) );
 
     me->a_cirquElem_strg = a_cirquStrgElem_strg;
     me->cirquElemIdx_strgSize = cirquElemIdx_strgSize;
 
     /* Initialize buffer to empty state */
-    me->cirquElemIdx_head = 0U;
-    me->cirquElemIdx_tail = 0U;
+    me->cirquElemIdx_head = 0u;
+    me->cirquElemIdx_tail = 0u;
 
     return;
 }
@@ -142,7 +142,7 @@ void fn_bffr_pushHead(stc_bffr_t* const me, const cirquElem_t cirquElem_elem)
     assert(NULL != me);
 
     /* If full */
-    if( 0U == fn_bffr_cntFree(me) )
+    if( 0u == fn_bffr_cntFree(me) )
     {
         fn_pv_bffr_advTail(me);
     }
@@ -159,7 +159,7 @@ void fn_bffr_pushTail(stc_bffr_t* const me, const cirquElem_t cirquElem_elem)
     assert(NULL != me);
 
     /* If full */
-    if( 0U == fn_bffr_cntFree(me) )
+    if( 0u == fn_bffr_cntFree(me) )
     {
         fn_pv_bffr_retHead(me);
     }
@@ -179,7 +179,7 @@ bool fn_bffr_pull(stc_bffr_t* const me, cirquElem_t* const p_cirquElem_elem)
     bool b_result = false;
 
     /* If not empty */
-    if( me->cirquElemIdx_strgSize - 1U > fn_bffr_cntFree(me) )
+    if( me->cirquElemIdx_strgSize - 1u > fn_bffr_cntFree(me) )
     {
         *p_cirquElem_elem = me->a_cirquElem_strg[me->cirquElemIdx_tail];
         fn_pv_bffr_advTail(me);
@@ -196,18 +196,18 @@ const CIRQUELEMQUAL_T cirquElem_t* fn_bffr_peek(const stc_bffr_t* const me,
 {
     /* Sanity check (Design by Contract) */
     assert( (NULL != me) &&
-            (me->cirquElemIdx_strgSize - 1U > cirquElemIdx_elemPos) );
+            (me->cirquElemIdx_strgSize - 1u > cirquElemIdx_elemPos) );
 
     /* Initialize variable used in peek element position calculation and return
      * pointer
      */
-    cirquElemIdx_t cirquElemIdx_diff = 0U;
+    cirquElemIdx_t cirquElemIdx_diff = 0u;
     const CIRQUELEMQUAL_T cirquElem_t* p_cirquElem_elem = NULL;
 
     /* If requested element position is in range (points to non-vacant element
      * slot)
      */
-    if(me->cirquElemIdx_strgSize - 1U - fn_bffr_cntFree(me) >
+    if(me->cirquElemIdx_strgSize - 1u - fn_bffr_cntFree(me) >
             cirquElemIdx_elemPos)
     {
         /* Handle wrap around */
@@ -233,18 +233,18 @@ cirquElemIdx_t fn_bffr_cntFree(const stc_bffr_t* const me)
     assert(NULL != me);
 
     /* Initialize variable used in free element count calculation */
-    cirquElemIdx_t cirquElemIdx_elemFreeCnt = 0U;
+    cirquElemIdx_t cirquElemIdx_elemFreeCnt = 0u;
 
     if(me->cirquElemIdx_tail <= me->cirquElemIdx_head)
     {
         cirquElemIdx_elemFreeCnt =
-            (cirquElemIdx_t)( me->cirquElemIdx_strgSize - 1U
+            (cirquElemIdx_t)( me->cirquElemIdx_strgSize - 1u
                               - (me->cirquElemIdx_head - me->cirquElemIdx_tail) );
     }
     else
     {
         cirquElemIdx_elemFreeCnt =
-            (cirquElemIdx_t)(me->cirquElemIdx_tail - me->cirquElemIdx_head - 1U);
+            (cirquElemIdx_t)(me->cirquElemIdx_tail - me->cirquElemIdx_head - 1u);
     }
 
     return(cirquElemIdx_elemFreeCnt);
