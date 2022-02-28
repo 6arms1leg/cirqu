@@ -92,7 +92,7 @@ However, this comes with a slight increase in deployment complexity.
 
 There are two options to deploy this library:
 
-**Option A:  Wrapper module with multiple library "instances"**
+**Option A - Wrapper module with multiple library "instances"**
 
 > The example application uses this option.
 
@@ -148,7 +148,7 @@ included, e.g.:
 #include "cirquWrapper.h"
 ```
 
-**Option B:  Build library multiple times with different configurations**
+**Option B - Build library multiple times with different configurations**
 
 > The unit tests use this option (as test coverage can only be measured this
 > way).
