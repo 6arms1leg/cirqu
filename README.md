@@ -211,3 +211,13 @@ fn_bffr_ini0(...);
 ![Example buffer object](./doc/arc/figures/cirqu-example-bffr-obj-cstmd.png)
 
 ![UML package diagram](./doc/arc/figures/cirqu-pd.png)
+
+## Workflow
+
+This project uses a simple topic branch Git workflow.
+The only permanently existing branches are "develop" (development status;
+unstable) and "master" (release status; stable).
+New development efforts are done in separate topic branches, which are then
+merged into develop once ready.
+For releases, the "develop" branch is then merged into "master".
+Fast-forward merges are preferred, if possible.
