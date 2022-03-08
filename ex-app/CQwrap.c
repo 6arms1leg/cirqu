@@ -6,11 +6,11 @@
  */
 
 /* Include CirQu buffer implementation (configured with ID 0) */
-#define CIRQUID 0
+#define CQTEMPLSEUP_ID 0
 #include "CQqu.c"
-#undef CIRQUID
+#undef CQTEMPLSEUP_ID
 
 /* Include CirQu buffer implementation (configured with ID 1) */
-#define CIRQUID 1
+#define CQTEMPLSEUP_ID 1
 #include "CQqu.c"
-#undef CIRQUID
+#undef CQTEMPLSEUP_ID

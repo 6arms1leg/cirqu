@@ -4,10 +4,10 @@
 
 /* Setup template to allow multiple "instances" of this library */
 #include "CQtemplSeUp.h"
-#define advHead(a) CAT(advHead, CIRQUID)(a)
-#define advTail(a) CAT(advTail, CIRQUID)(a)
-#define retHead(a) CAT(retHead, CIRQUID)(a)
-#define retTail(a) CAT(retTail, CIRQUID)(a)
+#define advHead(a) CAT(advHead, CQTEMPLSEUP_ID)(a)
+#define advTail(a) CAT(advTail, CQTEMPLSEUP_ID)(a)
+#define retHead(a) CAT(retHead, CQTEMPLSEUP_ID)(a)
+#define retTail(a) CAT(retTail, CQTEMPLSEUP_ID)(a)
 
 /* OPERATIONS
  * ==========

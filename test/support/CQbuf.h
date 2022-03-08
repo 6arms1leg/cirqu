@@ -9,9 +9,9 @@
  */
 #ifndef CQQU_H0
 #define CQQU_H0
-#define CIRQUID 0
+#define CQTEMPLSEUP_ID 0
 #include "CQqu.h"
-#undef CIRQUID
+#undef CQTEMPLSEUP_ID
 #endif /* CQQU_H0 */
 
 /* ATTRIBUTES
