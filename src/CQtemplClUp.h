@@ -5,8 +5,8 @@
  */
 
 /* Function-like macros to concatenate two names */
-#undef CAT_I
-#undef CAT
+#undef CQTEMPLSEUP_CAT_I
+#undef CQTEMPLSEUP_CAT
 
 /* Rename (concatenate) types (user-provided) */
 #undef CIRQUELEMQUAL_T
