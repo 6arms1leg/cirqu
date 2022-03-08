@@ -9,7 +9,7 @@
 /* Optional type qualifiers, e.g. `volatile`.
  * Empty if unused (but must be defined).
  */
-#define CIRQUELEMQUAL_T0 /* Empty */
+#define CQTYP_ELEMQUAL_T0 /* Empty */
 
 /* Buffer element types */
 typedef uint8_t cirquElem_t0;

@@ -10,8 +10,8 @@
 /* Optional type qualifiers, e.g. `volatile`.
  * Empty if unused (but must be defined).
  */
-#define CIRQUELEMQUAL_T0 /* Empty */
-#define CIRQUELEMQUAL_T1 volatile
+#define CQTYP_ELEMQUAL_T0 /* Empty */
+#define CQTYP_ELEMQUAL_T1 volatile
 
 /* Buffer element types */
 typedef char cirquElem_t0;

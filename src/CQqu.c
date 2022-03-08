@@ -190,9 +190,9 @@ bool CQqu_pull(stc_bffr_t* const me, cirquElem_t* const p_cirquElem_elem)
     return(b_result);
 }
 
-const CIRQUELEMQUAL_T cirquElem_t* CQqu_peek(const stc_bffr_t* const me,
-                                             const cirquElemIdx_t
-                                                 cirquElemIdx_elemPos)
+const CQTYP_ELEMQUAL_T cirquElem_t* CQqu_peek(const stc_bffr_t* const me,
+                                              const cirquElemIdx_t
+                                                  cirquElemIdx_elemPos)
 {
     /* Sanity check (Design by Contract) */
     assert( (NULL != me) &&
@@ -202,7 +202,7 @@ const CIRQUELEMQUAL_T cirquElem_t* CQqu_peek(const stc_bffr_t* const me,
      * pointer
      */
     cirquElemIdx_t cirquElemIdx_diff = 0u;
-    const CIRQUELEMQUAL_T cirquElem_t* p_cirquElem_elem = NULL;
+    const CQTYP_ELEMQUAL_T cirquElem_t* p_cirquElem_elem = NULL;
 
     /* If requested element position is in range (points to non-vacant element
      * slot)

@@ -9,7 +9,7 @@
 #undef CQTEMPLSEUP_CAT
 
 /* Rename (concatenate) types (user-provided) */
-#undef CIRQUELEMQUAL_T
+#undef CQTYP_ELEMQUAL_T
 #undef cirquElem_t
 #undef cirquElemIdx_t
 

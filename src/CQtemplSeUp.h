@@ -18,7 +18,7 @@
 #define CQTEMPLSEUP_CAT(a, b) CQTEMPLSEUP_CAT_I(a, b) /* Layer of indirection */
 
 /* Rename (concatenate) types (user-provided) */
-#define CIRQUELEMQUAL_T CQTEMPLSEUP_CAT(CIRQUELEMQUAL_T, CQTEMPLSEUP_ID)
+#define CQTYP_ELEMQUAL_T CQTEMPLSEUP_CAT(CQTYP_ELEMQUAL_T, CQTEMPLSEUP_ID)
 #define cirquElem_t CQTEMPLSEUP_CAT(cirquElem_t, CQTEMPLSEUP_ID)
 #define cirquElemIdx_t CQTEMPLSEUP_CAT(cirquElemIdx_t, CQTEMPLSEUP_ID)
 

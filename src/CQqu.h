@@ -23,7 +23,7 @@
  */
 
 /* Buffer storage element */
-typedef CIRQUELEMQUAL_T cirquElem_t cirquStrgElem_t;
+typedef CQTYP_ELEMQUAL_T cirquElem_t cirquStrgElem_t;
 
 /* One excessive buffer element slot is used to distinguish full and empty fill
  * level, instead of a dedicated state variable.
@@ -32,10 +32,10 @@ typedef CIRQUELEMQUAL_T cirquElem_t cirquStrgElem_t;
  */
 typedef struct
 {
-    CIRQUELEMQUAL_T cirquElem_t* a_cirquElem_strg;
+    CQTYP_ELEMQUAL_T cirquElem_t* a_cirquElem_strg;
     cirquElemIdx_t cirquElemIdx_strgSize;
-    CIRQUELEMQUAL_T cirquElemIdx_t cirquElemIdx_head;
-    CIRQUELEMQUAL_T cirquElemIdx_t cirquElemIdx_tail;
+    CQTYP_ELEMQUAL_T cirquElemIdx_t cirquElemIdx_head;
+    CQTYP_ELEMQUAL_T cirquElemIdx_t cirquElemIdx_tail;
 } stc_bffr_t;
 
 /* OPERATIONS
@@ -108,9 +108,9 @@ bool CQqu_pull(stc_bffr_t* const me, cirquElem_t* const p_cirquElem_elem);
  *
  * \return Read-only pointer to element in the CirQu buffer
  */
-const CIRQUELEMQUAL_T cirquElem_t* CQqu_peek(const stc_bffr_t* const me,
-                                             const cirquElemIdx_t
-                                                 cirquElemIdx_elemPos);
+const CQTYP_ELEMQUAL_T cirquElem_t* CQqu_peek(const stc_bffr_t* const me,
+                                              const cirquElemIdx_t
+                                                  cirquElemIdx_elemPos);
 
 /**
  * \brief Query fill level (in count of empty element slots) of buffer
