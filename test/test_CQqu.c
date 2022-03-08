@@ -73,4 +73,4 @@ void test_bffr_pullFromEmptyBufferReturnsFalse(void)
     return;
 }
 
-#endif // TEST
+#endif /* TEST */
