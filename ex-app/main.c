@@ -17,7 +17,7 @@
 int MAIN(void)
 {
     /* Temporary storages for peeked/pulled CirQu elements */
-    char c_elem = 'z';
+    char c_elem = '\0';
     float_t f_elem = 0.0f;
 
     puts(APPPROMPT "~~ Welcome to the CirQu buffer example application! ~~");
@@ -38,7 +38,7 @@ int MAIN(void)
     printf( APPPROMPT CNTMSG(0) "%i\n",
             (int)fn_bffr_cntFree0(p_stc_bffr_g_buf0) );
 
-    c_elem = *fn_bffr_peek0(p_stc_bffr_g_buf0, 1U);
+    c_elem = *fn_bffr_peek0(p_stc_bffr_g_buf0, 1u);
     printf(APPPROMPT "Peeked tail+1 element in `buf0`:  %c\n", c_elem);
 
     printf( APPPROMPT CNTMSG(0) "%i\n",

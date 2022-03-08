@@ -15,8 +15,8 @@ stc_bffr_t0* const p_stc_bffr_g_buf0 = &stc_bffr_pv_buf0;
 stc_bffr_t1* const p_stc_bffr_g_buf1 = &stc_bffr_pv_buf1;
 
 /* Private storages for buffer objects */
-static cirquStrgElem_t0 a_cirquStrgElem_pv_buf0Strg[BUF0STRGSIZE] = {'z'};
-static cirquStrgElem_t1 a_cirquStrgElem_pv_buf1Strg[BUF1STRGSIZE] = {0.0f};
+static cirquStrgElem_t0 a_cirquStrgElem_pv_buf0Strg[BUF0STRGSIZE] = {0};
+static cirquStrgElem_t1 a_cirquStrgElem_pv_buf1Strg[BUF1STRGSIZE] = {0};
 
 /* OPERATIONS
  * ==========
