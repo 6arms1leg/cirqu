@@ -39,7 +39,7 @@ void tearDown(void)
 
 void test_CQqu_initializeBuffer(void)
 {
-    TEST_ASSERT_EQUAL_UINT8(BUF0STRGSIZE,
+    TEST_ASSERT_EQUAL_UINT8(CQBUF_STRGSIZ0,
                             p_stc_bffr_g_buf0->cirquElemIdx_strgSize);
     TEST_ASSERT_EQUAL_UINT8(0u, p_stc_bffr_g_buf0->cirquElemIdx_head);
     TEST_ASSERT_EQUAL_UINT8(0u, p_stc_bffr_g_buf0->cirquElemIdx_tail);
@@ -49,7 +49,7 @@ void test_CQqu_initializeBuffer(void)
 
 void test_CQqu_bufferEmptyAfterInitialization(void)
 {
-    const uint8_t u8_elemFreeCntExpected = BUF0ELEMSIZE;
+    const uint8_t u8_elemFreeCntExpected = CQBUF_ELEMSIZ0;
     uint8_t u8_elemFreeCntActual = 0u;
 
     u8_elemFreeCntActual = CQqu_cntFree0(p_stc_bffr_g_buf0);

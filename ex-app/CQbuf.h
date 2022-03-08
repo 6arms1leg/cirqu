@@ -10,14 +10,14 @@
  * ==========
  */
 
-#define BUF0STRGSIZE (4u)
-#define BUF1STRGSIZE (6u)
+#define CQBUF_STRGSIZ0 (4u)
+#define CQBUF_STRGSIZ1 (6u)
 
 /* `-1` because one element slot is used to distinguish full and empty fill
  * level
  */
-#define BUF0ELEMSIZE (BUF0STRGSIZE - 1u)
-#define BUF1ELEMSIZE (BUF1STRGSIZE - 1u)
+#define CQBUF_ELEMSIZ0 (CQBUF_STRGSIZ0 - 1u)
+#define CQBUF_ELEMSIZ1 (CQBUF_STRGSIZ1 - 1u)
 
 /* Global opaque pointers to buffer objects */
 extern stc_bffr_t0* const p_stc_bffr_g_buf0;
