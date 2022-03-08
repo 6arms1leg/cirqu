@@ -1,10 +1,10 @@
 /** \file */
 
-#ifndef BUFFEROBJECT_H
-#define BUFFEROBJECT_H
+#ifndef CQBUF_H
+#define CQBUF_H
 
 /* Wrapper module with multiple "instances" of CirQu library */
-#include "cirquWrapper.h"
+#include "CQwrap.h"
 
 /* ATTRIBUTES
  * ==========
@@ -31,4 +31,4 @@ extern stc_bffr_t1* const p_stc_bffr_g_buf1;
 void fn_bffrObj_buf0Ctor(void);
 void fn_bffrObj_buf1Ctor(void);
 
-#endif /* BUFFEROBJECT_H */
+#endif /* CQBUF_H */

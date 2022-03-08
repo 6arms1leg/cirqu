@@ -1,9 +1,9 @@
 /** \file */
 
-#include "buffer.h"
+#include "CQqu.h"
 
 /* Setup template to allow multiple "instances" of this library */
-#include "templateSetup.h"
+#include "CQtemplSeUp.h"
 #define fn_pv_bffr_advHead(a) CAT(fn_pv_bffr_advHead, CIRQUID)(a)
 #define fn_pv_bffr_advTail(a) CAT(fn_pv_bffr_advTail, CIRQUID)(a)
 #define fn_pv_bffr_retHead(a) CAT(fn_pv_bffr_retHead, CIRQUID)(a)
@@ -251,7 +251,7 @@ cirquElemIdx_t fn_bffr_cntFree(const stc_bffr_t* const me)
 }
 
 /* Cleanup template (multiple "instances") */
-#include "templateCleanup.h"
+#include "CQtemplClUp.h"
 #undef fn_pv_bffr_advHead
 #undef fn_pv_bffr_advTail
 #undef fn_pv_bffr_retHead

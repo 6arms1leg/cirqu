@@ -67,8 +67,8 @@ help:
 	@echo "Make:  * clean-static"
 	@echo "Make:  * clean-all"
 
-$(BUILD_DIR)/cirqu/obj/cirquWrapper.o: \
-    $(BUILD_CONTEXT)/ex-app/cirquWrapper.c
+$(BUILD_DIR)/cirqu/obj/CQwrap.o: \
+    $(BUILD_CONTEXT)/ex-app/CQwrap.c
 	mkdir -p ./build/cirqu/obj/
 	$(CC) \
 	    $(CC_FLAGS) \
@@ -78,8 +78,8 @@ $(BUILD_DIR)/cirqu/obj/cirquWrapper.o: \
 	    $^ \
 	    -o $@
 
-$(BUILD_DIR)/cirqu/obj/bufferObject.o: \
-    $(BUILD_CONTEXT)/ex-app/bufferObject.c
+$(BUILD_DIR)/cirqu/obj/CQbuf.o: \
+    $(BUILD_CONTEXT)/ex-app/CQbuf.c
 	mkdir -p ./build/cirqu/obj/
 	$(CC) \
 	    $(CC_FLAGS) \
@@ -100,8 +100,8 @@ $(BUILD_DIR)/cirqu/obj/main.o: $(BUILD_CONTEXT)/ex-app/main.c
 	    -o $@
 
 ex-app: $(BUILD_DIR)/cirqu/ex-app
-$(BUILD_DIR)/cirqu/ex-app: $(BUILD_DIR)/cirqu/obj/cirquWrapper.o \
-                           $(BUILD_DIR)/cirqu/obj/bufferObject.o \
+$(BUILD_DIR)/cirqu/ex-app: $(BUILD_DIR)/cirqu/obj/CQwrap.o \
+                           $(BUILD_DIR)/cirqu/obj/CQbuf.o \
                            $(BUILD_DIR)/cirqu/obj/main.o
 	$(LD) $(LD_FLAGS) $^ -o $@
 

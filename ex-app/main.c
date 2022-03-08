@@ -3,10 +3,10 @@
 #include "main.h"
 
 /* Wrapper module with multiple "instances" of CirQu library */
-#include "cirquWrapper.h"
+#include "CQwrap.h"
 
 /* Include application interfaces */
-#include "bufferObject.h"
+#include "CQbuf.h"
 
 /* Reoccurring strings */
 #define APPPROMPT "CirQu ex-app:  "

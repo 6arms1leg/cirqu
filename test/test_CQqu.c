@@ -13,14 +13,14 @@
  * "External" include guards necessary since included module interface has none
  * due to "template" feature.
  */
-#ifndef BUFFER_H0
-#define BUFFER_H0
+#ifndef CQQU_H0
+#define CQQU_H0
 #define CIRQUID 0
-#include "buffer.h"
+#include "CQqu.h"
 #undef CIRQUID
-#endif /* BUFFER_H0 */
+#endif /* CQQU_H0 */
 
-#include "bufferObject.h"
+#include "CQbuf.h"
 
 /** \brief Run before every test */
 void setUp(void)

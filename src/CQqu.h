@@ -13,10 +13,10 @@
 #include "assert.h" /* For sanity checks (Design by Contract) */
 
 /* Must be provided; application/project-specific */
-#include "cirquElemType.h"
+#include "CQtyp.h"
 
 /* Setup template to allow multiple "instances" of this library */
-#include "templateSetup.h"
+#include "CQtemplSeUp.h"
 
 /* ATTRIBUTES
  * ==========
@@ -122,4 +122,4 @@ const CIRQUELEMQUAL_T cirquElem_t* fn_bffr_peek(const stc_bffr_t* const me,
 cirquElemIdx_t fn_bffr_cntFree(const stc_bffr_t* const me);
 
 /* Cleanup template (multiple "instances") */
-#include "templateCleanup.h"
+#include "CQtemplClUp.h"

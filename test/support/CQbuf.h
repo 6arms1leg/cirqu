@@ -1,18 +1,18 @@
 /** \file */
 
-#ifndef BUFFEROBJECT_H
-#define BUFFEROBJECT_H
+#ifndef CQBUF_H
+#define CQBUF_H
 
 /* Include CirQu buffer interface (configured with ID 0).
  * "External" include guards necessary since included module interface has none
  * due to "template" feature.
  */
-#ifndef BUFFER_H0
-#define BUFFER_H0
+#ifndef CQQU_H0
+#define CQQU_H0
 #define CIRQUID 0
-#include "buffer.h"
+#include "CQqu.h"
 #undef CIRQUID
-#endif /* BUFFER_H0 */
+#endif /* CQQU_H0 */
 
 /* ATTRIBUTES
  * ==========
@@ -33,4 +33,4 @@ extern stc_bffr_t0* const p_stc_bffr_g_buf0;
 /* Constructors of buffer objects */
 void fn_bffrObj_buf0Ctor(void);
 
-#endif /* BUFFEROBJECT_H */
+#endif /* CQBUF_H */
