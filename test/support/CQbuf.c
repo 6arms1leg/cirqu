@@ -19,9 +19,9 @@ static cirquStrgElem_t0 a_cirquStrgElem_pv_buf0Strg[BUF0STRGSIZE] = {0u};
  * ==========
  */
 
-void fn_bffrObj_buf0Ctor(void)
+void CQbuf_ctor0(void)
 {
-    fn_bffr_ini0(&stc_bffr_pv_buf0, a_cirquStrgElem_pv_buf0Strg, BUF0STRGSIZE);
+    CQqu_init0(&stc_bffr_pv_buf0, a_cirquStrgElem_pv_buf0Strg, BUF0STRGSIZE);
 
     return;
 }

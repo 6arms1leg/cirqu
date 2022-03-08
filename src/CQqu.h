@@ -53,9 +53,9 @@ typedef struct
  * \param cirquElemIdx_strgSize Size (in count of element slots) of the
  * allocated storage element array
  */
-void fn_bffr_ini(stc_bffr_t* const me,
-                 cirquStrgElem_t* const a_cirquStrgElem_strg,
-                 const cirquElemIdx_t cirquElemIdx_strgSize);
+void CQqu_init(stc_bffr_t* const me,
+               cirquStrgElem_t* const a_cirquStrgElem_strg,
+               const cirquElemIdx_t cirquElemIdx_strgSize);
 
 /**
  * \brief Insert element into buffer (FIFO logic)
@@ -67,19 +67,19 @@ void fn_bffr_ini(stc_bffr_t* const me,
  * \param me Pointer to a CirQu buffer object
  * \param cirquElem_elem Element to be inserted into the CirQu buffer
  */
-void fn_bffr_pushHead(stc_bffr_t* const me, const cirquElem_t cirquElem_elem);
+void CQqu_pushHead(stc_bffr_t* const me, const cirquElem_t cirquElem_elem);
 
 /**
  * \brief Insert element into buffer (LIFO logic)
  *
  * If full, head element in buffer is overwritten.
  * Conditional insertion (i.e., if buffer not full) can easily be implemented
- * by checking if buffer is full first (via `fn_bffr_cntFree()`).
+ * by checking if buffer is full first (via `CQqu_cntFree()`).
  *
  * \param me Pointer to a CirQu buffer object
  * \param cirquElem_elem Element to be inserted into the CirQu buffer
  */
-void fn_bffr_pushTail(stc_bffr_t* const me, const cirquElem_t cirquElem_elem);
+void CQqu_pushTail(stc_bffr_t* const me, const cirquElem_t cirquElem_elem);
 
 /**
  * \brief Retrieve and remove element from buffer
@@ -90,7 +90,7 @@ void fn_bffr_pushTail(stc_bffr_t* const me, const cirquElem_t cirquElem_elem);
  *
  * \return Pull success indicator
  */
-bool fn_bffr_pull(stc_bffr_t* const me, cirquElem_t* const p_cirquElem_elem);
+bool CQqu_pull(stc_bffr_t* const me, cirquElem_t* const p_cirquElem_elem);
 
 /**
  * \brief Retrieve pointer to element (without removal) at given position from
@@ -108,9 +108,9 @@ bool fn_bffr_pull(stc_bffr_t* const me, cirquElem_t* const p_cirquElem_elem);
  *
  * \return Read-only pointer to element in the CirQu buffer
  */
-const CIRQUELEMQUAL_T cirquElem_t* fn_bffr_peek(const stc_bffr_t* const me,
-                                                const cirquElemIdx_t
-                                                    cirquElemIdx_elemPos);
+const CIRQUELEMQUAL_T cirquElem_t* CQqu_peek(const stc_bffr_t* const me,
+                                             const cirquElemIdx_t
+                                                 cirquElemIdx_elemPos);
 
 /**
  * \brief Query fill level (in count of empty element slots) of buffer
@@ -119,7 +119,7 @@ const CIRQUELEMQUAL_T cirquElem_t* fn_bffr_peek(const stc_bffr_t* const me,
  *
  * \return Count of empty element slots
  */
-cirquElemIdx_t fn_bffr_cntFree(const stc_bffr_t* const me);
+cirquElemIdx_t CQqu_cntFree(const stc_bffr_t* const me);
 
 /* Cleanup template (multiple "instances") */
 #include "CQtemplClUp.h"

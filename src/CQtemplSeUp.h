@@ -27,9 +27,9 @@
 #define stc_bffr_t CAT(stc_bffr_t, CIRQUID)
 
 /* Rename (concatenate) functions */
-#define fn_bffr_ini(a, b, c) CAT(fn_bffr_ini, CIRQUID)(a, b, c)
-#define fn_bffr_pushHead(a, b) CAT(fn_bffr_pushHead, CIRQUID)(a, b)
-#define fn_bffr_pushTail(a, b) CAT(fn_bffr_pushTail, CIRQUID)(a, b)
-#define fn_bffr_pull(a, b) CAT(fn_bffr_pull, CIRQUID)(a, b)
-#define fn_bffr_peek(a, b) CAT(fn_bffr_peek, CIRQUID)(a, b)
-#define fn_bffr_cntFree(a) CAT(fn_bffr_cntFree, CIRQUID)(a)
+#define CQqu_init(a, b, c) CAT(CQqu_init, CIRQUID)(a, b, c)
+#define CQqu_pushHead(a, b) CAT(CQqu_pushHead, CIRQUID)(a, b)
+#define CQqu_pushTail(a, b) CAT(CQqu_pushTail, CIRQUID)(a, b)
+#define CQqu_pull(a, b) CAT(CQqu_pull, CIRQUID)(a, b)
+#define CQqu_peek(a, b) CAT(CQqu_peek, CIRQUID)(a, b)
+#define CQqu_cntFree(a) CAT(CQqu_cntFree, CIRQUID)(a)

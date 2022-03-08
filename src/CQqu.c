@@ -4,10 +4,10 @@
 
 /* Setup template to allow multiple "instances" of this library */
 #include "CQtemplSeUp.h"
-#define fn_pv_bffr_advHead(a) CAT(fn_pv_bffr_advHead, CIRQUID)(a)
-#define fn_pv_bffr_advTail(a) CAT(fn_pv_bffr_advTail, CIRQUID)(a)
-#define fn_pv_bffr_retHead(a) CAT(fn_pv_bffr_retHead, CIRQUID)(a)
-#define fn_pv_bffr_retTail(a) CAT(fn_pv_bffr_retTail, CIRQUID)(a)
+#define advHead(a) CAT(advHead, CIRQUID)(a)
+#define advTail(a) CAT(advTail, CIRQUID)(a)
+#define retHead(a) CAT(retHead, CIRQUID)(a)
+#define retTail(a) CAT(retTail, CIRQUID)(a)
 
 /* OPERATIONS
  * ==========
@@ -22,7 +22,7 @@
  *
  * \param me Pointer to a CirQu buffer object
  */
-static inline void fn_pv_bffr_advHead(stc_bffr_t* const me)
+static inline void advHead(stc_bffr_t* const me)
 {
     /* No sanity check necessary since `me` argument was already checked in API
      * functions
@@ -47,7 +47,7 @@ static inline void fn_pv_bffr_advHead(stc_bffr_t* const me)
  *
  * \param me Pointer to a CirQu buffer object
  */
-static void fn_pv_bffr_advTail(stc_bffr_t* const me)
+static void advTail(stc_bffr_t* const me)
 {
     /* No sanity check necessary since `me` argument was already checked in API
      * functions
@@ -72,7 +72,7 @@ static void fn_pv_bffr_advTail(stc_bffr_t* const me)
  *
  * \param me Pointer to a CirQu buffer object
  */
-static inline void fn_pv_bffr_retHead(stc_bffr_t* const me)
+static inline void retHead(stc_bffr_t* const me)
 {
     /* No sanity check necessary since `me` argument was already checked in API
      * functions
@@ -97,7 +97,7 @@ static inline void fn_pv_bffr_retHead(stc_bffr_t* const me)
  *
  * \param me Pointer to a CirQu buffer object
  */
-static inline void fn_pv_bffr_retTail(stc_bffr_t* const me)
+static inline void retTail(stc_bffr_t* const me)
 {
     /* No sanity check necessary since `me` argument was already checked in API
      * functions
@@ -117,9 +117,9 @@ static inline void fn_pv_bffr_retTail(stc_bffr_t* const me)
     return;
 }
 
-void fn_bffr_ini(stc_bffr_t* const me,
-                 cirquStrgElem_t* const a_cirquStrgElem_strg,
-                 const cirquElemIdx_t cirquElemIdx_strgSize)
+void CQqu_init(stc_bffr_t* const me,
+               cirquStrgElem_t* const a_cirquStrgElem_strg,
+               const cirquElemIdx_t cirquElemIdx_strgSize)
 {
     /* Sanity check (Design by Contract) */
     assert( (NULL != me) &&
@@ -136,41 +136,41 @@ void fn_bffr_ini(stc_bffr_t* const me,
     return;
 }
 
-void fn_bffr_pushHead(stc_bffr_t* const me, const cirquElem_t cirquElem_elem)
+void CQqu_pushHead(stc_bffr_t* const me, const cirquElem_t cirquElem_elem)
 {
     /* Sanity check (Design by Contract) */
     assert(NULL != me);
 
     /* If full */
-    if( 0u == fn_bffr_cntFree(me) )
+    if( 0u == CQqu_cntFree(me) )
     {
-        fn_pv_bffr_advTail(me);
+        advTail(me);
     }
 
     me->a_cirquElem_strg[me->cirquElemIdx_head] = cirquElem_elem;
-    fn_pv_bffr_advHead(me);
+    advHead(me);
 
     return;
 }
 
-void fn_bffr_pushTail(stc_bffr_t* const me, const cirquElem_t cirquElem_elem)
+void CQqu_pushTail(stc_bffr_t* const me, const cirquElem_t cirquElem_elem)
 {
     /* Sanity check (Design by Contract) */
     assert(NULL != me);
 
     /* If full */
-    if( 0u == fn_bffr_cntFree(me) )
+    if( 0u == CQqu_cntFree(me) )
     {
-        fn_pv_bffr_retHead(me);
+        retHead(me);
     }
 
-    fn_pv_bffr_retTail(me);
+    retTail(me);
     me->a_cirquElem_strg[me->cirquElemIdx_tail] = cirquElem_elem;
 
     return;
 }
 
-bool fn_bffr_pull(stc_bffr_t* const me, cirquElem_t* const p_cirquElem_elem)
+bool CQqu_pull(stc_bffr_t* const me, cirquElem_t* const p_cirquElem_elem)
 {
     /* Sanity check (Design by Contract) */
     assert( (NULL != me) &&
@@ -179,10 +179,10 @@ bool fn_bffr_pull(stc_bffr_t* const me, cirquElem_t* const p_cirquElem_elem)
     bool b_result = false;
 
     /* If not empty */
-    if( me->cirquElemIdx_strgSize - 1u > fn_bffr_cntFree(me) )
+    if( me->cirquElemIdx_strgSize - 1u > CQqu_cntFree(me) )
     {
         *p_cirquElem_elem = me->a_cirquElem_strg[me->cirquElemIdx_tail];
-        fn_pv_bffr_advTail(me);
+        advTail(me);
 
         b_result = true;
     }
@@ -190,9 +190,9 @@ bool fn_bffr_pull(stc_bffr_t* const me, cirquElem_t* const p_cirquElem_elem)
     return(b_result);
 }
 
-const CIRQUELEMQUAL_T cirquElem_t* fn_bffr_peek(const stc_bffr_t* const me,
-                                                const cirquElemIdx_t
-                                                    cirquElemIdx_elemPos)
+const CIRQUELEMQUAL_T cirquElem_t* CQqu_peek(const stc_bffr_t* const me,
+                                             const cirquElemIdx_t
+                                                 cirquElemIdx_elemPos)
 {
     /* Sanity check (Design by Contract) */
     assert( (NULL != me) &&
@@ -207,8 +207,7 @@ const CIRQUELEMQUAL_T cirquElem_t* fn_bffr_peek(const stc_bffr_t* const me,
     /* If requested element position is in range (points to non-vacant element
      * slot)
      */
-    if(me->cirquElemIdx_strgSize - 1u - fn_bffr_cntFree(me) >
-            cirquElemIdx_elemPos)
+    if(me->cirquElemIdx_strgSize - 1u - CQqu_cntFree(me) > cirquElemIdx_elemPos)
     {
         /* Handle wrap around */
         cirquElemIdx_diff = me->cirquElemIdx_strgSize - me->cirquElemIdx_tail;
@@ -227,7 +226,7 @@ const CIRQUELEMQUAL_T cirquElem_t* fn_bffr_peek(const stc_bffr_t* const me,
     return(p_cirquElem_elem);
 }
 
-cirquElemIdx_t fn_bffr_cntFree(const stc_bffr_t* const me)
+cirquElemIdx_t CQqu_cntFree(const stc_bffr_t* const me)
 {
     /* Sanity check (Design by Contract) */
     assert(NULL != me);
@@ -252,7 +251,7 @@ cirquElemIdx_t fn_bffr_cntFree(const stc_bffr_t* const me)
 
 /* Cleanup template (multiple "instances") */
 #include "CQtemplClUp.h"
-#undef fn_pv_bffr_advHead
-#undef fn_pv_bffr_advTail
-#undef fn_pv_bffr_retHead
-#undef fn_pv_bffr_retTail
+#undef advHead
+#undef advTail
+#undef retHead
+#undef retTail

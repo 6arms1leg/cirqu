@@ -25,74 +25,64 @@ int MAIN(void)
     /* Buffer 0 */
 
     puts( APPPROMPT CTORMSG(0) );
-    fn_bffrObj_buf0Ctor(); /* Initialize CirQu buffer object */
+    CQbuf_ctor0(); /* Initialize CirQu buffer object */
 
-    printf( APPPROMPT CNTMSG(0) "%i\n",
-            (int)fn_bffr_cntFree0(p_stc_bffr_g_buf0) );
+    printf( APPPROMPT CNTMSG(0) "%i\n", (int)CQqu_cntFree0(p_stc_bffr_g_buf0) );
 
     puts(APPPROMPT "Push (head) elements `a`, `b`, `c` to `buf0` ...");
-    fn_bffr_pushHead0(p_stc_bffr_g_buf0, 'a');
-    fn_bffr_pushHead0(p_stc_bffr_g_buf0, 'b');
-    fn_bffr_pushHead0(p_stc_bffr_g_buf0, 'c');
+    CQqu_pushHead0(p_stc_bffr_g_buf0, 'a');
+    CQqu_pushHead0(p_stc_bffr_g_buf0, 'b');
+    CQqu_pushHead0(p_stc_bffr_g_buf0, 'c');
 
-    printf( APPPROMPT CNTMSG(0) "%i\n",
-            (int)fn_bffr_cntFree0(p_stc_bffr_g_buf0) );
+    printf( APPPROMPT CNTMSG(0) "%i\n", (int)CQqu_cntFree0(p_stc_bffr_g_buf0) );
 
-    c_elem = *fn_bffr_peek0(p_stc_bffr_g_buf0, 1u);
+    c_elem = *CQqu_peek0(p_stc_bffr_g_buf0, 1u);
     printf(APPPROMPT "Peeked tail+1 element in `buf0`:  %c\n", c_elem);
 
-    printf( APPPROMPT CNTMSG(0) "%i\n",
-            (int)fn_bffr_cntFree0(p_stc_bffr_g_buf0) );
+    printf( APPPROMPT CNTMSG(0) "%i\n", (int)CQqu_cntFree0(p_stc_bffr_g_buf0) );
 
     puts(APPPROMPT "Push (head) element `d` to `buf0` ...");
-    fn_bffr_pushHead0(p_stc_bffr_g_buf0, 'd');
+    CQqu_pushHead0(p_stc_bffr_g_buf0, 'd');
 
-    printf( APPPROMPT CNTMSG(0) "%i\n",
-            (int)fn_bffr_cntFree0(p_stc_bffr_g_buf0) );
+    printf( APPPROMPT CNTMSG(0) "%i\n", (int)CQqu_cntFree0(p_stc_bffr_g_buf0) );
 
-    (void)fn_bffr_pull0(p_stc_bffr_g_buf0, &c_elem);
+    (void)CQqu_pull0(p_stc_bffr_g_buf0, &c_elem);
     printf(APPPROMPT PULLMSG(0) "%c\n", c_elem);
 
-    printf( APPPROMPT CNTMSG(0) "%i\n",
-            (int)fn_bffr_cntFree0(p_stc_bffr_g_buf0) );
+    printf( APPPROMPT CNTMSG(0) "%i\n", (int)CQqu_cntFree0(p_stc_bffr_g_buf0) );
 
     puts(APPPROMPT "Push (tail) element `e` to `buf0` ...");
-    fn_bffr_pushTail0(p_stc_bffr_g_buf0, 'e');
+    CQqu_pushTail0(p_stc_bffr_g_buf0, 'e');
 
-    printf( APPPROMPT CNTMSG(0) "%i\n",
-            (int)fn_bffr_cntFree0(p_stc_bffr_g_buf0) );
+    printf( APPPROMPT CNTMSG(0) "%i\n", (int)CQqu_cntFree0(p_stc_bffr_g_buf0) );
 
-    (void)fn_bffr_pull0(p_stc_bffr_g_buf0, &c_elem);
+    (void)CQqu_pull0(p_stc_bffr_g_buf0, &c_elem);
     printf(APPPROMPT PULLMSG(0) "%c\n", c_elem);
-    (void)fn_bffr_pull0(p_stc_bffr_g_buf0, &c_elem);
+    (void)CQqu_pull0(p_stc_bffr_g_buf0, &c_elem);
     printf(APPPROMPT PULLMSG(0) "%c\n", c_elem);
-    (void)fn_bffr_pull0(p_stc_bffr_g_buf0, &c_elem);
+    (void)CQqu_pull0(p_stc_bffr_g_buf0, &c_elem);
     printf(APPPROMPT PULLMSG(0) "%c\n", c_elem);
 
-    printf( APPPROMPT CNTMSG(0) "%i\n",
-            (int)fn_bffr_cntFree0(p_stc_bffr_g_buf0) );
+    printf( APPPROMPT CNTMSG(0) "%i\n", (int)CQqu_cntFree0(p_stc_bffr_g_buf0) );
 
     /* Buffer 1 */
 
     puts( APPPROMPT CTORMSG(1) );
-    fn_bffrObj_buf1Ctor(); /* Initialize CirQu buffer object */
+    CQbuf_ctor1(); /* Initialize CirQu buffer object */
 
-    printf( APPPROMPT CNTMSG(1) "%i\n",
-            (int)fn_bffr_cntFree1(p_stc_bffr_g_buf1) );
+    printf( APPPROMPT CNTMSG(1) "%i\n", (int)CQqu_cntFree1(p_stc_bffr_g_buf1) );
 
     puts(APPPROMPT "Push (head) elements `13.1f`, `0.0f`, `-8.0f` to `buf1` ...");
-    fn_bffr_pushHead1(p_stc_bffr_g_buf1, 13.1f);
-    fn_bffr_pushHead1(p_stc_bffr_g_buf1, 0.0f);
-    fn_bffr_pushHead1(p_stc_bffr_g_buf1, -8.0f);
+    CQqu_pushHead1(p_stc_bffr_g_buf1, 13.1f);
+    CQqu_pushHead1(p_stc_bffr_g_buf1, 0.0f);
+    CQqu_pushHead1(p_stc_bffr_g_buf1, -8.0f);
 
-    printf( APPPROMPT CNTMSG(1) "%i\n",
-            (int)fn_bffr_cntFree1(p_stc_bffr_g_buf1) );
+    printf( APPPROMPT CNTMSG(1) "%i\n", (int)CQqu_cntFree1(p_stc_bffr_g_buf1) );
 
-    (void)fn_bffr_pull1(p_stc_bffr_g_buf1, &f_elem);
+    (void)CQqu_pull1(p_stc_bffr_g_buf1, &f_elem);
     printf(APPPROMPT PULLMSG(1) "%f\n", f_elem);
 
-    printf( APPPROMPT CNTMSG(1) "%i\n",
-            (int)fn_bffr_cntFree1(p_stc_bffr_g_buf1) );
+    printf( APPPROMPT CNTMSG(1) "%i\n", (int)CQqu_cntFree1(p_stc_bffr_g_buf1) );
 
     puts(APPPROMPT "~~ Bye! ~~");
 

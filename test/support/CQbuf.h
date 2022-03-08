@@ -31,6 +31,6 @@ extern stc_bffr_t0* const p_stc_bffr_g_buf0;
  */
 
 /* Constructors of buffer objects */
-void fn_bffrObj_buf0Ctor(void);
+void CQbuf_ctor0(void);
 
 #endif /* CQBUF_H */

@@ -28,7 +28,7 @@ extern stc_bffr_t1* const p_stc_bffr_g_buf1;
  */
 
 /* Constructors of buffer objects */
-void fn_bffrObj_buf0Ctor(void);
-void fn_bffrObj_buf1Ctor(void);
+void CQbuf_ctor0(void);
+void CQbuf_ctor1(void);
 
 #endif /* CQBUF_H */

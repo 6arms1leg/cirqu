@@ -22,16 +22,16 @@ static cirquStrgElem_t1 a_cirquStrgElem_pv_buf1Strg[BUF1STRGSIZE] = {0};
  * ==========
  */
 
-void fn_bffrObj_buf0Ctor(void)
+void CQbuf_ctor0(void)
 {
-    fn_bffr_ini0(&stc_bffr_pv_buf0, a_cirquStrgElem_pv_buf0Strg, BUF0STRGSIZE);
+    CQqu_init0(&stc_bffr_pv_buf0, a_cirquStrgElem_pv_buf0Strg, BUF0STRGSIZE);
 
     return;
 }
 
-void fn_bffrObj_buf1Ctor(void)
+void CQbuf_ctor1(void)
 {
-    fn_bffr_ini1(&stc_bffr_pv_buf1, a_cirquStrgElem_pv_buf1Strg, BUF1STRGSIZE);
+    CQqu_init1(&stc_bffr_pv_buf1, a_cirquStrgElem_pv_buf1Strg, BUF1STRGSIZE);
 
     return;
 }

@@ -18,9 +18,9 @@
 #undef stc_bffr_t
 
 /* Rename (concatenate) functions */
-#undef fn_bffr_ini
-#undef fn_bffr_pushHead
-#undef fn_bffr_pushTail
-#undef fn_bffr_pull
-#undef fn_bffr_peek
-#undef fn_bffr_cntFree
+#undef CQqu_init
+#undef CQqu_pushHead
+#undef CQqu_pushTail
+#undef CQqu_pull
+#undef CQqu_peek
+#undef CQqu_cntFree
