@@ -59,7 +59,7 @@ The following loosely lists requirements, constraints, features and goals.
     * Unit tested with 100 % coverage (LOC executed, branches taken, functions
       called)
     * Defined quality metrics (see table below)
-    * MISRA-C:2012 compliant
+    * MISRA C:2012 compliant
     * Static code analysis pass
     * No dynamic memory allocation (via `malloc()` or similar)
     * SCM via Git with semantic versioning
@@ -73,7 +73,7 @@ Quality metrics:
 | Metric                                       | Target   |
 | -------------------------------------------- | -------- |
 | No. of parameters/arguments (per func.)      | \<= 6    |
-| No. of instructions (per func.)              | \<= 100  |
+| No. of instructions (per func.)              | \<= 60   |
 | No. of nested control structures (per func.) | \<= 5    |
 | Cyclomatic complexity number (per func.)     | \<= 10   |
 | Comment rate (per file)                      | \>= 20 % |
@@ -208,6 +208,62 @@ fn_bffr_ini0(...);
 ![Example buffer object](./doc/arc/figures/cirqu-example-bffr-obj-cstmd.png)
 
 ![UML package diagram](./doc/arc/figures/cirqu-pd.png)
+
+## Coding Standard
+
+### Applicable Guidelines
+
+This project aims to adhere to the following guidelines (with exceptions):
+
+* The Power of Ten - Rules for Developing Safety Critical Code (NASA/JPL; G. J.
+  Holzmann)
+* MISRA C:2012 - Guidelines for the use of the C language in critical systems
+
+If necessary, deviations from the guidelines are allowed but must be justified
+and documented by means of inline comments.
+
+### Further Style Conventions
+
+Furthermore, the style is only loosely defined:
+
+New added code should use the same style (i.e. "look similar") as the already
+existing code base.
+
+Some remarks on the non-obvious points of this style convention:
+
+* Files are divided into an "attributes" and "operations" section (just like
+  classes in a UML class diagram)
+* `#include`s are placed in a module’s implementation (`*.c`) file(s), except
+  when they include header files external to the project (e.g. libc) or if a
+  module already uses another project-internal API in its own API (in both
+  exceptional cases those `#include`s are then placed in the module’s header
+  file)
+* Multiple instructions (ending with `;`) within a macro are enclosed in a
+  `do {...} while (false)` loop
+* The limit for line breaks is 80 characters (slight overshoots are acceptable
+  if it increases readability and if used sparingly)
+* Whitespace is inserted after control flow structure keywords (e.g.
+  `if/for/while/switch/return (...)`)
+* Identical brackets are separated by whitespace (e.g. `( (...) )`)
+* Comments
+    * ... can be placed above one or multiple line(s) (code block), addressing
+      all following line(s) until the next empty line
+    * ... can be placed at the end of a line, addressing this line only
+    * ... can be placed below a long line with one additional indentation level
+      to address this one long line in a code block where a comment does not
+      fit at the end of the line
+* Far away closing brackets/keywords of control structures are commented to
+  indicate to what they belong (e.g. `#endif /* MODULENAME_H */`)
+* API functions/macros/variables ("globals") etc. are prefixed with their
+  module’s (abbreviated) name + `_`;  
+  if the project is intended to be included in another project (e.g. the
+  project is a library or framework), the prefix also starts with up to 3
+  characters that abbreviate the project name
+* Private, file-scope (`static`) variables are prefixed with `pv_`
+* Pointers are prefixed with `p_`
+* Types are suffixed with `_t`
+* In object-oriented code, the pointer argument to an object of a class’
+  function is named `me`
 
 ## Workflow
 
