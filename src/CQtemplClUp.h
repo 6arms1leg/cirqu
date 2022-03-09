@@ -10,8 +10,8 @@
 
 /* Rename (concatenate) types (user-provided) */
 #undef CQTYP_ELEMQUAL_T
-#undef cirquElem_t
-#undef cirquElemIdx_t
+#undef CQtyp_elem_t
+#undef CQtyp_idx_t
 
 /* Rename (concatenate) types */
 #undef cirquStrgElem_t

@@ -19,8 +19,8 @@
 
 /* Rename (concatenate) types (user-provided) */
 #define CQTYP_ELEMQUAL_T CQTEMPLSEUP_CAT(CQTYP_ELEMQUAL_T, CQTEMPLSEUP_ID)
-#define cirquElem_t CQTEMPLSEUP_CAT(cirquElem_t, CQTEMPLSEUP_ID)
-#define cirquElemIdx_t CQTEMPLSEUP_CAT(cirquElemIdx_t, CQTEMPLSEUP_ID)
+#define CQtyp_elem_t CQTEMPLSEUP_CAT(CQtyp_elem_t, CQTEMPLSEUP_ID)
+#define CQtyp_idx_t CQTEMPLSEUP_CAT(CQtyp_idx_t, CQTEMPLSEUP_ID)
 
 /* Rename (concatenate) types */
 #define cirquStrgElem_t CQTEMPLSEUP_CAT(cirquStrgElem_t, CQTEMPLSEUP_ID)

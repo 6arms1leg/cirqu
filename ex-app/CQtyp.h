@@ -14,13 +14,13 @@
 #define CQTYP_ELEMQUAL_T1 volatile
 
 /* Buffer element types */
-typedef char cirquElem_t0;
-typedef float_t cirquElem_t1;
+typedef char CQtyp_elem_t0;
+typedef float_t CQtyp_elem_t1;
 
 /* Buffer index types.
  * Must be unsigned integer, i.e. `uint8_t`, `uint16_t`, ...
  */
-typedef uint8_t cirquElemIdx_t0;
-typedef uint32_t cirquElemIdx_t1;
+typedef uint8_t CQtyp_idx_t0;
+typedef uint32_t CQtyp_idx_t1;
 
 #endif /* CQTYP_H */

@@ -82,7 +82,7 @@ static inline void retHead(stc_bffr_t* const me)
     if(0u == me->cirquElemIdx_head)
     {
         /* Wrap head around to last element */
-        me->cirquElemIdx_head = me->cirquElemIdx_strgSize - (cirquElemIdx_t)1u;
+        me->cirquElemIdx_head = me->cirquElemIdx_strgSize - (CQtyp_idx_t)1u;
     }
     else
     {
@@ -107,7 +107,7 @@ static inline void retTail(stc_bffr_t* const me)
     if(0u == me->cirquElemIdx_tail)
     {
         /* Wrap tail around to last element */
-        me->cirquElemIdx_tail = me->cirquElemIdx_strgSize - (cirquElemIdx_t)1u;
+        me->cirquElemIdx_tail = me->cirquElemIdx_strgSize - (CQtyp_idx_t)1u;
     }
     else
     {
@@ -119,7 +119,7 @@ static inline void retTail(stc_bffr_t* const me)
 
 void CQqu_init(stc_bffr_t* const me,
                cirquStrgElem_t* const a_cirquStrgElem_strg,
-               const cirquElemIdx_t cirquElemIdx_strgSize)
+               const CQtyp_idx_t cirquElemIdx_strgSize)
 {
     /* Sanity check (Design by Contract) */
     assert( (NULL != me) &&
@@ -136,7 +136,7 @@ void CQqu_init(stc_bffr_t* const me,
     return;
 }
 
-void CQqu_pushHead(stc_bffr_t* const me, const cirquElem_t cirquElem_elem)
+void CQqu_pushHead(stc_bffr_t* const me, const CQtyp_elem_t cirquElem_elem)
 {
     /* Sanity check (Design by Contract) */
     assert(NULL != me);
@@ -153,7 +153,7 @@ void CQqu_pushHead(stc_bffr_t* const me, const cirquElem_t cirquElem_elem)
     return;
 }
 
-void CQqu_pushTail(stc_bffr_t* const me, const cirquElem_t cirquElem_elem)
+void CQqu_pushTail(stc_bffr_t* const me, const CQtyp_elem_t cirquElem_elem)
 {
     /* Sanity check (Design by Contract) */
     assert(NULL != me);
@@ -170,7 +170,7 @@ void CQqu_pushTail(stc_bffr_t* const me, const cirquElem_t cirquElem_elem)
     return;
 }
 
-bool CQqu_pull(stc_bffr_t* const me, cirquElem_t* const p_cirquElem_elem)
+bool CQqu_pull(stc_bffr_t* const me, CQtyp_elem_t* const p_cirquElem_elem)
 {
     /* Sanity check (Design by Contract) */
     assert( (NULL != me) &&
@@ -190,8 +190,8 @@ bool CQqu_pull(stc_bffr_t* const me, cirquElem_t* const p_cirquElem_elem)
     return(b_result);
 }
 
-const CQTYP_ELEMQUAL_T cirquElem_t* CQqu_peek(const stc_bffr_t* const me,
-                                              const cirquElemIdx_t
+const CQTYP_ELEMQUAL_T CQtyp_elem_t* CQqu_peek(const stc_bffr_t* const me,
+                                              const CQtyp_idx_t
                                                   cirquElemIdx_elemPos)
 {
     /* Sanity check (Design by Contract) */
@@ -201,8 +201,8 @@ const CQTYP_ELEMQUAL_T cirquElem_t* CQqu_peek(const stc_bffr_t* const me,
     /* Initialize variable used in peek element position calculation and return
      * pointer
      */
-    cirquElemIdx_t cirquElemIdx_diff = 0u;
-    const CQTYP_ELEMQUAL_T cirquElem_t* p_cirquElem_elem = NULL;
+    CQtyp_idx_t cirquElemIdx_diff = 0u;
+    const CQTYP_ELEMQUAL_T CQtyp_elem_t* p_cirquElem_elem = NULL;
 
     /* If requested element position is in range (points to non-vacant element
      * slot)
@@ -226,24 +226,24 @@ const CQTYP_ELEMQUAL_T cirquElem_t* CQqu_peek(const stc_bffr_t* const me,
     return(p_cirquElem_elem);
 }
 
-cirquElemIdx_t CQqu_cntFree(const stc_bffr_t* const me)
+CQtyp_idx_t CQqu_cntFree(const stc_bffr_t* const me)
 {
     /* Sanity check (Design by Contract) */
     assert(NULL != me);
 
     /* Initialize variable used in free element count calculation */
-    cirquElemIdx_t cirquElemIdx_elemFreeCnt = 0u;
+    CQtyp_idx_t cirquElemIdx_elemFreeCnt = 0u;
 
     if(me->cirquElemIdx_tail <= me->cirquElemIdx_head)
     {
         cirquElemIdx_elemFreeCnt =
-            (cirquElemIdx_t)( me->cirquElemIdx_strgSize - 1u
+            (CQtyp_idx_t)( me->cirquElemIdx_strgSize - 1u
                               - (me->cirquElemIdx_head - me->cirquElemIdx_tail) );
     }
     else
     {
         cirquElemIdx_elemFreeCnt =
-            (cirquElemIdx_t)(me->cirquElemIdx_tail - me->cirquElemIdx_head - 1u);
+            (CQtyp_idx_t)(me->cirquElemIdx_tail - me->cirquElemIdx_head - 1u);
     }
 
     return(cirquElemIdx_elemFreeCnt);
