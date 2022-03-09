@@ -14,8 +14,8 @@
 #undef CQtyp_idx_t
 
 /* Rename (concatenate) types */
-#undef cirquStrgElem_t
-#undef stc_bffr_t
+#undef CQqu_strgElem_t
+#undef CQqu_qu_t
 
 /* Rename (concatenate) functions */
 #undef CQqu_init

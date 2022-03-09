@@ -22,7 +22,7 @@
  *
  * \param me Pointer to a CirQu buffer object
  */
-static inline void advHead(stc_bffr_t* const me)
+static inline void advHead(CQqu_qu_t* const me)
 {
     /* No sanity check necessary since `me` argument was already checked in API
      * functions
@@ -47,7 +47,7 @@ static inline void advHead(stc_bffr_t* const me)
  *
  * \param me Pointer to a CirQu buffer object
  */
-static void advTail(stc_bffr_t* const me)
+static void advTail(CQqu_qu_t* const me)
 {
     /* No sanity check necessary since `me` argument was already checked in API
      * functions
@@ -72,7 +72,7 @@ static void advTail(stc_bffr_t* const me)
  *
  * \param me Pointer to a CirQu buffer object
  */
-static inline void retHead(stc_bffr_t* const me)
+static inline void retHead(CQqu_qu_t* const me)
 {
     /* No sanity check necessary since `me` argument was already checked in API
      * functions
@@ -97,7 +97,7 @@ static inline void retHead(stc_bffr_t* const me)
  *
  * \param me Pointer to a CirQu buffer object
  */
-static inline void retTail(stc_bffr_t* const me)
+static inline void retTail(CQqu_qu_t* const me)
 {
     /* No sanity check necessary since `me` argument was already checked in API
      * functions
@@ -117,8 +117,8 @@ static inline void retTail(stc_bffr_t* const me)
     return;
 }
 
-void CQqu_init(stc_bffr_t* const me,
-               cirquStrgElem_t* const a_cirquStrgElem_strg,
+void CQqu_init(CQqu_qu_t* const me,
+               CQqu_strgElem_t* const a_cirquStrgElem_strg,
                const CQtyp_idx_t cirquElemIdx_strgSize)
 {
     /* Sanity check (Design by Contract) */
@@ -136,7 +136,7 @@ void CQqu_init(stc_bffr_t* const me,
     return;
 }
 
-void CQqu_pushHead(stc_bffr_t* const me, const CQtyp_elem_t cirquElem_elem)
+void CQqu_pushHead(CQqu_qu_t* const me, const CQtyp_elem_t cirquElem_elem)
 {
     /* Sanity check (Design by Contract) */
     assert(NULL != me);
@@ -153,7 +153,7 @@ void CQqu_pushHead(stc_bffr_t* const me, const CQtyp_elem_t cirquElem_elem)
     return;
 }
 
-void CQqu_pushTail(stc_bffr_t* const me, const CQtyp_elem_t cirquElem_elem)
+void CQqu_pushTail(CQqu_qu_t* const me, const CQtyp_elem_t cirquElem_elem)
 {
     /* Sanity check (Design by Contract) */
     assert(NULL != me);
@@ -170,7 +170,7 @@ void CQqu_pushTail(stc_bffr_t* const me, const CQtyp_elem_t cirquElem_elem)
     return;
 }
 
-bool CQqu_pull(stc_bffr_t* const me, CQtyp_elem_t* const p_cirquElem_elem)
+bool CQqu_pull(CQqu_qu_t* const me, CQtyp_elem_t* const p_cirquElem_elem)
 {
     /* Sanity check (Design by Contract) */
     assert( (NULL != me) &&
@@ -190,9 +190,9 @@ bool CQqu_pull(stc_bffr_t* const me, CQtyp_elem_t* const p_cirquElem_elem)
     return(b_result);
 }
 
-const CQTYP_ELEMQUAL_T CQtyp_elem_t* CQqu_peek(const stc_bffr_t* const me,
-                                              const CQtyp_idx_t
-                                                  cirquElemIdx_elemPos)
+const CQTYP_ELEMQUAL_T CQtyp_elem_t* CQqu_peek(const CQqu_qu_t* const me,
+                                               const CQtyp_idx_t
+                                                   cirquElemIdx_elemPos)
 {
     /* Sanity check (Design by Contract) */
     assert( (NULL != me) &&
@@ -226,7 +226,7 @@ const CQTYP_ELEMQUAL_T CQtyp_elem_t* CQqu_peek(const stc_bffr_t* const me,
     return(p_cirquElem_elem);
 }
 
-CQtyp_idx_t CQqu_cntFree(const stc_bffr_t* const me)
+CQtyp_idx_t CQqu_cntFree(const CQqu_qu_t* const me)
 {
     /* Sanity check (Design by Contract) */
     assert(NULL != me);

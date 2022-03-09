@@ -23,8 +23,8 @@
 #define CQtyp_idx_t CQTEMPLSEUP_CAT(CQtyp_idx_t, CQTEMPLSEUP_ID)
 
 /* Rename (concatenate) types */
-#define cirquStrgElem_t CQTEMPLSEUP_CAT(cirquStrgElem_t, CQTEMPLSEUP_ID)
-#define stc_bffr_t CQTEMPLSEUP_CAT(stc_bffr_t, CQTEMPLSEUP_ID)
+#define CQqu_strgElem_t CQTEMPLSEUP_CAT(CQqu_strgElem_t, CQTEMPLSEUP_ID)
+#define CQqu_qu_t CQTEMPLSEUP_CAT(CQqu_qu_t, CQTEMPLSEUP_ID)
 
 /* Rename (concatenate) functions */
 #define CQqu_init(a, b, c) CQTEMPLSEUP_CAT(CQqu_init, CQTEMPLSEUP_ID)(a, b, c)

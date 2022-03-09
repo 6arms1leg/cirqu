@@ -23,7 +23,7 @@
  */
 
 /* Buffer storage element */
-typedef CQTYP_ELEMQUAL_T CQtyp_elem_t cirquStrgElem_t;
+typedef CQTYP_ELEMQUAL_T CQtyp_elem_t CQqu_strgElem_t;
 
 /* One excessive buffer element slot is used to distinguish full and empty fill
  * level, instead of a dedicated state variable.
@@ -36,7 +36,7 @@ typedef struct
     CQtyp_idx_t cirquElemIdx_strgSize;
     CQTYP_ELEMQUAL_T CQtyp_idx_t cirquElemIdx_head;
     CQTYP_ELEMQUAL_T CQtyp_idx_t cirquElemIdx_tail;
-} stc_bffr_t;
+} CQqu_qu_t;
 
 /* OPERATIONS
  * ==========
@@ -53,8 +53,8 @@ typedef struct
  * \param cirquElemIdx_strgSize Size (in count of element slots) of the
  * allocated storage element array
  */
-void CQqu_init(stc_bffr_t* const me,
-               cirquStrgElem_t* const a_cirquStrgElem_strg,
+void CQqu_init(CQqu_qu_t* const me,
+               CQqu_strgElem_t* const a_cirquStrgElem_strg,
                const CQtyp_idx_t cirquElemIdx_strgSize);
 
 /**
@@ -67,7 +67,7 @@ void CQqu_init(stc_bffr_t* const me,
  * \param me Pointer to a CirQu buffer object
  * \param cirquElem_elem Element to be inserted into the CirQu buffer
  */
-void CQqu_pushHead(stc_bffr_t* const me, const CQtyp_elem_t cirquElem_elem);
+void CQqu_pushHead(CQqu_qu_t* const me, const CQtyp_elem_t cirquElem_elem);
 
 /**
  * \brief Insert element into buffer (LIFO logic)
@@ -79,7 +79,7 @@ void CQqu_pushHead(stc_bffr_t* const me, const CQtyp_elem_t cirquElem_elem);
  * \param me Pointer to a CirQu buffer object
  * \param cirquElem_elem Element to be inserted into the CirQu buffer
  */
-void CQqu_pushTail(stc_bffr_t* const me, const CQtyp_elem_t cirquElem_elem);
+void CQqu_pushTail(CQqu_qu_t* const me, const CQtyp_elem_t cirquElem_elem);
 
 /**
  * \brief Retrieve and remove element from buffer
@@ -90,7 +90,7 @@ void CQqu_pushTail(stc_bffr_t* const me, const CQtyp_elem_t cirquElem_elem);
  *
  * \return Pull success indicator
  */
-bool CQqu_pull(stc_bffr_t* const me, CQtyp_elem_t* const p_cirquElem_elem);
+bool CQqu_pull(CQqu_qu_t* const me, CQtyp_elem_t* const p_cirquElem_elem);
 
 /**
  * \brief Retrieve pointer to element (without removal) at given position from
@@ -108,9 +108,9 @@ bool CQqu_pull(stc_bffr_t* const me, CQtyp_elem_t* const p_cirquElem_elem);
  *
  * \return Read-only pointer to element in the CirQu buffer
  */
-const CQTYP_ELEMQUAL_T CQtyp_elem_t* CQqu_peek(const stc_bffr_t* const me,
-                                              const CQtyp_idx_t
-                                                  cirquElemIdx_elemPos);
+const CQTYP_ELEMQUAL_T CQtyp_elem_t* CQqu_peek(const CQqu_qu_t* const me,
+                                               const CQtyp_idx_t
+                                                   cirquElemIdx_elemPos);
 
 /**
  * \brief Query fill level (in count of empty element slots) of buffer
@@ -119,7 +119,7 @@ const CQTYP_ELEMQUAL_T CQtyp_elem_t* CQqu_peek(const stc_bffr_t* const me,
  *
  * \return Count of empty element slots
  */
-CQtyp_idx_t CQqu_cntFree(const stc_bffr_t* const me);
+CQtyp_idx_t CQqu_cntFree(const CQqu_qu_t* const me);
 
 /* Cleanup template (multiple "instances") */
 #include "CQtemplClUp.h"
