@@ -49,12 +49,12 @@ typedef struct
  * to distinguish full and empty fill level.
  *
  * \param me Pointer to a CirQu buffer object
- * \param a_cirquStrgElem_strg Pointer to allocated storage element array
- * \param strgSiz Size (in count of element slots) of the
- * allocated storage element array
+ * \param p_strg Pointer to allocated storage element array
+ * \param strgSiz Size (in count of element slots) of the allocated storage
+ * element array
  */
 void CQqu_init(CQqu_qu_t* const me,
-               CQqu_strgElem_t* const a_cirquStrgElem_strg,
+               CQqu_strgElem_t* const p_strg,
                const CQtyp_idx_t strgSiz);
 
 /**
@@ -65,9 +65,9 @@ void CQqu_init(CQqu_qu_t* const me,
  * by checking if buffer is full first (via `fn_bffr_cntFree()`).
  *
  * \param me Pointer to a CirQu buffer object
- * \param cirquElem_elem Element to be inserted into the CirQu buffer
+ * \param elem Element to be inserted into the CirQu buffer
  */
-void CQqu_pushHead(CQqu_qu_t* const me, const CQtyp_elem_t cirquElem_elem);
+void CQqu_pushHead(CQqu_qu_t* const me, const CQtyp_elem_t elem);
 
 /**
  * \brief Insert element into buffer (LIFO logic)
@@ -77,20 +77,20 @@ void CQqu_pushHead(CQqu_qu_t* const me, const CQtyp_elem_t cirquElem_elem);
  * by checking if buffer is full first (via `CQqu_cntFree()`).
  *
  * \param me Pointer to a CirQu buffer object
- * \param cirquElem_elem Element to be inserted into the CirQu buffer
+ * \param elem Element to be inserted into the CirQu buffer
  */
-void CQqu_pushTail(CQqu_qu_t* const me, const CQtyp_elem_t cirquElem_elem);
+void CQqu_pushTail(CQqu_qu_t* const me, const CQtyp_elem_t elem);
 
 /**
  * \brief Retrieve and remove element from buffer
  *
  * \param me Pointer to a CirQu buffer object
- * \param p_cirquElem_elem Pointer to another element storage location to save
- * the retrieved element from the CirQu buffer
+ * \param p_elem Pointer to another element storage location to save the
+ * retrieved element from the CirQu buffer
  *
  * \return Pull success indicator
  */
-bool CQqu_pull(CQqu_qu_t* const me, CQtyp_elem_t* const p_cirquElem_elem);
+bool CQqu_pull(CQqu_qu_t* const me, CQtyp_elem_t* const p_elem);
 
 /**
  * \brief Retrieve pointer to element (without removal) at given position from
@@ -103,14 +103,13 @@ bool CQqu_pull(CQqu_qu_t* const me, CQtyp_elem_t* const p_cirquElem_elem);
  * vacant element slot).
  *
  * \param me Pointer to a CirQu buffer object
- * \param cirquElemIdx_elemPos Position of the element in the CirQu buffer to
- * retrieve a pointer to (index offset from tail)
+ * \param elemPos Position of the element in the CirQu buffer to retrieve a
+ * pointer to (index offset from tail)
  *
  * \return Read-only pointer to element in the CirQu buffer
  */
 const CQTYP_ELEMQUAL_T CQtyp_elem_t* CQqu_peek(const CQqu_qu_t* const me,
-                                               const CQtyp_idx_t
-                                                   cirquElemIdx_elemPos);
+                                               const CQtyp_idx_t elemPos);
 
 /**
  * \brief Query fill level (in count of empty element slots) of buffer

@@ -118,15 +118,15 @@ static inline void retTail(CQqu_qu_t* const me)
 }
 
 void CQqu_init(CQqu_qu_t* const me,
-               CQqu_strgElem_t* const a_cirquStrgElem_strg,
+               CQqu_strgElem_t* const p_strg,
                const CQtyp_idx_t strgSiz)
 {
     /* Sanity check (Design by Contract) */
     assert( (NULL != me) &&
-            (NULL != a_cirquStrgElem_strg) &&
+            (NULL != p_strg) &&
             (1u < strgSiz) );
 
-    me->p_strg = a_cirquStrgElem_strg;
+    me->p_strg = p_strg;
     me->strgSiz = strgSiz;
 
     /* Initialize buffer to empty state */
@@ -136,7 +136,7 @@ void CQqu_init(CQqu_qu_t* const me,
     return;
 }
 
-void CQqu_pushHead(CQqu_qu_t* const me, const CQtyp_elem_t cirquElem_elem)
+void CQqu_pushHead(CQqu_qu_t* const me, const CQtyp_elem_t elem)
 {
     /* Sanity check (Design by Contract) */
     assert(NULL != me);
@@ -147,13 +147,13 @@ void CQqu_pushHead(CQqu_qu_t* const me, const CQtyp_elem_t cirquElem_elem)
         advTail(me);
     }
 
-    me->p_strg[me->head] = cirquElem_elem;
+    me->p_strg[me->head] = elem;
     advHead(me);
 
     return;
 }
 
-void CQqu_pushTail(CQqu_qu_t* const me, const CQtyp_elem_t cirquElem_elem)
+void CQqu_pushTail(CQqu_qu_t* const me, const CQtyp_elem_t elem)
 {
     /* Sanity check (Design by Contract) */
     assert(NULL != me);
@@ -165,65 +165,62 @@ void CQqu_pushTail(CQqu_qu_t* const me, const CQtyp_elem_t cirquElem_elem)
     }
 
     retTail(me);
-    me->p_strg[me->tail] = cirquElem_elem;
+    me->p_strg[me->tail] = elem;
 
     return;
 }
 
-bool CQqu_pull(CQqu_qu_t* const me, CQtyp_elem_t* const p_cirquElem_elem)
+bool CQqu_pull(CQqu_qu_t* const me, CQtyp_elem_t* const p_elem)
 {
     /* Sanity check (Design by Contract) */
     assert( (NULL != me) &&
-            (NULL != p_cirquElem_elem) );
+            (NULL != p_elem) );
 
-    bool b_result = false;
+    bool res = false;
 
     /* If not empty */
     if( me->strgSiz - 1u > CQqu_cntFree(me) )
     {
-        *p_cirquElem_elem = me->p_strg[me->tail];
+        *p_elem = me->p_strg[me->tail];
         advTail(me);
 
-        b_result = true;
+        res = true;
     }
 
-    return(b_result);
+    return(res);
 }
 
 const CQTYP_ELEMQUAL_T CQtyp_elem_t* CQqu_peek(const CQqu_qu_t* const me,
-                                               const CQtyp_idx_t
-                                                   cirquElemIdx_elemPos)
+                                               const CQtyp_idx_t elemPos)
 {
     /* Sanity check (Design by Contract) */
     assert( (NULL != me) &&
-            (me->strgSiz - 1u > cirquElemIdx_elemPos) );
+            (me->strgSiz - 1u > elemPos) );
 
     /* Initialize variable used in peek element position calculation and return
      * pointer
      */
-    CQtyp_idx_t cirquElemIdx_diff = 0u;
-    const CQTYP_ELEMQUAL_T CQtyp_elem_t* p_cirquElem_elem = NULL;
+    CQtyp_idx_t diff = 0u;
+    const CQTYP_ELEMQUAL_T CQtyp_elem_t* p_elem = NULL;
 
     /* If requested element position is in range (points to non-vacant element
      * slot)
      */
-    if(me->strgSiz - 1u - CQqu_cntFree(me) > cirquElemIdx_elemPos)
+    if(me->strgSiz - 1u - CQqu_cntFree(me) > elemPos)
     {
         /* Handle wrap around */
-        cirquElemIdx_diff = me->strgSiz - me->tail;
-        if(cirquElemIdx_diff <= cirquElemIdx_elemPos)
+        diff = me->strgSiz - me->tail;
+        if(diff <= elemPos)
         {
-            p_cirquElem_elem = &me->p_strg[cirquElemIdx_elemPos
-                                                     - cirquElemIdx_diff];
+            p_elem = &me->p_strg[elemPos - diff];
         }
         else
         {
-            p_cirquElem_elem = &me->p_strg[me->tail
-                                                     + cirquElemIdx_elemPos];
+            p_elem = &me->p_strg[me->tail + elemPos];
         }
     }
 
-    return(p_cirquElem_elem);
+    return(p_elem);
 }
 
 CQtyp_idx_t CQqu_cntFree(const CQqu_qu_t* const me)
@@ -232,21 +229,19 @@ CQtyp_idx_t CQqu_cntFree(const CQqu_qu_t* const me)
     assert(NULL != me);
 
     /* Initialize variable used in free element count calculation */
-    CQtyp_idx_t cirquElemIdx_elemFreeCnt = 0u;
+    CQtyp_idx_t elemFreeCnt = 0u;
 
     if(me->tail <= me->head)
     {
-        cirquElemIdx_elemFreeCnt =
-            (CQtyp_idx_t)( me->strgSiz - 1u
-                              - (me->head - me->tail) );
+        elemFreeCnt =
+            (CQtyp_idx_t)( me->strgSiz - 1u - (me->head - me->tail) );
     }
     else
     {
-        cirquElemIdx_elemFreeCnt =
-            (CQtyp_idx_t)(me->tail - me->head - 1u);
+        elemFreeCnt = (CQtyp_idx_t)(me->tail - me->head - 1u);
     }
 
-    return(cirquElemIdx_elemFreeCnt);
+    return(elemFreeCnt);
 }
 
 /* Cleanup template (multiple "instances") */

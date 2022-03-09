@@ -39,36 +39,35 @@ void tearDown(void)
 
 void test_CQqu_initializeBuffer(void)
 {
-    TEST_ASSERT_EQUAL_UINT8(CQBUF_STRGSIZ0,
-                            p_stc_bffr_g_buf0->strgSiz);
-    TEST_ASSERT_EQUAL_UINT8(0u, p_stc_bffr_g_buf0->head);
-    TEST_ASSERT_EQUAL_UINT8(0u, p_stc_bffr_g_buf0->tail);
+    TEST_ASSERT_EQUAL_UINT8(CQBUF_STRGSIZ0, CQbuf_p_buf0->strgSiz);
+    TEST_ASSERT_EQUAL_UINT8(0u, CQbuf_p_buf0->head);
+    TEST_ASSERT_EQUAL_UINT8(0u, CQbuf_p_buf0->tail);
 
     return;
 }
 
 void test_CQqu_bufferEmptyAfterInitialization(void)
 {
-    const uint8_t u8_elemFreeCntExpected = CQBUF_ELEMSIZ0;
-    uint8_t u8_elemFreeCntActual = 0u;
+    const uint8_t elemFreeCntExp = CQBUF_ELEMSIZ0;
+    uint8_t elemFreeCntAct = 0u;
 
-    u8_elemFreeCntActual = CQqu_cntFree0(p_stc_bffr_g_buf0);
+    elemFreeCntAct = CQqu_cntFree0(CQbuf_p_buf0);
 
-    TEST_ASSERT_EQUAL_UINT8(u8_elemFreeCntExpected, u8_elemFreeCntActual);
+    TEST_ASSERT_EQUAL_UINT8(elemFreeCntExp, elemFreeCntAct);
 
     return;
 }
 
 void test_CQqu_pullFromEmptyBufferReturnsFalse(void)
 {
-    bool b_result = true;
+    bool res = true;
 
-    uint8_t u8_elem = 0u;
-    uint8_t* const p_u8_elem = &u8_elem;
+    uint8_t elem = 0u;
+    uint8_t* const p_elem = &elem;
 
-    b_result = CQqu_pull0(p_stc_bffr_g_buf0, p_u8_elem);
+    res = CQqu_pull0(CQbuf_p_buf0, p_elem);
 
-    TEST_ASSERT_FALSE(b_result);
+    TEST_ASSERT_FALSE(res);
 
     return;
 }

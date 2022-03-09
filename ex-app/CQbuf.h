@@ -20,8 +20,8 @@
 #define CQBUF_ELEMSIZ1 (CQBUF_STRGSIZ1 - 1u)
 
 /* Global opaque pointers to buffer objects */
-extern CQqu_qu_t0* const p_stc_bffr_g_buf0;
-extern CQqu_qu_t1* const p_stc_bffr_g_buf1;
+extern CQqu_qu_t0* const CQbuf_p_buf0;
+extern CQqu_qu_t1* const CQbuf_p_buf1;
 
 /* OPERATIONS
  * ==========

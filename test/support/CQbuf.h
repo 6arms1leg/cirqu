@@ -24,7 +24,7 @@
        level */
 
 /* Global opaque pointers to buffer objects */
-extern CQqu_qu_t0* const p_stc_bffr_g_buf0;
+extern CQqu_qu_t0* const CQbuf_p_buf0;
 
 /* OPERATIONS
  * ==========
