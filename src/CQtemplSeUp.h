@@ -6,7 +6,7 @@
 
 /* Sanity check */
 #ifndef CQTEMPLSEUP_ID
-#error CQTEMPLSEUP_ID must be defined
+#error "CQTEMPLSEUP_ID must be defined"
 #endif /* CQTEMPLSEUP_ID */
 
 /* Function-like macros to concatenate two names

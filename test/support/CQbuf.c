@@ -19,9 +19,6 @@ static CQqu_strgElem_t0 pv_bufStrg0[CQBUF_STRGSIZ0] = {0u};
  * ==========
  */
 
-void CQbuf_ctor0(void)
-{
+void CQbuf_ctor0(void) {
     CQqu_init0(&pv_buf0, pv_bufStrg0, CQBUF_STRGSIZ0);
-
-    return;
 }

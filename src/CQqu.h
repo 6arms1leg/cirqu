@@ -30,8 +30,7 @@ typedef CQTYP_ELEMQUAL_T CQtyp_elem_t CQqu_strgElem_t;
  * This makes the buffer lock-free (no mutex needed) when there is only one
  * producer and consumer respectively interacting with the buffer.
  */
-typedef struct
-{
+typedef struct {
     CQTYP_ELEMQUAL_T CQtyp_elem_t* p_strg;
     CQtyp_idx_t strgSiz;
     CQTYP_ELEMQUAL_T CQtyp_idx_t head;

@@ -18,7 +18,7 @@
  * ==========
  */
 
-#define CQBUF_STRGSIZ0 (4u)
+#define CQBUF_STRGSIZ0 4u
 #define CQBUF_ELEMSIZ0 (CQBUF_STRGSIZ0 - 1u)
     /* `-1` because one element slot is used to distinguish full and empty fill
        level */

@@ -14,8 +14,7 @@
 #define CNT_MSG(ID) "Count of free element slots in `buf" #ID "`:  "
 #define PULL_MSG(ID) "Pulled (tail) element from `buf" #ID "`:  "
 
-int MAIN(void)
-{
+int MAIN(void) {
     /* Temporary storages for peeked/pulled CirQu elements */
     char elem0 = '\0';
     float_t elem1 = 0.0f;

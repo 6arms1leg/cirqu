@@ -22,24 +22,19 @@
  *
  * \param me Pointer to a CirQu buffer object
  */
-static inline void advHead(CQqu_qu_t* const me)
-{
+static inline void advHead(CQqu_qu_t* const me) {
     /* No sanity check necessary since `me` argument was already checked in API
      * functions
      */
 
     /* If head points to last element */
-    if(me->strgSiz - 1u == me->head)
-    {
+    if (me->strgSiz - 1u == me->head) {
         /* Wrap head around to first element */
         me->head = 0u;
     }
-    else
-    {
+    else {
         me->head++;
     }
-
-    return;
 }
 
 /**
@@ -47,24 +42,19 @@ static inline void advHead(CQqu_qu_t* const me)
  *
  * \param me Pointer to a CirQu buffer object
  */
-static void advTail(CQqu_qu_t* const me)
-{
+static void advTail(CQqu_qu_t* const me) {
     /* No sanity check necessary since `me` argument was already checked in API
      * functions
      */
 
     /* If tail points to last element */
-    if(me->strgSiz - 1u == me->tail)
-    {
+    if (me->strgSiz - 1u == me->tail) {
         /* Wrap tail around to first element */
         me->tail = 0u;
     }
-    else
-    {
+    else {
         me->tail++;
     }
-
-    return;
 }
 
 /**
@@ -72,24 +62,19 @@ static void advTail(CQqu_qu_t* const me)
  *
  * \param me Pointer to a CirQu buffer object
  */
-static inline void retHead(CQqu_qu_t* const me)
-{
+static inline void retHead(CQqu_qu_t* const me) {
     /* No sanity check necessary since `me` argument was already checked in API
      * functions
      */
 
     /* If head points to first element */
-    if(0u == me->head)
-    {
+    if (0u == me->head) {
         /* Wrap head around to last element */
         me->head = me->strgSiz - (CQtyp_idx_t)1u;
     }
-    else
-    {
+    else {
         me->head--;
     }
-
-    return;
 }
 
 /**
@@ -97,30 +82,24 @@ static inline void retHead(CQqu_qu_t* const me)
  *
  * \param me Pointer to a CirQu buffer object
  */
-static inline void retTail(CQqu_qu_t* const me)
-{
+static inline void retTail(CQqu_qu_t* const me) {
     /* No sanity check necessary since `me` argument was already checked in API
      * functions
      */
 
     /* If tail points to first element */
-    if(0u == me->tail)
-    {
+    if (0u == me->tail) {
         /* Wrap tail around to last element */
         me->tail = me->strgSiz - (CQtyp_idx_t)1u;
     }
-    else
-    {
+    else {
         me->tail--;
     }
-
-    return;
 }
 
 void CQqu_init(CQqu_qu_t* const me,
                CQqu_strgElem_t* const p_strg,
-               const CQtyp_idx_t strgSiz)
-{
+               const CQtyp_idx_t strgSiz) {
     /* Sanity check (Design by Contract) */
     assert( (NULL != me) &&
             (NULL != p_strg) &&
@@ -132,46 +111,35 @@ void CQqu_init(CQqu_qu_t* const me,
     /* Initialize buffer to empty state */
     me->head = 0u;
     me->tail = 0u;
-
-    return;
 }
 
-void CQqu_pushHead(CQqu_qu_t* const me, const CQtyp_elem_t elem)
-{
+void CQqu_pushHead(CQqu_qu_t* const me, const CQtyp_elem_t elem) {
     /* Sanity check (Design by Contract) */
     assert(NULL != me);
 
     /* If full */
-    if( 0u == CQqu_cntFree(me) )
-    {
+    if ( 0u == CQqu_cntFree(me) ) {
         advTail(me);
     }
 
     me->p_strg[me->head] = elem;
     advHead(me);
-
-    return;
 }
 
-void CQqu_pushTail(CQqu_qu_t* const me, const CQtyp_elem_t elem)
-{
+void CQqu_pushTail(CQqu_qu_t* const me, const CQtyp_elem_t elem) {
     /* Sanity check (Design by Contract) */
     assert(NULL != me);
 
     /* If full */
-    if( 0u == CQqu_cntFree(me) )
-    {
+    if ( 0u == CQqu_cntFree(me) ) {
         retHead(me);
     }
 
     retTail(me);
     me->p_strg[me->tail] = elem;
-
-    return;
 }
 
-bool CQqu_pull(CQqu_qu_t* const me, CQtyp_elem_t* const p_elem)
-{
+bool CQqu_pull(CQqu_qu_t* const me, CQtyp_elem_t* const p_elem) {
     /* Sanity check (Design by Contract) */
     assert( (NULL != me) &&
             (NULL != p_elem) );
@@ -179,20 +147,18 @@ bool CQqu_pull(CQqu_qu_t* const me, CQtyp_elem_t* const p_elem)
     bool res = false;
 
     /* If not empty */
-    if( me->strgSiz - 1u > CQqu_cntFree(me) )
-    {
+    if ( me->strgSiz - 1u > CQqu_cntFree(me) ) {
         *p_elem = me->p_strg[me->tail];
         advTail(me);
 
         res = true;
     }
 
-    return(res);
+    return (res);
 }
 
 const CQTYP_ELEMQUAL_T CQtyp_elem_t* CQqu_peek(const CQqu_qu_t* const me,
-                                               const CQtyp_idx_t elemPos)
-{
+                                               const CQtyp_idx_t elemPos) {
     /* Sanity check (Design by Contract) */
     assert( (NULL != me) &&
             (me->strgSiz - 1u > elemPos) );
@@ -206,42 +172,35 @@ const CQTYP_ELEMQUAL_T CQtyp_elem_t* CQqu_peek(const CQqu_qu_t* const me,
     /* If requested element position is in range (points to non-vacant element
      * slot)
      */
-    if(me->strgSiz - 1u - CQqu_cntFree(me) > elemPos)
-    {
+    if (me->strgSiz - 1u - CQqu_cntFree(me) > elemPos) {
         /* Handle wrap around */
         diff = me->strgSiz - me->tail;
-        if(diff <= elemPos)
-        {
+        if (diff <= elemPos) {
             p_elem = &me->p_strg[elemPos - diff];
         }
-        else
-        {
+        else {
             p_elem = &me->p_strg[me->tail + elemPos];
         }
     }
 
-    return(p_elem);
+    return (p_elem);
 }
 
-CQtyp_idx_t CQqu_cntFree(const CQqu_qu_t* const me)
-{
+CQtyp_idx_t CQqu_cntFree(const CQqu_qu_t* const me) {
     /* Sanity check (Design by Contract) */
     assert(NULL != me);
 
     /* Initialize variable used in free element count calculation */
     CQtyp_idx_t elemFreeCnt = 0u;
 
-    if(me->tail <= me->head)
-    {
-        elemFreeCnt =
-            (CQtyp_idx_t)( me->strgSiz - 1u - (me->head - me->tail) );
+    if (me->tail <= me->head) {
+        elemFreeCnt = (CQtyp_idx_t)( me->strgSiz - 1u - (me->head - me->tail) );
     }
-    else
-    {
+    else {
         elemFreeCnt = (CQtyp_idx_t)(me->tail - me->head - 1u);
     }
 
-    return(elemFreeCnt);
+    return (elemFreeCnt);
 }
 
 /* Cleanup template (multiple "instances") */
