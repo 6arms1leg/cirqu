@@ -32,10 +32,10 @@ typedef CQTYP_ELEMQUAL_T CQtyp_elem_t CQqu_strgElem_t;
  */
 typedef struct
 {
-    CQTYP_ELEMQUAL_T CQtyp_elem_t* a_cirquElem_strg;
-    CQtyp_idx_t cirquElemIdx_strgSize;
-    CQTYP_ELEMQUAL_T CQtyp_idx_t cirquElemIdx_head;
-    CQTYP_ELEMQUAL_T CQtyp_idx_t cirquElemIdx_tail;
+    CQTYP_ELEMQUAL_T CQtyp_elem_t* p_strg;
+    CQtyp_idx_t strgSiz;
+    CQTYP_ELEMQUAL_T CQtyp_idx_t head;
+    CQTYP_ELEMQUAL_T CQtyp_idx_t tail;
 } CQqu_qu_t;
 
 /* OPERATIONS
@@ -50,12 +50,12 @@ typedef struct
  *
  * \param me Pointer to a CirQu buffer object
  * \param a_cirquStrgElem_strg Pointer to allocated storage element array
- * \param cirquElemIdx_strgSize Size (in count of element slots) of the
+ * \param strgSiz Size (in count of element slots) of the
  * allocated storage element array
  */
 void CQqu_init(CQqu_qu_t* const me,
                CQqu_strgElem_t* const a_cirquStrgElem_strg,
-               const CQtyp_idx_t cirquElemIdx_strgSize);
+               const CQtyp_idx_t strgSiz);
 
 /**
  * \brief Insert element into buffer (FIFO logic)

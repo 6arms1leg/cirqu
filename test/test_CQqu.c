@@ -40,9 +40,9 @@ void tearDown(void)
 void test_CQqu_initializeBuffer(void)
 {
     TEST_ASSERT_EQUAL_UINT8(CQBUF_STRGSIZ0,
-                            p_stc_bffr_g_buf0->cirquElemIdx_strgSize);
-    TEST_ASSERT_EQUAL_UINT8(0u, p_stc_bffr_g_buf0->cirquElemIdx_head);
-    TEST_ASSERT_EQUAL_UINT8(0u, p_stc_bffr_g_buf0->cirquElemIdx_tail);
+                            p_stc_bffr_g_buf0->strgSiz);
+    TEST_ASSERT_EQUAL_UINT8(0u, p_stc_bffr_g_buf0->head);
+    TEST_ASSERT_EQUAL_UINT8(0u, p_stc_bffr_g_buf0->tail);
 
     return;
 }
