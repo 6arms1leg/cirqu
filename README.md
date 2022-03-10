@@ -107,34 +107,34 @@ changed as well.
 Header file:
 
 ```c
-#ifndef CIRQUWRAPPER_H
-#define CIRQUWRAPPER_H
+#ifndef CQWRAP_H
+#define CQWRAP_H
 
 /* Include CirQu buffer interface (configured with ID 0) */
-#define CIRQUID 0
-#include "buffer.h"
-#undef CIRQUID
+#define CQTEMPLSEUP_ID 0
+#include "CQqu.h"
+#undef CQTEMPLSEUP_ID
 
 /* Include CirQu buffer interface (configured with ID 1) */
-#define CIRQUID 1
-#include "buffer.h"
-#undef CIRQUID
+#define CQTEMPLSEUP_ID 1
+#include "CQqu.h"
+#undef CQTEMPLSEUP_ID
 
-#endif /* CIRQUWRAPPER_H */
+#endif /* CQWRAP_H */
 ```
 
 Implementation file:
 
 ```c
 /* Include CirQu buffer implementation (configured with ID 0) */
-#define CIRQUID 0
-#include "buffer.c"
-#undef CIRQUID
+#define CQTEMPLSEUP_ID 0
+#include "CQqu.c"
+#undef CQTEMPLSEUP_ID
 
 /* Include CirQu buffer implementation (configured with ID 1) */
-#define CIRQUID 1
-#include "buffer.c"
-#undef CIRQUID
+#define CQTEMPLSEUP_ID 1
+#include "CQqu.c"
+#undef CQTEMPLSEUP_ID
 ```
 
 *Only* this wrapper module is then compiled and linked and its interface
@@ -142,7 +142,7 @@ included, e.g.:
 
 ```c
 /* Wrapper module with multiple "instances" of CirQu library */
-#include "cirquWrapper.h"
+#include "CQwrap.h"
 ```
 
 **Option B - Build library multiple times with different configurations**
@@ -163,28 +163,28 @@ changed as well.
 
 ```c
 /* Include CirQu buffer interface (configured with ID 0) */
-#ifndef BUFFER_H0
-#define BUFFER_H0
-#define CIRQUID 0
-#include "buffer.h"
-#undef CIRQUID
-#endif /* BUFFER_H0 */
+#ifndef CQQU_H0
+#define CQQU_H0
+#define CQTEMPLSEUP_ID 0
+#include "CQqu.h"
+#undef CQTEMPLSEUP_ID
+#endif /* CQQU_H0 */
 
 /* Include CirQu buffer interface (configured with ID 1) */
-#ifndef BUFFER_H1
-#define BUFFER_H1
-#define CIRQUID 1
-#include "buffer.h"
-#undef CIRQUID
-#endif /* BUFFER_H1 */
+#ifndef CQQU_H1
+#define CQQU_H1
+#define CQTEMPLSEUP_ID 1
+#include "CQqu.h"
+#undef CQTEMPLSEUP_ID
+#endif /* CQQU_H1 */
 ```
 
 Each library "instance" must then be compiled into a separate object file by
 supplying the ID name to the compiler, e.g.:
 
 ```sh
-$ gcc -DCIRQUID=0 ... -c -I... buffer.c -o buffer0.o
-$ gcc -DCIRQUID=1 ... -c -I... buffer.c -o buffer1.o
+$ gcc -DCQTEMPLSEUP_ID=0 ... -c -I... CQqu.c -o CQqu0.o
+$ gcc -DCQTEMPLSEUP_ID=1 ... -c -I... CQqu.c -o CQqu1.o
 ```
 
 And then all those library "instance" obejct files must be provided to the
@@ -196,9 +196,9 @@ To use a library "instance"’s API (e.g. function calls, variable
 declaration/definition), the ID suffix must be appended, e.g. for ID `0`:
 
 ```c
-stc_bffr_t0 ...;
+CQqu_qu_t0 ...;
 
-fn_bffr_ini0(...);
+CQqu_init0(...);
 ```
 
 ## Architecture
