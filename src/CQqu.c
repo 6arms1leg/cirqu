@@ -101,9 +101,9 @@ void CQqu_init(CQqu_qu_t* const me,
                CQqu_strgElem_t* const p_strg,
                const CQtyp_idx_t strgSiz) {
     /* Sanity check (Design by Contract) */
-    assert( (NULL != me) &&
-            (NULL != p_strg) &&
-            (1u < strgSiz) );
+    assert((NULL != me) &&
+           (NULL != p_strg) &&
+           (1u < strgSiz));
 
     me->p_strg = p_strg;
     me->strgSiz = strgSiz;
@@ -118,7 +118,7 @@ void CQqu_pushHead(CQqu_qu_t* const me, const CQtyp_elem_t elem) {
     assert(NULL != me);
 
     /* If full */
-    if ( 0u == CQqu_cntFree(me) ) {
+    if (0u == CQqu_cntFree(me)) {
         advTail(me);
     }
 
@@ -131,7 +131,7 @@ void CQqu_pushTail(CQqu_qu_t* const me, const CQtyp_elem_t elem) {
     assert(NULL != me);
 
     /* If full */
-    if ( 0u == CQqu_cntFree(me) ) {
+    if (0u == CQqu_cntFree(me)) {
         retHead(me);
     }
 
@@ -141,13 +141,13 @@ void CQqu_pushTail(CQqu_qu_t* const me, const CQtyp_elem_t elem) {
 
 bool CQqu_pull(CQqu_qu_t* const me, CQtyp_elem_t* const p_elem) {
     /* Sanity check (Design by Contract) */
-    assert( (NULL != me) &&
-            (NULL != p_elem) );
+    assert((NULL != me) &&
+           (NULL != p_elem));
 
     bool res = false;
 
     /* If not empty */
-    if ( me->strgSiz - 1u > CQqu_cntFree(me) ) {
+    if (me->strgSiz - 1u > CQqu_cntFree(me)) {
         *p_elem = me->p_strg[me->tail];
         advTail(me);
 
@@ -160,8 +160,8 @@ bool CQqu_pull(CQqu_qu_t* const me, CQtyp_elem_t* const p_elem) {
 const CQTYP_ELEMQUAL_T CQtyp_elem_t* CQqu_peek(const CQqu_qu_t* const me,
                                                const CQtyp_idx_t elemPos) {
     /* Sanity check (Design by Contract) */
-    assert( (NULL != me) &&
-            (me->strgSiz - 1u > elemPos) );
+    assert((NULL != me) &&
+           (me->strgSiz - 1u > elemPos));
 
     /* Initialize variable used in peek element position calculation and return
      * pointer
@@ -194,7 +194,7 @@ CQtyp_idx_t CQqu_cntFree(const CQqu_qu_t* const me) {
     CQtyp_idx_t elemFreeCnt = 0u;
 
     if (me->tail <= me->head) {
-        elemFreeCnt = (CQtyp_idx_t)( me->strgSiz - 1u - (me->head - me->tail) );
+        elemFreeCnt = (CQtyp_idx_t)(me->strgSiz - 1u - (me->head - me->tail));
     }
     else {
         elemFreeCnt = (CQtyp_idx_t)(me->tail - me->head - 1u);

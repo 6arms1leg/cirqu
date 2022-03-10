@@ -244,7 +244,6 @@ Some remarks on the non-obvious points of this style convention:
   if it increases readability and if used sparingly)
 * Whitespace is inserted after control flow structure keywords (e.g.
   `if/for/while/switch/return (...)`)
-* Identical brackets are separated by whitespace (e.g. `( (...) )`)
 * Comments
     * ... can be placed above one or multiple line(s) (code block), addressing
       all following line(s) until the next empty line
