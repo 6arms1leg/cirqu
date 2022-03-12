@@ -12,6 +12,15 @@ This library employs a simple and tiny
 
 to manage elements in a storage.
 
+> Used terminology in this documentation:
+>
+> * Queue - Architectural concept to asynchronously storing produced data and
+>   consuming it
+> * Buffer - Detailed design component to arrange storage into elements on
+>   which the queue operates
+> * Storage - The abstracted, physical memory managed by the buffer
+> * Element - One of multiple storage units, which constitute the buffer
+
 ## Requirements specification
 
 The following loosely lists requirements, constraints, features and goals.
