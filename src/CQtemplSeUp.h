@@ -23,7 +23,7 @@
 #define CQtyp_idx_t CQTEMPLSEUP_CAT(CQtyp_idx_t, CQTEMPLSEUP_ID)
 
 /* Rename (concatenate) types */
-#define CQqu_strgElem_t CQTEMPLSEUP_CAT(CQqu_strgElem_t, CQTEMPLSEUP_ID)
+#define CQqu_elem_t CQTEMPLSEUP_CAT(CQqu_elem_t, CQTEMPLSEUP_ID)
 #define CQqu_qu_t CQTEMPLSEUP_CAT(CQqu_qu_t, CQTEMPLSEUP_ID)
 
 /* Rename (concatenate) functions */

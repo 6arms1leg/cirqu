@@ -19,7 +19,8 @@ to manage elements in a storage.
 > * Buffer - Detailed design component to arrange storage into elements on
 >   which the queue operates
 > * Storage - The abstracted, physical memory managed by the buffer
-> * Element - One of multiple storage units, which constitute the buffer
+> * Element - One of multiple items, handled by the queue (or storage units,
+>   which constitute the buffer)
 
 ## Requirements specification
 
@@ -28,23 +29,20 @@ The following loosely lists requirements, constraints, features and goals.
 * Circular/ring/FIFO/LIFO buffering/queueing management of multiple elements
   within a storage in embedded systems for real-time applications
 * Element type (and optional type qualifiers) can be chosen at compile time
-* Library can be "instantiated" multiple times in one project for different
-  element types via C++-like template imitation (facilitates type safety in
-  contrast to `void*` usage)
+* Library can be "instantiated" multiple times in one project (without name
+  conflicts) for different element types via C++-like template imitation with
+  preprocessor macros (facilitates type safety in contrast to `void*` usage)
 * A new element can be pushed into the queue at its head or tail and the next
   element can be pulled from the tail of the queue
 * Each stored element in the queue can be peeked at (i.e. accessed through
   pointer without removal) by its relative index starting from the tail
   position
-* Buffer can be queried about its count of available free element slots
-* Queue size can be configured at buffer object instantiation by linking
-  allocated memory (storage) to it
-* Lock-free access possible (with only one producer and consumer if the queue
+* Queue can be queried about its count of available free buffer element slots
+* Queue size can be configured at queue object instantiation/initialization by
+  linking allocated memory (storage managed by a buffer) to it
+* Lock-free access possible (with only one producer and consumer) if the queue
   never overflows, that is, if `pushHead`/`pushTail` is never issued on a full
   queue
-* API (public function) names automatically adjust to element type via
-  preprocessor macro to enable the use of multiple queues with different sizes
-  within a project without name conflicts
 
 <!-- Separator -->
 
@@ -119,12 +117,12 @@ Header file:
 #ifndef CQWRAP_H
 #define CQWRAP_H
 
-/* Include CirQu buffer interface (configured with ID 0) */
+/* CirQu lib. interface configured with ID */
 #define CQTEMPLSEUP_ID 0
 #include "CQqu.h"
 #undef CQTEMPLSEUP_ID
 
-/* Include CirQu buffer interface (configured with ID 1) */
+/* CirQu lib. interface configured with ID */
 #define CQTEMPLSEUP_ID 1
 #include "CQqu.h"
 #undef CQTEMPLSEUP_ID
@@ -135,12 +133,12 @@ Header file:
 Implementation file:
 
 ```c
-/* Include CirQu buffer implementation (configured with ID 0) */
+/* Implementation of CirQu lib. configured with ID */
 #define CQTEMPLSEUP_ID 0
 #include "CQqu.c"
 #undef CQTEMPLSEUP_ID
 
-/* Include CirQu buffer implementation (configured with ID 1) */
+/* Implementation of CirQu lib. configured with ID */
 #define CQTEMPLSEUP_ID 1
 #include "CQqu.c"
 #undef CQTEMPLSEUP_ID
@@ -150,7 +148,7 @@ Implementation file:
 included, e.g.:
 
 ```c
-/* Wrapper module with multiple "instances" of CirQu library */
+/* Wrapper module with multiple "instances" of CirQu lib. */
 #include "CQwrap.h"
 ```
 
@@ -171,7 +169,7 @@ Of course, there can be more or less "instances" and the ID names can be
 changed as well.
 
 ```c
-/* Include CirQu buffer interface (configured with ID 0) */
+/* CirQu lib. interface configured with ID */
 #ifndef CQQU_H0
 #define CQQU_H0
 #define CQTEMPLSEUP_ID 0
@@ -179,7 +177,7 @@ changed as well.
 #undef CQTEMPLSEUP_ID
 #endif /* CQQU_H0 */
 
-/* Include CirQu buffer interface (configured with ID 1) */
+/* CirQu lib. interface configured with ID */
 #ifndef CQQU_H1
 #define CQQU_H1
 #define CQTEMPLSEUP_ID 1

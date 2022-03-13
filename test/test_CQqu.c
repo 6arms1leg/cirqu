@@ -2,14 +2,15 @@
 
 #ifdef TEST
 
-/* Include libc interfaces */
+/* libc interfaces */
 #include <stdint.h>
 #include <stdbool.h>
-#include "assert.h" /* For sanity checks (Design by Contract) */
+#include "assert.h" /* Sanity checks (Design by Contract) */
 
 #include "unity.h"
 
-/* Include CirQu buffer interface (configured with ID 0).
+/* CirQu lib. interface configured with ID
+ *
  * "External" include guards necessary since included module interface has none
  * due to "template" feature.
  */
@@ -20,12 +21,11 @@
 #undef CQTEMPLSEUP_ID
 #endif /* CQQU_H0 */
 
-#include "CQbuf.h"
+#include "CQobj.h"
 
 /** \brief Run before every test */
 void setUp(void) {
-    /* Initialize buffer object "buffer 0" */
-    CQbuf_ctor0();
+    CQobj_ctor0(); /* Init. queue object */
 }
 
 /** \brief Run after every test */
@@ -33,28 +33,28 @@ void tearDown(void) {
     /* Do nothing */
 }
 
-void test_CQqu_initializeBuffer(void) {
-    TEST_ASSERT_EQUAL_UINT8(CQBUF_STRGSIZ0, CQbuf_p_buf0->strgSiz);
-    TEST_ASSERT_EQUAL_UINT8(0u, CQbuf_p_buf0->head);
-    TEST_ASSERT_EQUAL_UINT8(0u, CQbuf_p_buf0->tail);
+void test_CQqu_initQu(void) {
+    TEST_ASSERT_EQUAL_UINT8(CQOBJ_BUFSIZ0, CQobj_p_qu0->bufSiz);
+    TEST_ASSERT_EQUAL_UINT8(0u, CQobj_p_qu0->head);
+    TEST_ASSERT_EQUAL_UINT8(0u, CQobj_p_qu0->tail);
 }
 
-void test_CQqu_bufferEmptyAfterInitialization(void) {
-    const uint8_t elemFreeCntExp = CQBUF_ELEMSIZ0;
+void test_CQqu_quEmptyAfterInit(void) {
+    const uint8_t elemFreeCntExp = CQOBJ_QUSIZ0;
     uint8_t elemFreeCntAct = 0u;
 
-    elemFreeCntAct = CQqu_cntFree0(CQbuf_p_buf0);
+    elemFreeCntAct = CQqu_cntFree0(CQobj_p_qu0);
 
     TEST_ASSERT_EQUAL_UINT8(elemFreeCntExp, elemFreeCntAct);
 }
 
-void test_CQqu_pullFromEmptyBufferReturnsFalse(void) {
+void test_CQqu_pullFromEmptyQuReturnsFalse(void) {
     bool res = true;
 
     uint8_t elem = 0u;
     uint8_t* const p_elem = &elem;
 
-    res = CQqu_pull0(CQbuf_p_buf0, p_elem);
+    res = CQqu_pull0(CQobj_p_qu0, p_elem);
 
     TEST_ASSERT_FALSE(res);
 }

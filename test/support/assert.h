@@ -3,13 +3,16 @@
 #ifndef ASSERT_H
 #define ASSERT_H
 
-/* Include libc interfaces */
+/* libc interface */
 #include <stdbool.h>
 
+/* Exception handling library interface */
 #include "CException.h"
 
+/* `assert` replacement for unit testing */
 #define assert(condition_) if (false == (condition_)) Throw(0)
 
+/* Unit testing assertion that `assert` is triggered */
 #define TEST_ASSERT_FAIL_ASSERT(codeUnderTest_)               \
 do {                                                          \
     CEXCEPTION_T exception_;                                  \
@@ -20,6 +23,7 @@ do {                                                          \
     Catch(exception_) {;}                                     \
 } while (false)
 
+/* Unit testing assertion that `assert` is *not* triggered */
 #define TEST_ASSERT_PASS_ASSERT(codeUnderTest_)                    \
 do {                                                               \
     CEXCEPTION_T exception_;                                       \

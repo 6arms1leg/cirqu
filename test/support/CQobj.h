@@ -1,9 +1,9 @@
 /** \file */
 
-#ifndef CQBUF_H
-#define CQBUF_H
+#ifndef CQOBJ_H
+#define CQOBJ_H
 
-/* Include CirQu buffer interface (configured with ID 0).
+/* CirQu queue interface (configured with ID 0).
  * "External" include guards necessary since included module interface has none
  * due to "template" feature.
  */
@@ -18,19 +18,19 @@
  * ==========
  */
 
-#define CQBUF_STRGSIZ0 4u
-#define CQBUF_ELEMSIZ0 (CQBUF_STRGSIZ0 - 1u)
+#define CQOBJ_BUFSIZ0 4u
+#define CQOBJ_QUSIZ0 (CQOBJ_BUFSIZ0 - 1u)
     /* `-1` because one element slot is used to distinguish full and empty fill
        level */
 
-/* Global opaque pointers to buffer objects */
-extern CQqu_qu_t0* const CQbuf_p_buf0;
+/* Global opaque pointer to queue object */
+extern CQqu_qu_t0* const CQobj_p_qu0;
 
 /* OPERATIONS
  * ==========
  */
 
-/* Constructors of buffer objects */
-void CQbuf_ctor0(void);
+/* Constructor of queue object */
+void CQobj_ctor0(void);
 
-#endif /* CQBUF_H */
+#endif /* CQOBJ_H */

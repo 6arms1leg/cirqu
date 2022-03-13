@@ -78,8 +78,8 @@ $(BUILD_DIR)/cirqu/obj/CQwrap.o: \
 	    $^ \
 	    -o $@
 
-$(BUILD_DIR)/cirqu/obj/CQbuf.o: \
-    $(BUILD_CONTEXT)/ex-app/CQbuf.c
+$(BUILD_DIR)/cirqu/obj/CQobj.o: \
+    $(BUILD_CONTEXT)/ex-app/CQobj.c
 	mkdir -p ./build/cirqu/obj/
 	$(CC) \
 	    $(CC_FLAGS) \
@@ -101,7 +101,7 @@ $(BUILD_DIR)/cirqu/obj/main.o: $(BUILD_CONTEXT)/ex-app/main.c
 
 ex-app: $(BUILD_DIR)/cirqu/ex-app
 $(BUILD_DIR)/cirqu/ex-app: $(BUILD_DIR)/cirqu/obj/CQwrap.o \
-                           $(BUILD_DIR)/cirqu/obj/CQbuf.o \
+                           $(BUILD_DIR)/cirqu/obj/CQobj.o \
                            $(BUILD_DIR)/cirqu/obj/main.o
 	$(LD) $(LD_FLAGS) $^ -o $@
 

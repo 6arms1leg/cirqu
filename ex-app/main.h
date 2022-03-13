@@ -3,11 +3,11 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-/* Include libc interfaces */
+/* libc interfaces */
 #include <stdio.h>
 #include <math.h>
 
-/* Necessary to make `main()` function unit testable */
+/* Make `main()` unit testable */
 #ifndef TEST
 #define MAIN main
 #else

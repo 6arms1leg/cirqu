@@ -3,12 +3,12 @@
 #ifndef CQWRAP_H
 #define CQWRAP_H
 
-/* Include CirQu buffer interface (configured with ID 0) */
+/* CirQu lib. interface configured with ID */
 #define CQTEMPLSEUP_ID 0
 #include "CQqu.h"
 #undef CQTEMPLSEUP_ID
 
-/* Include CirQu buffer interface (configured with ID 1) */
+/* CirQu lib. interface configured with ID */
 #define CQTEMPLSEUP_ID 1
 #include "CQqu.h"
 #undef CQTEMPLSEUP_ID
