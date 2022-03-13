@@ -19,71 +19,73 @@ int MAIN(void) {
     char item0 = '\0';
     float_t item1 = 0.0f;
 
-    puts(APP_PROMPT "~~~ Welcome to the CirQu queue example application! ~~~");
+    (void)puts(APP_PROMPT
+               "~~~ Welcome to the CirQu queue example application! ~~~");
 
     /* Queue 0 */
 
-    puts(APP_PROMPT CTOR_MSG(0));
+    (void)puts(APP_PROMPT CTOR_MSG(0));
     CQobj_ctor0(); /* Init. CirQu queue object */
 
-    printf(APP_PROMPT CNT_MSG(0) "%i\n", (int)CQqu_cntFree0(CQobj_p_qu0));
+    (void)printf(APP_PROMPT CNT_MSG(0) "%u\n", CQqu_cntFree0(CQobj_p_qu0));
 
-    puts(APP_PROMPT "Push (head) items `a`, `b`, `c` to `qu0` ...");
+    (void)puts(APP_PROMPT "Push (head) items `a`, `b`, `c` to `qu0` ...");
     CQqu_pushHead0(CQobj_p_qu0, 'a');
     CQqu_pushHead0(CQobj_p_qu0, 'b');
     CQqu_pushHead0(CQobj_p_qu0, 'c');
 
-    printf(APP_PROMPT CNT_MSG(0) "%i\n", (int)CQqu_cntFree0(CQobj_p_qu0));
+    (void)printf(APP_PROMPT CNT_MSG(0) "%u\n", CQqu_cntFree0(CQobj_p_qu0));
 
     item0 = *CQqu_peek0(CQobj_p_qu0, 1u);
-    printf(APP_PROMPT "Peeked tail+1 item in `qu0`:  %c\n", item0);
+    (void)printf(APP_PROMPT "Peeked tail+1 item in `qu0`:  %c\n", item0);
 
-    printf(APP_PROMPT CNT_MSG(0) "%i\n", (int)CQqu_cntFree0(CQobj_p_qu0));
+    (void)printf(APP_PROMPT CNT_MSG(0) "%u\n", CQqu_cntFree0(CQobj_p_qu0));
 
-    puts(APP_PROMPT "Push (head) item `d` to `qu0` ...");
+    (void)puts(APP_PROMPT "Push (head) item `d` to `qu0` ...");
     CQqu_pushHead0(CQobj_p_qu0, 'd');
 
-    printf(APP_PROMPT CNT_MSG(0) "%i\n", (int)CQqu_cntFree0(CQobj_p_qu0));
+    (void)printf(APP_PROMPT CNT_MSG(0) "%u\n", CQqu_cntFree0(CQobj_p_qu0));
 
     (void)CQqu_pull0(CQobj_p_qu0, &item0);
-    printf(APP_PROMPT PULL_MSG(0) "%c\n", item0);
+    (void)printf(APP_PROMPT PULL_MSG(0) "%c\n", item0);
 
-    printf(APP_PROMPT CNT_MSG(0) "%i\n", (int)CQqu_cntFree0(CQobj_p_qu0));
+    (void)printf(APP_PROMPT CNT_MSG(0) "%u\n", CQqu_cntFree0(CQobj_p_qu0));
 
-    puts(APP_PROMPT "Push (tail) item `e` to `qu0` ...");
+    (void)puts(APP_PROMPT "Push (tail) item `e` to `qu0` ...");
     CQqu_pushTail0(CQobj_p_qu0, 'e');
 
-    printf(APP_PROMPT CNT_MSG(0) "%i\n", (int)CQqu_cntFree0(CQobj_p_qu0));
+    (void)printf(APP_PROMPT CNT_MSG(0) "%u\n", CQqu_cntFree0(CQobj_p_qu0));
 
     (void)CQqu_pull0(CQobj_p_qu0, &item0);
-    printf(APP_PROMPT PULL_MSG(0) "%c\n", item0);
+    (void)printf(APP_PROMPT PULL_MSG(0) "%c\n", item0);
     (void)CQqu_pull0(CQobj_p_qu0, &item0);
-    printf(APP_PROMPT PULL_MSG(0) "%c\n", item0);
+    (void)printf(APP_PROMPT PULL_MSG(0) "%c\n", item0);
     (void)CQqu_pull0(CQobj_p_qu0, &item0);
-    printf(APP_PROMPT PULL_MSG(0) "%c\n", item0);
+    (void)printf(APP_PROMPT PULL_MSG(0) "%c\n", item0);
 
-    printf(APP_PROMPT CNT_MSG(0) "%i\n", (int)CQqu_cntFree0(CQobj_p_qu0));
+    (void)printf(APP_PROMPT CNT_MSG(0) "%u\n", CQqu_cntFree0(CQobj_p_qu0));
 
     /* Queue 1 */
 
-    puts(APP_PROMPT CTOR_MSG(1));
+    (void)puts(APP_PROMPT CTOR_MSG(1));
     CQobj_ctor1(); /* Init. CirQu queue object */
 
-    printf(APP_PROMPT CNT_MSG(1) "%i\n", (int)CQqu_cntFree1(CQobj_p_qu1));
+    (void)printf(APP_PROMPT CNT_MSG(1) "%u\n", CQqu_cntFree1(CQobj_p_qu1));
 
-    puts(APP_PROMPT "Push (head) items `13.1f`, `0.0f`, `-8.0f` to `qu1` ...");
+    (void)puts(APP_PROMPT
+               "Push (head) items `13.1f`, `0.0f`, `-8.0f` to `qu1` ...");
     CQqu_pushHead1(CQobj_p_qu1, 13.1f);
     CQqu_pushHead1(CQobj_p_qu1, 0.0f);
     CQqu_pushHead1(CQobj_p_qu1, -8.0f);
 
-    printf(APP_PROMPT CNT_MSG(1) "%i\n", (int)CQqu_cntFree1(CQobj_p_qu1));
+    (void)printf(APP_PROMPT CNT_MSG(1) "%u\n", CQqu_cntFree1(CQobj_p_qu1));
 
     (void)CQqu_pull1(CQobj_p_qu1, &item1);
-    printf(APP_PROMPT PULL_MSG(1) "%f\n", item1);
+    (void)printf(APP_PROMPT PULL_MSG(1) "%f\n", item1);
 
-    printf(APP_PROMPT CNT_MSG(1) "%i\n", (int)CQqu_cntFree1(CQobj_p_qu1));
+    (void)printf(APP_PROMPT CNT_MSG(1) "%u\n", CQqu_cntFree1(CQobj_p_qu1));
 
-    puts(APP_PROMPT "~~~ Bye! ~~~");
+    (void)puts(APP_PROMPT "~~~ Bye! ~~~");
 
     return(0);
 }
