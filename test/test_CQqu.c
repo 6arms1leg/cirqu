@@ -40,21 +40,21 @@ void test_CQqu_initQu(void) {
 }
 
 void test_CQqu_quEmptyAfterInit(void) {
-    const uint8_t elemFreeCntExp = CQOBJ_QUSIZ0;
-    uint8_t elemFreeCntAct = 0u;
+    const uint8_t itemFreeCntExp = CQOBJ_QUSIZ0;
+    uint8_t itemFreeCntAct = 0u;
 
-    elemFreeCntAct = CQqu_cntFree0(CQobj_p_qu0);
+    itemFreeCntAct = CQqu_cntFree0(CQobj_p_qu0);
 
-    TEST_ASSERT_EQUAL_UINT8(elemFreeCntExp, elemFreeCntAct);
+    TEST_ASSERT_EQUAL_UINT8(itemFreeCntExp, itemFreeCntAct);
 }
 
 void test_CQqu_pullFromEmptyQuReturnsFalse(void) {
     bool res = true;
 
-    uint8_t elem = 0u;
-    uint8_t* const p_elem = &elem;
+    uint8_t item = 0u;
+    uint8_t* const p_item = &item;
 
-    res = CQqu_pull0(CQobj_p_qu0, p_elem);
+    res = CQqu_pull0(CQobj_p_qu0, p_item);
 
     TEST_ASSERT_FALSE(res);
 }

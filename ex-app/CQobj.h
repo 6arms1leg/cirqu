@@ -13,9 +13,7 @@
 #define CQOBJ_BUFSIZ0 4u
 #define CQOBJ_BUFSIZ1 6u
 
-/* `-1` because one element slot is used to distinguish full and empty fill
- * level
- */
+/* `-1` because one item slot is used to distinguish full and empty fill level */
 #define CQOBJ_QUSIZ0 (CQOBJ_BUFSIZ0 - 1u)
 #define CQOBJ_QUSIZ1 (CQOBJ_BUFSIZ1 - 1u)
 

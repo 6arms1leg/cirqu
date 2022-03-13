@@ -9,12 +9,12 @@
 #undef CQTEMPLSEUP_CAT
 
 /* Rename (concatenate) types (user-provided) */
-#undef CQTYP_ELEMQUAL_T
-#undef CQtyp_elem_t
+#undef CQTYP_ITEMQUAL_T
+#undef CQtyp_item_t
 #undef CQtyp_idx_t
 
 /* Rename (concatenate) types */
-#undef CQqu_elem_t
+#undef CQqu_item_t
 #undef CQqu_qu_t
 
 /* Rename (concatenate) functions */

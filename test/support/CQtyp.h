@@ -10,10 +10,10 @@
  *
  * Empty if unused (but must be defined).
  */
-#define CQTYP_ELEMQUAL_T0 /* Empty */
+#define CQTYP_ITEMQUAL_T0 /* Empty */
 
-/* Queue buffer element types */
-typedef uint8_t CQtyp_elem_t0;
+/* Queue buffer item types */
+typedef uint8_t CQtyp_item_t0;
 
 /* Queue buffer index types
  *

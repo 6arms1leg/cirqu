@@ -18,12 +18,12 @@
 #define CQTEMPLSEUP_CAT(a, b) CQTEMPLSEUP_CAT_I(a, b) /* Layer of indirection */
 
 /* Rename (concatenate) types (user-provided) */
-#define CQTYP_ELEMQUAL_T CQTEMPLSEUP_CAT(CQTYP_ELEMQUAL_T, CQTEMPLSEUP_ID)
-#define CQtyp_elem_t CQTEMPLSEUP_CAT(CQtyp_elem_t, CQTEMPLSEUP_ID)
+#define CQTYP_ITEMQUAL_T CQTEMPLSEUP_CAT(CQTYP_ITEMQUAL_T, CQTEMPLSEUP_ID)
+#define CQtyp_item_t CQTEMPLSEUP_CAT(CQtyp_item_t, CQTEMPLSEUP_ID)
 #define CQtyp_idx_t CQTEMPLSEUP_CAT(CQtyp_idx_t, CQTEMPLSEUP_ID)
 
 /* Rename (concatenate) types */
-#define CQqu_elem_t CQTEMPLSEUP_CAT(CQqu_elem_t, CQTEMPLSEUP_ID)
+#define CQqu_item_t CQTEMPLSEUP_CAT(CQqu_item_t, CQTEMPLSEUP_ID)
 #define CQqu_qu_t CQTEMPLSEUP_CAT(CQqu_qu_t, CQTEMPLSEUP_ID)
 
 /* Rename (concatenate) functions */

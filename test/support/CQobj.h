@@ -20,7 +20,7 @@
 
 #define CQOBJ_BUFSIZ0 4u
 #define CQOBJ_QUSIZ0 (CQOBJ_BUFSIZ0 - 1u)
-    /* `-1` because one element slot is used to distinguish full and empty fill
+    /* `-1` because one item slot is used to distinguish full and empty fill
        level */
 
 /* Global opaque pointer to queue object */

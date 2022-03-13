@@ -11,12 +11,12 @@
  *
  * Empty if unused (but must be defined).
  */
-#define CQTYP_ELEMQUAL_T0 /* Empty */
-#define CQTYP_ELEMQUAL_T1 volatile
+#define CQTYP_ITEMQUAL_T0 /* Empty */
+#define CQTYP_ITEMQUAL_T1 volatile
 
-/* Queue buffer element types */
-typedef char CQtyp_elem_t0;
-typedef float_t CQtyp_elem_t1;
+/* Queue buffer item types */
+typedef char CQtyp_item_t0;
+typedef float_t CQtyp_item_t1;
 
 /* Queue buffer index types
  *

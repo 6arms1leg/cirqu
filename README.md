@@ -10,34 +10,34 @@ This library employs a simple and tiny
 
 *circular/ring/FIFO/LIFO buffer/queue*
 
-to manage elements in a storage.
+to manage items in a storage.
 
 > Used terminology in this documentation:
 >
 > * Queue - Architectural concept to asynchronously storing produced data and
 >   consuming it
-> * Buffer - Detailed design component to arrange storage into elements on
->   which the queue operates
+> * Buffer - Detailed design component to arrange storage into items on which
+>   the queue operates
 > * Storage - The abstracted, physical memory managed by the buffer
-> * Element - One of multiple items, handled by the queue (or storage units,
+> * Item - One of multiple items, handled by the queue (or storage units,
 >   which constitute the buffer)
 
 ## Requirements specification
 
 The following loosely lists requirements, constraints, features and goals.
 
-* Circular/ring/FIFO/LIFO buffering/queueing management of multiple elements
+* Circular/ring/FIFO/LIFO buffering/queueing management of multiple items
   within a storage in embedded systems for real-time applications
-* Element type (and optional type qualifiers) can be chosen at compile time
+* Item type (and optional type qualifiers) can be chosen at compile time
 * Library can be "instantiated" multiple times in one project (without name
-  conflicts) for different element types via C++-like template imitation with
+  conflicts) for different item types via C++-like template imitation with
   preprocessor macros (facilitates type safety in contrast to `void*` usage)
-* A new element can be pushed into the queue at its head or tail and the next
-  element can be pulled from the tail of the queue
-* Each stored element in the queue can be peeked at (i.e. accessed through
+* A new item can be pushed into the queue at its head or tail and the next
+  item can be pulled from the tail of the queue
+* Each stored item in the queue can be peeked at (i.e. accessed through
   pointer without removal) by its relative index starting from the tail
   position
-* Queue can be queried about its count of available free buffer element slots
+* Queue can be queried about its count of available free buffer item slots
 * Queue size can be configured at queue object instantiation/initialization by
   linking allocated memory (storage managed by a buffer) to it
 * Lock-free access possible (with only one producer and consumer) if the queue
@@ -49,7 +49,7 @@ The following loosely lists requirements, constraints, features and goals.
 * Library design
 * Deployment in embedded systems
 * Code implementation in the C programming language ("C99", ISO/IEC 9899:1999)
-* Interfaces with the application software through element storage arrays
+* Interfaces with the application software through item storage arrays
 
 <!-- Separator -->
 
@@ -89,8 +89,8 @@ Quality metrics:
 ## How to deploy
 
 The library can be "instantiated" multiple times in one project for different
-element types via C++-like template imitation.
-In contrast to the alternative solution of using `void*` element types, this
+item types via C++-like template imitation.
+In contrast to the alternative solution of using `void*` item types, this
 facilitates type safety.
 However, this comes with a slight increase in deployment complexity.
 
