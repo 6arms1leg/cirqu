@@ -253,7 +253,8 @@ Some remarks on the non-obvious points of this style convention:
   `if/for/while/switch/return (...)`)
 * Comments
     * ... can be placed above one or multiple line(s) (code block), addressing
-      all following line(s) until the next empty line
+      all following line(s) until the next empty line or lesser indentation
+      level
     * ... can be placed at the end of a line, addressing this line only
     * ... can be placed below a long line with one additional indentation level
       to address this one long line in a code block where a comment does not
