@@ -33,12 +33,14 @@ void tearDown(void) {
     /* Do nothing */
 }
 
+/** \brief Test queue object init. */
 void test_CQqu_initQu(void) {
     TEST_ASSERT_EQUAL_UINT8(CQOBJ_BUFSIZ0, CQobj_p_qu0->bufSiz);
     TEST_ASSERT_EQUAL_UINT8(0u, CQobj_p_qu0->head);
     TEST_ASSERT_EQUAL_UINT8(0u, CQobj_p_qu0->tail);
 }
 
+/** \brief Test queue object is empty after init. */
 void test_CQqu_quEmptyAfterInit(void) {
     const uint8_t itemFreeCntExp = CQOBJ_QUSIZ0;
     uint8_t itemFreeCntAct = 0u;
@@ -48,9 +50,11 @@ void test_CQqu_quEmptyAfterInit(void) {
     TEST_ASSERT_EQUAL_UINT8(itemFreeCntExp, itemFreeCntAct);
 }
 
+/** \brief Test pull from empty queue object */
 void test_CQqu_pullFromEmptyQuReturnsFalse(void) {
     bool res = true;
 
+    /* Temporary storage for pulled queue item */
     uint8_t item = 0u;
     uint8_t* const p_item = &item;
 

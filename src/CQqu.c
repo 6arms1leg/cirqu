@@ -24,13 +24,10 @@
  */
 static inline void advHead(CQqu_qu_t* const me) {
     /* No sanity check necessary since `me` argument was already checked in API
-     * functions
-     */
+       functions */
 
-    /* If head points to last item */
-    if (me->bufSiz - 1u == me->head) {
-        /* Wrap head around to first item */
-        me->head = 0u;
+    if (me->bufSiz - 1u == me->head) { /* Head points to last item? */
+        me->head = 0u; /* Wrap head around to first item */
     }
     else {
         me->head++;
@@ -44,13 +41,10 @@ static inline void advHead(CQqu_qu_t* const me) {
  */
 static void advTail(CQqu_qu_t* const me) {
     /* No sanity check necessary since `me` argument was already checked in API
-     * functions
-     */
+       functions */
 
-    /* If tail points to last item */
-    if (me->bufSiz - 1u == me->tail) {
-        /* Wrap tail around to first item */
-        me->tail = 0u;
+    if (me->bufSiz - 1u == me->tail) { /* Tail points to last item? */
+        me->tail = 0u; /* Wrap tail around to first item */
     }
     else {
         me->tail++;
@@ -64,13 +58,11 @@ static void advTail(CQqu_qu_t* const me) {
  */
 static inline void retHead(CQqu_qu_t* const me) {
     /* No sanity check necessary since `me` argument was already checked in API
-     * functions
-     */
+       functions */
 
-    /* If head points to first item */
-    if (0u == me->head) {
-        /* Wrap head around to last item */
-        me->head = me->bufSiz - (CQtyp_idx_t)1u;
+    if (0u == me->head) { /* Head points to first item? */
+        me->head = me->bufSiz - (CQtyp_idx_t)1u; /* Wrap head around to last
+                                                    item */
     }
     else {
         me->head--;
@@ -84,13 +76,11 @@ static inline void retHead(CQqu_qu_t* const me) {
  */
 static inline void retTail(CQqu_qu_t* const me) {
     /* No sanity check necessary since `me` argument was already checked in API
-     * functions
-     */
+       functions */
 
-    /* If tail points to first item */
-    if (0u == me->tail) {
-        /* Wrap tail around to last item */
-        me->tail = me->bufSiz - (CQtyp_idx_t)1u;
+    if (0u == me->tail) { /* Tail points to first item? */
+        me->tail = me->bufSiz - (CQtyp_idx_t)1u; /* Wrap tail around to last
+                                                    item */
     }
     else {
         me->tail--;
@@ -108,17 +98,15 @@ void CQqu_init(CQqu_qu_t* const me,
     me->p_buf = p_buf;
     me->bufSiz = bufSiz;
 
-    /* Initialize queue to empty state */
+    /* Init. queue to empty state */
     me->head = 0u;
     me->tail = 0u;
 }
 
 void CQqu_pushHead(CQqu_qu_t* const me, const CQtyp_item_t item) {
-    /* Sanity check (Design by Contract) */
-    assert(NULL != me);
+    assert(NULL != me); /* Sanity check (Design by Contract) */
 
-    /* If full */
-    if (0u == CQqu_cntFree(me)) {
+    if (0u == CQqu_cntFree(me)) { /* Full? */
         advTail(me);
     }
 
@@ -127,11 +115,9 @@ void CQqu_pushHead(CQqu_qu_t* const me, const CQtyp_item_t item) {
 }
 
 void CQqu_pushTail(CQqu_qu_t* const me, const CQtyp_item_t item) {
-    /* Sanity check (Design by Contract) */
-    assert(NULL != me);
+    assert(NULL != me); /* Sanity check (Design by Contract) */
 
-    /* If full */
-    if (0u == CQqu_cntFree(me)) {
+    if (0u == CQqu_cntFree(me)) { /* Full? */
         retHead(me);
     }
 
@@ -146,8 +132,7 @@ bool CQqu_pull(CQqu_qu_t* const me, CQtyp_item_t* const p_item) {
 
     bool res = false;
 
-    /* If not empty */
-    if (me->bufSiz - 1u > CQqu_cntFree(me)) {
+    if (me->bufSiz - 1u > CQqu_cntFree(me)) { /* Not empty? */
         *p_item = me->p_buf[me->tail];
         advTail(me);
 
@@ -163,13 +148,11 @@ const CQTYP_ITEMQUAL_T CQtyp_item_t* CQqu_peek(const CQqu_qu_t* const me,
     assert((NULL != me) &&
            (me->bufSiz - 1u > itemPos));
 
-    /* Initialize variable used in peek item position calculation and return
-     * pointer
-     */
+    /* Init. variable used in peek item position calculation and return pointer */
     CQtyp_idx_t diff = 0u;
     const CQTYP_ITEMQUAL_T CQtyp_item_t* p_item = NULL;
 
-    /* If requested item position is in range (points to non-vacant item slot) */
+    /* Requested item position is in range (points to non-vacant item slot)? */
     if (me->bufSiz - 1u - CQqu_cntFree(me) > itemPos) {
         /* Handle wrap around */
         diff = me->bufSiz - me->tail;
@@ -185,12 +168,12 @@ const CQTYP_ITEMQUAL_T CQtyp_item_t* CQqu_peek(const CQqu_qu_t* const me,
 }
 
 CQtyp_idx_t CQqu_cntFree(const CQqu_qu_t* const me) {
-    /* Sanity check (Design by Contract) */
-    assert(NULL != me);
+    assert(NULL != me); /* Sanity check (Design by Contract) */
 
-    /* Initialize variable used in free item count calculation */
-    CQtyp_idx_t itemFreeCnt = 0u;
+    CQtyp_idx_t itemFreeCnt = 0u; /* Init. variable used in free item count
+                                     calculation */
 
+    /* Handle free item count calculation depending on head/tail position */
     if (me->tail <= me->head) {
         itemFreeCnt = (CQtyp_idx_t)(me->bufSiz - 1u - (me->head - me->tail));
     }

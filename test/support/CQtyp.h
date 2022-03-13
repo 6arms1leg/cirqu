@@ -6,16 +6,19 @@
 /* libc interface */
 #include <stdint.h>
 
-/* Optional type qualifiers, e.g. `volatile`
+/**
+ * \brief Optional type qualifier
  *
+ * For example `volatile`.
  * Empty if unused (but must be defined).
  */
 #define CQTYP_ITEMQUAL_T0 /* Empty */
 
-/* Queue buffer item types */
+/** \brief Queue buffer item type */
 typedef uint8_t CQtyp_item_t0;
 
-/* Queue buffer index types
+/**
+ * \brief Queue buffer index type
  *
  * Must be unsigned integer, i.e. `uint8_t`, `uint16_t`, ...
  */

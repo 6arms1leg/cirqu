@@ -22,10 +22,11 @@
  * ==========
  */
 
-/* Queue buffer item type */
+/** \brief Queue buffer item type */
 typedef CQTYP_ITEMQUAL_T CQtyp_item_t CQqu_item_t;
 
-/* Queue object type
+/**
+ * \brief Queue object type
  *
  * One excessive buffer item slot is used to distinguish full and empty fill
  * level, instead of a dedicated state variable.
@@ -48,7 +49,7 @@ typedef struct {
  *
  * *Queue size = buffer size - 1*, since one item slot is used to distinguish
  * full and empty fill level.
- * Re-initialization can be used to empty/clear the queue again.
+ * Re-initialization can be used to empty/clear queue again.
  *
  * \param me Pointer to queue object
  * \param p_buf Pointer to queue buffer (allocated storage item array)

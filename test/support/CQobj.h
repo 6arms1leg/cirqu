@@ -3,7 +3,8 @@
 #ifndef CQOBJ_H
 #define CQOBJ_H
 
-/* CirQu queue interface (configured with ID 0).
+/* CirQu queue interface (configured with ID 0)
+ *
  * "External" include guards necessary since included module interface has none
  * due to "template" feature.
  */
@@ -23,14 +24,14 @@
     /* `-1` because one item slot is used to distinguish full and empty fill
        level */
 
-/* Global opaque pointer to queue object */
+/** \brief Global opaque pointer to queue object */
 extern CQqu_qu_t0* const CQobj_p_qu0;
 
 /* OPERATIONS
  * ==========
  */
 
-/* Constructor of queue object */
+/** \brief Constructor of queue object */
 void CQobj_ctor0(void);
 
 #endif /* CQOBJ_H */
