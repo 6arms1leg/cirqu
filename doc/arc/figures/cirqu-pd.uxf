@@ -52,7 +52,7 @@ valign=Top</panel_attributes>
     </coordinates>
     <panel_attributes>
 --
-*Buffer*
+*Queue*
 valign=Top</panel_attributes>
     <additional_attributes/>
   </element>
@@ -81,8 +81,8 @@ fg=Light_gray</panel_attributes>
     </coordinates>
     <panel_attributes>
 --
-*Buffer*
-*object*
+*CirQu*
+*object(s)*
 valign=Top
 fg=Light_gray</panel_attributes>
     <additional_attributes/>
@@ -98,7 +98,7 @@ fg=Light_gray</panel_attributes>
     <panel_attributes>
 --
 *CirQu*
-*element type*
+*types*
 valign=Top
 fg=Light_gray</panel_attributes>
     <additional_attributes/>

@@ -6,11 +6,11 @@
     <coordinates>
       <x>500</x>
       <y>0</y>
-      <w>540</w>
+      <w>520</w>
       <h>980</h>
     </coordinates>
     <panel_attributes>cstmd CirQu
-/Example buffer object/
+/Example queue object/
 --
 fontsize=30</panel_attributes>
     <additional_attributes/>
@@ -23,7 +23,7 @@ fontsize=30</panel_attributes>
       <w>210</w>
       <h>60</h>
     </coordinates>
-    <panel_attributes>One excessive buffer element slot used to distinguish full and empty fill level
+    <panel_attributes>One excessive buffer item slot used to distinguish full and empty fill level
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
@@ -168,7 +168,7 @@ m2=Head</panel_attributes>
       <w>180</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>*a) Buffer empty scenario*
+    <panel_attributes>*a) Queue empty scenario*
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
@@ -192,7 +192,7 @@ m2=Tail</panel_attributes>
       <w>160</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>*d) Buffer full scenario*
+    <panel_attributes>*d) Queue full scenario*
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
@@ -201,10 +201,10 @@ style=wordwrap</panel_attributes>
     <coordinates>
       <x>520</x>
       <y>310</y>
-      <w>250</w>
+      <w>230</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>*b) Three elements in buffer scenario*
+    <panel_attributes>*b) Three items in queue scenario*
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
@@ -213,10 +213,10 @@ style=wordwrap</panel_attributes>
     <coordinates>
       <x>520</x>
       <y>590</y>
-      <w>470</w>
+      <w>440</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>*c) Three elements in buffer (FIFO usage, with wrap around) scenario*
+    <panel_attributes>*c) Three items in queue (FIFO usage, with wrap around) scenario*
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
@@ -674,8 +674,8 @@ m2=Tail</panel_attributes>
       <w>180</w>
       <h>50</h>
     </coordinates>
-    <panel_attributes>Storage size: 11 elements
-Buffer size: 10 elements
+    <panel_attributes>Buffer size: 11 elements
+Queue size: 10 elements
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
@@ -709,12 +709,12 @@ layer=1</panel_attributes>
     <coordinates>
       <x>840</x>
       <y>360</y>
-      <w>180</w>
+      <w>160</w>
       <h>60</h>
     </coordinates>
     <panel_attributes>*Head index*
 --
-`pushHead` inserts element here (FIFO logic)
+`pushHead` inserts item here (FIFO logic)
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
@@ -734,12 +734,12 @@ style=wordwrap</panel_attributes>
     <coordinates>
       <x>720</x>
       <y>480</y>
-      <w>200</w>
+      <w>170</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>*Tail index*
 --
-`pull` removes element here
+`pull` removes item here
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
@@ -834,7 +834,7 @@ fg=gray</panel_attributes>
       <w>180</w>
       <h>60</h>
     </coordinates>
-    <panel_attributes>`peek` retrieves pointer to element from position in range (indexed from tail)
+    <panel_attributes>`peek` retrieves pointer to item from position in range (indexed from tail)
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
@@ -858,7 +858,7 @@ style=wordwrap</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=|&lt;-&gt;|
-Storage size</panel_attributes>
+Buffer size</panel_attributes>
     <additional_attributes>10.0;20.0;450.0;20.0</additional_attributes>
   </element>
   <element>
@@ -870,7 +870,7 @@ Storage size</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=|&lt;-&gt;|
-Buffer size</panel_attributes>
+Queue size</panel_attributes>
     <additional_attributes>10.0;20.0;410.0;20.0</additional_attributes>
   </element>
   <element>
@@ -960,7 +960,7 @@ Movement direction of head and tail (FIFO logic)</panel_attributes>
       <w>90</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>Stored element `a`
+    <panel_attributes>Stored item `a`
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
@@ -978,14 +978,14 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>520</x>
+      <x>540</x>
       <y>510</y>
-      <w>180</w>
+      <w>160</w>
       <h>60</h>
     </coordinates>
     <panel_attributes>*Tail index - 1*
 --
-`pushTail` inserts element here (LIFO logic)
+`pushTail` inserts item here (LIFO logic)
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>

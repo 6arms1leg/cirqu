@@ -28,69 +28,69 @@ fontfamily=SansSerif //possible: SansSerif,Serif,Monospaced
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>738</x>
-      <y>423</y>
-      <w>198</w>
+      <x>873</x>
+      <y>369</y>
+      <w>207</w>
       <h>90</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;Type&gt;&gt;
-cirquElemType
+    <panel_attributes>&lt;&lt;file&gt;&gt;
+CQtyp.h
 --
-#define CIRQUELEMQUAL_T ...
-typedef ... cirquElem_t;
-typedef ... cirquElemIdx_t;
+#define CQTYP_ITEMQUAL_T ...
+typedef ... CQtyp_item_t;
+typedef ... CQtyp_idx_t;
 fg=light_gray</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>702</x>
+      <x>693</x>
       <y>747</y>
-      <w>243</w>
+      <w>171</w>
       <h>117</h>
     </coordinates>
-    <panel_attributes>bufferObject
+    <panel_attributes>queueObject
 --
--buf:bffr_t
-+p_buf:bffr_t*=&amp;buf
--bufStrg[BUFSTRGSIZE]:cirquStrgElem_t
+-qu:CQqu_qu_t
++p_qu:CQqu_qu_t*=&amp;qu
+-buf[BUFSIZ]:CQqu_item_t
 
 --
-+bufCtor(void):void
++ctor(void):void
 fg=light_gray</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>657</x>
-      <y>450</y>
-      <w>99</w>
+      <x>666</x>
+      <y>423</y>
+      <w>225</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;use&gt;&gt;</panel_attributes>
-    <additional_attributes>90.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>657</x>
+      <x>666</x>
       <y>594</y>
-      <w>99</w>
+      <w>81</w>
       <h>171</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=me
 m1=*
 m2=1</panel_attributes>
-    <additional_attributes>70.0;170.0;70.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>50.0;170.0;50.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>666</x>
+      <x>657</x>
       <y>639</y>
       <w>36</w>
       <h>27</h>
@@ -102,8 +102,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>684</x>
-      <y>486</y>
+      <x>693</x>
+      <y>459</y>
       <w>36</w>
       <h>27</h>
     </coordinates>
@@ -114,7 +114,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>693</x>
+      <x>684</x>
       <y>630</y>
       <w>45</w>
       <h>36</h>
@@ -125,8 +125,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>684</x>
-      <y>459</y>
+      <x>693</x>
+      <y>432</y>
       <w>36</w>
       <h>45</h>
     </coordinates>
@@ -136,29 +136,29 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>279</x>
+      <x>270</x>
       <y>81</y>
       <w>585</w>
       <h>324</h>
     </coordinates>
     <panel_attributes>*CirQu library interface (IF)*
 --
-Items in grey are not part of the CirQu library (LIB) and have to be provided by the user.
+Elements in grey are not part of the CirQu library (LIB) and have to be provided by the user.
 The IF consists of the following parts:
 
 *IF0*
-The LIB provides a storage element type to allocate storage for a buffer and a buffer type to instantiate a buffer object.
+The LIB provides a queue buffer item type to allocate storage for a buffer and a queue object type to instantiate a queue object.
 
 *IF1*
-The LIB requires a `cirquElemType.h` header file with `#define`s/`typedefs` for:
+The LIB requires a `CQtyp.h` header file with `#define`s/`typedefs` for:
 
-* `CIRQUELEMQUAL_T` -- Optional type qualifier(s) for the buffer (e.g. `volatile`)
-* `cirquElem_t` -- The type of elements in the buffer to be managed by the LIB (e.g., `uint8_t`)
-* `cirquElemIdx_t` -- The type of the buffer index to be used by the LIB (must be an unsigned
+* `CQTYP_ITEMQUAL_T` -- Optional type qualifier(s) for the queue buffer (e.g. `volatile`)
+* `CQtyp_item_t` -- The type of items in the queue buffer to be managed by the LIB (e.g., `uint8_t`)
+* `CQtyp_idx_t` -- The type of the queue buffer index to be used by the LIB (must be an unsigned
    integer, i.e. `uint8_t`, `uint16_t`, ...)
 
 *IF2*
-The LIB requires a pointer to a buffer object to operate on.
+The LIB requires a pointer to a queue object to operate on.
 
 *IF3 (optional)*
 To simplify the build process, multiple LIB "instances" can be combined into a single wrapper module.
@@ -168,9 +168,9 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>261</x>
+      <x>252</x>
       <y>0</y>
-      <w>819</w>
+      <w>846</w>
       <h>882</h>
     </coordinates>
     <panel_attributes>cd CirQu
@@ -182,7 +182,7 @@ fontsize=30</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>657</x>
+      <x>648</x>
       <y>18</y>
       <w>63</w>
       <h>27</h>
@@ -195,7 +195,7 @@ layer=1</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>738</x>
+      <x>729</x>
       <y>18</y>
       <w>90</w>
       <h>45</h>
@@ -207,50 +207,50 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>279</x>
+      <x>270</x>
       <y>423</y>
-      <w>387</w>
+      <w>405</w>
       <h>198</h>
     </coordinates>
-    <panel_attributes>buffer
+    <panel_attributes>queue
 --
 
 --
--advHead(me:bffr_t*):void
--advTail(me:bffr_t*):void
--retHead(me:bffr_t*):void
--retTail(me:bffr_t*):void
-+ini(me:bffr_t*, strg:cirquStrgElem_t*, strgSize:cirquElemIdx_t):void
-+pushHead(me:bffr_t*, elem:cirquElem_t):void
-+pushTail(me:bffr_t*, elem:cirquElem_t):void
-+pull(me:bffr_t*, elem:cirquElem_t*):bool
-+peek(me:bffr_t*, elemPos:cirquElemIdx_t):cirquElem_t*
-+cntFree(me:bffr_t*):cirquElemIdx_t</panel_attributes>
+-advHead(me:CQqu_qu_t*):void
+-advTail(me:CQqu_qu_t*):void
+-retHead(me:CQqu_qu_t*):void
+-retTail(me:CQqu_qu_t*):void
++init(me:CQqu_qu_t*, p_buf:CQqu_item_t*, bufSiz:CQtyp_idx_t):void
++pushHead(me:CQqu_qu_t*, item:CQtyp_item_t):void
++pushTail(me:CQqu_qu_t*, item:CQtyp_item_t):void
++pull(me:CQqu_qu_t*, item:CQtyp_item_t*):bool
++peek(me:CQqu_qu_t*, itemPos:CQtyp_idx_t):CQtyp_item_t*
++cntFree(me:CQqu_qu_t*):CQtyp_idx_t</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>351</x>
+      <x>342</x>
       <y>648</y>
       <w>279</w>
       <h>135</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Type&gt;&gt;
-bufferType
+queueObjectType
 --
 typedef struct {
-    CIRQUELEMQUAL_T cirquElem_t* strg;
-    cirquElemIdx_t strgSize;
-    CIRQUELEMQUAL_T cirquElemIdx_t head;
-    CIRQUELEMQUAL_T cirquElemIdx_t tail;
-} bffr_t;</panel_attributes>
+    CQTYP_ITEMQUAL_T CQtyp_item_t* p_buf;
+    CQtyp_idx_t bufSiz;
+    CQTYP_ITEMQUAL_T CQtyp_idx_t head;
+    CQTYP_ITEMQUAL_T CQtyp_idx_t tail;
+} CQqu_qu_t;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>531</x>
+      <x>522</x>
       <y>612</y>
       <w>63</w>
       <h>54</h>
@@ -262,7 +262,7 @@ typedef struct {
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>621</x>
+      <x>612</x>
       <y>747</y>
       <w>99</w>
       <h>36</h>
@@ -274,7 +274,7 @@ typedef struct {
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>648</x>
+      <x>639</x>
       <y>792</y>
       <w>36</w>
       <h>27</h>
@@ -286,7 +286,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>657</x>
+      <x>648</x>
       <y>756</y>
       <w>36</w>
       <h>54</h>
@@ -297,21 +297,21 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>279</x>
+      <x>270</x>
       <y>801</y>
       <w>351</w>
       <h>63</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Type&gt;&gt;
-strgElemType
+queueItemType
 --
-typedef CIRQUELEMQUAL_T cirquElem_t cirquStrgElem_t;</panel_attributes>
+typedef CQTYP_ITEMQUAL_T CQtyp_item_t CQqu_item_t;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>288</x>
+      <x>279</x>
       <y>612</y>
       <w>63</w>
       <h>207</h>
@@ -323,7 +323,7 @@ typedef CIRQUELEMQUAL_T cirquElem_t cirquStrgElem_t;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>621</x>
+      <x>612</x>
       <y>828</y>
       <w>99</w>
       <h>36</h>
@@ -335,7 +335,7 @@ typedef CIRQUELEMQUAL_T cirquElem_t cirquStrgElem_t;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>666</x>
+      <x>657</x>
       <y>810</y>
       <w>36</w>
       <h>54</h>
@@ -346,17 +346,17 @@ typedef CIRQUELEMQUAL_T cirquElem_t cirquStrgElem_t;</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>756</x>
+      <x>747</x>
       <y>612</y>
-      <w>126</w>
+      <w>189</w>
       <h>117</h>
     </coordinates>
     <panel_attributes>&lt;&lt;file&gt;&gt;
-cirquWrapper.h
+CQwrap.h
 --
-#define CIRQUID ...
-#include "buffer.h"
-#undef CIRQUID
+#define CQTEMPLSEUP_ID ...
+#include "CQqu.h"
+#undef CQTEMPLSEUP_ID
 
 ...
 fg=light_gray</panel_attributes>
@@ -365,30 +365,30 @@ fg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>657</x>
+      <x>666</x>
       <y>549</y>
-      <w>135</w>
+      <w>117</w>
       <h>81</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;use&gt;&gt;
 fg=light_gray</panel_attributes>
-    <additional_attributes>10.0;20.0;130.0;20.0;130.0;70.0</additional_attributes>
+    <additional_attributes>10.0;20.0;110.0;20.0;110.0;70.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>900</x>
-      <y>531</y>
-      <w>126</w>
+      <x>783</x>
+      <y>477</y>
+      <w>189</w>
       <h>117</h>
     </coordinates>
     <panel_attributes>&lt;&lt;file&gt;&gt;
-cirquWrapper.c
+CQwrap.c
 --
-#define CIRQUID ...
-#include "buffer.c"
-#undef CIRQUID
+#define CQTEMPLSEUP_ID ...
+#include "CQqu.c"
+#undef CQTEMPLSEUP_ID
 
 ...
 fg=light_gray</panel_attributes>
@@ -397,21 +397,21 @@ fg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>657</x>
-      <y>531</y>
-      <w>261</w>
+      <x>666</x>
+      <y>486</y>
+      <w>135</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;use&gt;&gt;
 fg=light_gray</panel_attributes>
-    <additional_attributes>10.0;20.0;270.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;130.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>963</x>
-      <y>666</y>
+      <x>954</x>
+      <y>612</y>
       <w>99</w>
       <h>126</h>
     </coordinates>
@@ -423,30 +423,30 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>873</x>
-      <y>675</y>
-      <w>108</w>
+      <x>927</x>
+      <y>621</y>
+      <w>45</w>
       <h>45</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;30.0;100.0;10.0</additional_attributes>
+    <additional_attributes>10.0;30.0;30.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>927</x>
-      <y>639</y>
-      <w>54</w>
+      <y>585</y>
+      <w>45</w>
       <h>63</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;40.0;50.0</additional_attributes>
+    <additional_attributes>10.0;10.0;30.0;50.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>792</x>
-      <y>567</y>
+      <x>729</x>
+      <y>522</y>
       <w>36</w>
       <h>27</h>
     </coordinates>
@@ -457,23 +457,23 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>756</x>
-      <y>540</y>
-      <w>54</w>
-      <h>54</h>
+      <x>738</x>
+      <y>495</y>
+      <w>36</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>40.0;40.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;30.0;20.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>765</x>
-      <y>567</y>
-      <w>45</w>
-      <h>36</h>
+      <x>738</x>
+      <y>540</y>
+      <w>36</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>30.0;10.0;10.0;20.0</additional_attributes>
+    <additional_attributes>20.0;10.0;10.0;30.0</additional_attributes>
   </element>
 </diagram>

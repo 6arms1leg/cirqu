@@ -212,7 +212,7 @@ CQqu_init0(...);
 
 ![UML class diagram](./doc/arc/figures/cirqu-cd.png)
 
-![Example buffer object](./doc/arc/figures/cirqu-example-bffr-obj-cstmd.png)
+![Example queue object](./doc/arc/figures/cirqu-ex-qu-obj-cstmd.png)
 
 ![UML package diagram](./doc/arc/figures/cirqu-pd.png)
 
