@@ -67,36 +67,42 @@ help:
 	@echo "Make:  * clean-static"
 	@echo "Make:  * clean-all"
 
-$(BUILD_DIR)/cirqu/obj/CQwrap.o: \
-    $(BUILD_CONTEXT)/ex-app/CQwrap.c
+$(BUILD_DIR)/cirqu/obj/CQwrap.o: $(BUILD_CONTEXT)/ex-app/CQwrap.c \
+                                 $(SRC_DIR)/CQqu.h \
+                                 $(SRC_DIR)/CQqu.c \
+                                 $(SRC_DIR)/CQtemplSeUp.h \
+                                 $(SRC_DIR)/CQtemplClUp.h \
+                                 $(BUILD_CONTEXT)/ex-app/CQtyp.h
 	mkdir -p ./build/cirqu/obj/
 	$(CC) \
 	    $(CC_FLAGS) \
 	    -c \
 	    -I$(SRC_DIR)/ \
 	    -I$(BUILD_CONTEXT)/ex-app/ \
-	    $^ \
+	    $< \
 	    -o $@
 
-$(BUILD_DIR)/cirqu/obj/CQobj.o: \
-    $(BUILD_CONTEXT)/ex-app/CQobj.c
+$(BUILD_DIR)/cirqu/obj/CQobj.o: $(BUILD_CONTEXT)/ex-app/CQobj.c \
+                                $(BUILD_DIR)/cirqu/obj/CQwrap.o
 	mkdir -p ./build/cirqu/obj/
 	$(CC) \
 	    $(CC_FLAGS) \
 	    -c \
 	    -I$(SRC_DIR)/ \
 	    -I$(BUILD_CONTEXT)/ex-app/ \
-	    $^ \
+	    $< \
 	    -o $@
 
-$(BUILD_DIR)/cirqu/obj/main.o: $(BUILD_CONTEXT)/ex-app/main.c
+$(BUILD_DIR)/cirqu/obj/main.o: $(BUILD_CONTEXT)/ex-app/main.c \
+                               $(BUILD_DIR)/cirqu/obj/CQwrap.o \
+                               $(BUILD_DIR)/cirqu/obj/CQobj.o
 	mkdir -p ./build/cirqu/obj/
 	$(CC) \
 	    $(CC_FLAGS) \
 	    -c \
 	    -I$(SRC_DIR)/ \
 	    -I$(BUILD_CONTEXT)/ex-app/ \
-	    $^ \
+	    $< \
 	    -o $@
 
 ex-app: $(BUILD_DIR)/cirqu/ex-app
