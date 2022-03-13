@@ -10,7 +10,7 @@
 
 /* Re-occurring strings */
 #define APP_PROMPT "CirQu ex-app:  "
-#define CTOR_MSG(ID) "Construct queue `qu" #ID "` ..."
+#define CTOR_MSG(ID) ">>> Construct queue `qu" #ID "` ... <<<"
 #define CNT_MSG(ID) "Count of free item slots in `qu" #ID "`:  "
 #define PULL_MSG(ID) "Pulled (tail) item from `qu" #ID "`:  "
 
@@ -19,7 +19,7 @@ int MAIN(void) {
     char item0 = '\0';
     float_t item1 = 0.0f;
 
-    puts(APP_PROMPT "~~ Welcome to the CirQu queue example application! ~~");
+    puts(APP_PROMPT "~~~ Welcome to the CirQu queue example application! ~~~");
 
     /* Queue 0 */
 
@@ -83,7 +83,7 @@ int MAIN(void) {
 
     printf(APP_PROMPT CNT_MSG(1) "%i\n", (int)CQqu_cntFree1(CQobj_p_qu1));
 
-    puts(APP_PROMPT "~~ Bye! ~~");
+    puts(APP_PROMPT "~~~ Bye! ~~~");
 
     return(0);
 }
