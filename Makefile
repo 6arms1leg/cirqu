@@ -5,20 +5,22 @@ SRC_DIR := $(BUILD_CONTEXT)/src
 CC := gcc
 CC_FLAGS := -Wall \
             -Wextra \
-            -pedantic \
-            -Wpointer-arith \
-            -Wuninitialized \
-            -Wcast-align \
-            -Wconversion \
-            -Wwrite-strings \
-            -Wno-comment \
-            -Wshadow \
-            -Og \
-            -g \
-            -std=c99 \
+            -Wpedantic \
             -Wredundant-decls \
             -Wmissing-declarations \
-            -Werror
+            -Wmissing-prototypes \
+            -Wstrict-prototypes \
+            -Wdouble-promotion \
+            -Wcast-align \
+            -Wcast-qual \
+            -Wconversion \
+            -Wwrite-strings \
+            -Wparentheses \
+            -Wshadow \
+            -Werror \
+            -std=c99 \
+            -Og \
+            -g
 LD := gcc
 LD_FLAGS := 
 
