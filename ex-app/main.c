@@ -81,7 +81,7 @@ int MAIN(void) {
     (void)printf(APP_PROMPT CNT_MSG(1) "%u\n", CQqu_cntFree1(CQobj_p_qu1));
 
     (void)CQqu_pull1(CQobj_p_qu1, &item1);
-    (void)printf(APP_PROMPT PULL_MSG(1) "%f\n", item1);
+    (void)printf(APP_PROMPT PULL_MSG(1) "%f\n", (double_t)item1);
 
     (void)printf(APP_PROMPT CNT_MSG(1) "%u\n", CQqu_cntFree1(CQobj_p_qu1));
 
