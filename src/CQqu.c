@@ -61,8 +61,9 @@ static inline void retHead(CQqu_qu_t* const me) {
        functions */
 
     if (0u == me->head) { /* Head points to first item? */
-        me->head = me->bufSiz - (CQtyp_idx_t)1u; /* Wrap head around to last
-                                                    item */
+        me->head = me->bufSiz - (CQtyp_idx_t)1u;
+            /* Wrap head around to last item; explicit type cast needed (safe
+               here) */
     }
     else {
         me->head--;
@@ -79,8 +80,9 @@ static inline void retTail(CQqu_qu_t* const me) {
        functions */
 
     if (0u == me->tail) { /* Tail points to first item? */
-        me->tail = me->bufSiz - (CQtyp_idx_t)1u; /* Wrap tail around to last
-                                                    item */
+        me->tail = me->bufSiz - (CQtyp_idx_t)1u;
+            /* Wrap tail around to last item; explicit type cast needed (safe
+               here) */
     }
     else {
         me->tail--;
@@ -176,9 +178,11 @@ CQtyp_idx_t CQqu_cntFree(const CQqu_qu_t* const me) {
     /* Handle free item count calculation depending on head/tail position */
     if (me->tail <= me->head) {
         itemFreeCnt = (CQtyp_idx_t)(me->bufSiz - 1u - (me->head - me->tail));
+            /* Explicit type cast needed (safe here) */
     }
     else {
         itemFreeCnt = (CQtyp_idx_t)(me->tail - me->head - 1u);
+            /* Explicit type cast needed (safe here) */
     }
 
     return (itemFreeCnt);

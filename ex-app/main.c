@@ -82,6 +82,7 @@ int MAIN(void) {
 
     (void)CQqu_pull1(CQobj_p_qu1, &item1);
     (void)printf(APP_PROMPT PULL_MSG(1) "%f\n", (double_t)item1);
+        /* Explicit type cast needed (safe here) */
 
     (void)printf(APP_PROMPT CNT_MSG(1) "%u\n", CQqu_cntFree1(CQobj_p_qu1));
 
