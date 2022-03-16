@@ -3,11 +3,9 @@
 #ifndef CQOBJ_H
 #define CQOBJ_H
 
-/* CirQu queue interface (configured with ID 0)
- *
- * "External" include guards necessary since included module interface has none
- * due to "template" feature.
- */
+/* CirQu queue interface configured with ID.
+   "External" include guards necessary since included module interface has none
+   due to "template" feature. */
 #ifndef CQQU_H0
 #define CQQU_H0
 #define CQTEMPLSEUP_ID 0

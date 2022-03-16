@@ -1,7 +1,7 @@
 /** \file */
 
 /* Intentionally include implementation files here (against convention) to
- * allow multiple "instances" of library while keeping the build process simple
+ * allow multiple "instances" of lib. while keeping the build process simple
  */
 
 /* Implementation of CirQu lib. configured with ID */

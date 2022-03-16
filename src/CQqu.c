@@ -2,7 +2,7 @@
 
 #include "CQqu.h"
 
-/* Setup template to allow multiple "instances" of library */
+/* Setup template (allow multiple "instances" of lib.) */
 #include "CQtemplSeUp.h"
 #define advHead(a) CQTEMPLSEUP_CAT(advHead, CQTEMPLSEUP_ID)(a)
 #define advTail(a) CQTEMPLSEUP_CAT(advTail, CQTEMPLSEUP_ID)(a)

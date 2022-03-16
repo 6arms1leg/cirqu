@@ -3,7 +3,6 @@
 #ifndef CQTYP_H
 #define CQTYP_H
 
-/* libc interfaces */
 #include <stdint.h>
 #include <math.h>
 

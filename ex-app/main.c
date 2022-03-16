@@ -2,11 +2,8 @@
 
 #include "main.h"
 
-/* Wrapper module with multiple "instances" of CirQu lib. */
-#include "CQwrap.h"
-
-/* Application interface */
-#include "CQobj.h"
+#include "CQwrap.h" /* Wrapper module with multiple "instances" of CirQu lib. */
+#include "CQobj.h" /* Application interface */
 
 /* Re-occurring strings */
 #define APP_PROMPT "CirQu ex-app:  "
@@ -22,7 +19,8 @@ int MAIN(void) {
     (void)puts(APP_PROMPT
                "~~~ Welcome to the CirQu queue example application! ~~~");
 
-    /* Queue 0 */
+    /* Queue 0
+     */
 
     (void)puts(APP_PROMPT CTOR_MSG(0));
     CQobj_ctor0(); /* Init. CirQu queue object */
@@ -65,7 +63,8 @@ int MAIN(void) {
 
     (void)printf(APP_PROMPT CNT_MSG(0) "%u\n", CQqu_cntFree0(CQobj_p_qu0));
 
-    /* Queue 1 */
+    /* Queue 1
+     */
 
     (void)puts(APP_PROMPT CTOR_MSG(1));
     CQobj_ctor1(); /* Init. CirQu queue object */

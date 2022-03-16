@@ -1,22 +1,17 @@
 /** \file */
 
-/* No include guards here to allow multiple inclusions due to "template"
- * feature
+/* No include guards here (allow multiple inclusions due to "template" feature)
  */
 
 /* `"` used intentionally.  This allows the user to override and provide his
- * own implementation before falling back to libc.
- */
+   own implementation before falling back to libc. */
 #include "stdint.h"
 #include "stddef.h"
 #include "stdbool.h"
 #include "assert.h" /* For sanity checks (Design by Contract) */
 
-/* Must be provided; application/project-specific */
-#include "CQtyp.h"
-
-/* Setup template to allow multiple "instances" of library */
-#include "CQtemplSeUp.h"
+#include "CQtyp.h" /* Must be provided; application/project-specific */
+#include "CQtemplSeUp.h" /* Setup template (allow multiple "instances" of lib.) */
 
 /* ATTRIBUTES
  * ==========
@@ -122,5 +117,4 @@ const CQTYP_ITEMQUAL_T CQtyp_item_t* CQqu_peek(const CQqu_qu_t* const me,
  */
 CQtyp_idx_t CQqu_cntFree(const CQqu_qu_t* const me);
 
-/* Cleanup template (multiple "instances") */
-#include "CQtemplClUp.h"
+#include "CQtemplClUp.h" /* Cleanup template (multiple "instances") */

@@ -3,11 +3,9 @@
 #ifndef ASSERT_H
 #define ASSERT_H
 
-/* libc interface */
 #include <stdbool.h>
 
-/* Exception handling library interface */
-#include "CException.h"
+#include "CException.h" /* Exception handling lib. interface */
 
 /* `assert` replacement for unit testing */
 #define assert(condition_) if (false == (condition_)) Throw(0)

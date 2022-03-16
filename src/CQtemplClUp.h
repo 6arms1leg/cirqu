@@ -1,7 +1,6 @@
 /** \file */
 
-/* No include guards here to allow multiple inclusions due to "template"
- * feature
+/* No include guards here (allow multiple inclusions due to "template" feature)
  */
 
 /* Function-like macros to concatenate two names */

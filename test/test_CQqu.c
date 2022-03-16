@@ -2,18 +2,16 @@
 
 #ifdef TEST
 
-/* libc interfaces */
 #include <stdint.h>
 #include <stdbool.h>
-#include "assert.h" /* Sanity checks (Design by Contract) */
+#include "assert.h" /* Sanity checks (Design by Contract); replaced for unit
+                       testing */
 
 #include "unity.h"
 
-/* CirQu lib. interface configured with ID
- *
- * "External" include guards necessary since included module interface has none
- * due to "template" feature.
- */
+/* CirQu lib. interface configured with ID.
+   "External" include guards necessary since included module interface has none
+   due to "template" feature. */
 #ifndef CQQU_H0
 #define CQQU_H0
 #define CQTEMPLSEUP_ID 0

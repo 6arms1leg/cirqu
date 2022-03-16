@@ -1,7 +1,6 @@
 /** \file */
 
-/* No include guards here to allow multiple inclusions due to "template"
- * feature
+/* No include guards here (allow multiple inclusions due to "template" feature)
  */
 
 /* Sanity check */
@@ -9,11 +8,9 @@
 #error "CQTEMPLSEUP_ID must be defined"
 #endif /* CQTEMPLSEUP_ID */
 
-/* Function-like macros to concatenate two names
- *
- * One layer of indirection required to always correctly concatenate and expand
- * macros.
- */
+/* Function-like macros to concatenate two names.
+   One layer of indirection required to always correctly concatenate and expand
+   macros. */
 #define CQTEMPLSEUP_CAT_I(a, b) a##b
 #define CQTEMPLSEUP_CAT(a, b) CQTEMPLSEUP_CAT_I(a, b) /* Layer of indirection */
 

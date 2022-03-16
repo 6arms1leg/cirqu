@@ -3,8 +3,7 @@
 #ifndef CQOBJ_H
 #define CQOBJ_H
 
-/* Wrapper module with multiple "instances" of CirQu library */
-#include "CQwrap.h"
+#include "CQwrap.h" /* Wrapper module with multiple "instances" of CirQu lib. */
 
 /* ATTRIBUTES
  * ==========
