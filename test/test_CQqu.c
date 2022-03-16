@@ -23,7 +23,7 @@
 
 /** \brief Run before every test */
 void setUp(void) {
-    CQobj_ctor0(); /* Init. queue object */
+    CQobj_qu0Ctor(); /* Init. queue object */
 }
 
 /** \brief Run after every test */
@@ -33,14 +33,14 @@ void tearDown(void) {
 
 /** \brief Test queue object init. */
 void test_CQqu_initQu(void) {
-    TEST_ASSERT_EQUAL_UINT8(CQOBJ_BUFSIZ0, CQobj_p_qu0->bufSiz);
+    TEST_ASSERT_EQUAL_UINT8(CQOBJ_BUF0_SIZ, CQobj_p_qu0->bufSiz);
     TEST_ASSERT_EQUAL_UINT8(0u, CQobj_p_qu0->head);
     TEST_ASSERT_EQUAL_UINT8(0u, CQobj_p_qu0->tail);
 }
 
 /** \brief Test queue object is empty after init. */
 void test_CQqu_quEmptyAfterInit(void) {
-    const uint8_t itemFreeCntExp = CQOBJ_QUSIZ0;
+    const uint8_t itemFreeCntExp = CQOBJ_QU0_SIZ;
     uint8_t itemFreeCntAct = 0u;
 
     itemFreeCntAct = CQqu_cntFree0(CQobj_p_qu0);

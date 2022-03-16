@@ -9,18 +9,21 @@
  * ==========
  */
 
-#define CQOBJ_BUFSIZ0 4u
-#define CQOBJ_BUFSIZ1 6u
+#define CQOBJ_BUF0ALPHA_SIZ 4u
+#define CQOBJ_BUF0BETA_SIZ 3u
+#define CQOBJ_BUF1_SIZ 6u
 
 /* `-1` because one item slot is used to distinguish full and empty fill level */
-#define CQOBJ_QUSIZ0 (CQOBJ_BUFSIZ0 - 1u)
-#define CQOBJ_QUSIZ1 (CQOBJ_BUFSIZ1 - 1u)
+#define CQOBJ_QU0ALPHA_SIZ (CQOBJ_BUF0ALPHA_SIZ - 1u)
+#define CQOBJ_QU0BETA_SIZ (CQOBJ_BUF0BETA_SIZ - 1u)
+#define CQOBJ_QU1_SIZ (CQOBJ_BUF1_SIZ - 1u)
 
 /**
  * \{
  * \brief Global opaque pointers to queue objects
  */
-extern CQqu_qu_t0* const CQobj_p_qu0;
+extern CQqu_qu_t0* const CQobj_p_qu0Alpha;
+extern CQqu_qu_t0* const CQobj_p_qu0Beta;
 extern CQqu_qu_t1* const CQobj_p_qu1;
 /** \} */
 
@@ -32,8 +35,9 @@ extern CQqu_qu_t1* const CQobj_p_qu1;
  * \{
  * \brief Constructors of queue objects
  */
-void CQobj_ctor0(void);
-void CQobj_ctor1(void);
+void CQobj_qu0AlphaCtor(void);
+void CQobj_qu0BetaCtor(void);
+void CQobj_qu1Ctor(void);
 /** \} */
 
 #endif /* CQOBJ_H */

@@ -17,8 +17,8 @@
  * ==========
  */
 
-#define CQOBJ_BUFSIZ0 4u
-#define CQOBJ_QUSIZ0 (CQOBJ_BUFSIZ0 - 1u)
+#define CQOBJ_BUF0_SIZ 4u
+#define CQOBJ_QU0_SIZ (CQOBJ_BUF0_SIZ - 1u)
     /* `-1` because one item slot is used to distinguish full and empty fill
        level */
 
@@ -30,6 +30,6 @@ extern CQqu_qu_t0* const CQobj_p_qu0;
  */
 
 /** \brief Constructor of queue object */
-void CQobj_ctor0(void);
+void CQobj_qu0Ctor(void);
 
 #endif /* CQOBJ_H */

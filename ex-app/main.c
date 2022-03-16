@@ -19,55 +19,71 @@ int MAIN(void) {
     (void)puts(APP_PROMPT
                "~~~ Welcome to the CirQu queue example application! ~~~");
 
-    /* Queue 0
+    /* Queue 0 Alpha
      */
 
-    (void)puts(APP_PROMPT CTOR_MSG(0));
-    CQobj_ctor0(); /* Init. CirQu queue object */
+    (void)puts(APP_PROMPT CTOR_MSG(0Alpha));
+    CQobj_qu0AlphaCtor(); /* Init. queue object */
 
-    (void)printf(APP_PROMPT CNT_MSG(0) "%u\n", CQqu_cntFree0(CQobj_p_qu0));
+    (void)printf(APP_PROMPT CNT_MSG(0Alpha) "%u\n",
+                 CQqu_cntFree0(CQobj_p_qu0Alpha));
 
-    (void)puts(APP_PROMPT "Push (head) items `a`, `b`, `c` to `qu0` ...");
-    CQqu_pushHead0(CQobj_p_qu0, 'a');
-    CQqu_pushHead0(CQobj_p_qu0, 'b');
-    CQqu_pushHead0(CQobj_p_qu0, 'c');
+    (void)puts(APP_PROMPT "Push (head) items `a`, `b`, `c` to `qu0Alpha` ...");
+    CQqu_pushHead0(CQobj_p_qu0Alpha, 'a');
+    CQqu_pushHead0(CQobj_p_qu0Alpha, 'b');
+    CQqu_pushHead0(CQobj_p_qu0Alpha, 'c');
 
-    (void)printf(APP_PROMPT CNT_MSG(0) "%u\n", CQqu_cntFree0(CQobj_p_qu0));
+    (void)printf(APP_PROMPT CNT_MSG(0Alpha) "%u\n",
+                 CQqu_cntFree0(CQobj_p_qu0Alpha));
 
-    item0 = *CQqu_peek0(CQobj_p_qu0, 1u);
-    (void)printf(APP_PROMPT "Peeked tail+1 item in `qu0`:  %c\n", item0);
+    item0 = *CQqu_peek0(CQobj_p_qu0Alpha, 1u);
+    (void)printf(APP_PROMPT "Peeked tail+1 item in `qu0Alpha`:  %c\n", item0);
 
-    (void)printf(APP_PROMPT CNT_MSG(0) "%u\n", CQqu_cntFree0(CQobj_p_qu0));
+    (void)printf(APP_PROMPT CNT_MSG(0Alpha) "%u\n",
+                 CQqu_cntFree0(CQobj_p_qu0Alpha));
 
-    (void)puts(APP_PROMPT "Push (head) item `d` to `qu0` ...");
-    CQqu_pushHead0(CQobj_p_qu0, 'd');
+    (void)puts(APP_PROMPT "Push (head) item `d` to `qu0Alpha` ...");
+    CQqu_pushHead0(CQobj_p_qu0Alpha, 'd');
 
-    (void)printf(APP_PROMPT CNT_MSG(0) "%u\n", CQqu_cntFree0(CQobj_p_qu0));
+    (void)printf(APP_PROMPT CNT_MSG(0Alpha) "%u\n",
+                 CQqu_cntFree0(CQobj_p_qu0Alpha));
 
-    (void)CQqu_pull0(CQobj_p_qu0, &item0);
-    (void)printf(APP_PROMPT PULL_MSG(0) "%c\n", item0);
+    (void)CQqu_pull0(CQobj_p_qu0Alpha, &item0);
+    (void)printf(APP_PROMPT PULL_MSG(0Alpha) "%c\n", item0);
 
-    (void)printf(APP_PROMPT CNT_MSG(0) "%u\n", CQqu_cntFree0(CQobj_p_qu0));
+    (void)printf(APP_PROMPT CNT_MSG(0Alpha) "%u\n",
+                 CQqu_cntFree0(CQobj_p_qu0Alpha));
 
-    (void)puts(APP_PROMPT "Push (tail) item `e` to `qu0` ...");
-    CQqu_pushTail0(CQobj_p_qu0, 'e');
+    (void)puts(APP_PROMPT "Push (tail) item `e` to `qu0Alpha` ...");
+    CQqu_pushTail0(CQobj_p_qu0Alpha, 'e');
 
-    (void)printf(APP_PROMPT CNT_MSG(0) "%u\n", CQqu_cntFree0(CQobj_p_qu0));
+    (void)printf(APP_PROMPT CNT_MSG(0Alpha) "%u\n",
+                 CQqu_cntFree0(CQobj_p_qu0Alpha));
 
-    (void)CQqu_pull0(CQobj_p_qu0, &item0);
-    (void)printf(APP_PROMPT PULL_MSG(0) "%c\n", item0);
-    (void)CQqu_pull0(CQobj_p_qu0, &item0);
-    (void)printf(APP_PROMPT PULL_MSG(0) "%c\n", item0);
-    (void)CQqu_pull0(CQobj_p_qu0, &item0);
-    (void)printf(APP_PROMPT PULL_MSG(0) "%c\n", item0);
+    (void)CQqu_pull0(CQobj_p_qu0Alpha, &item0);
+    (void)printf(APP_PROMPT PULL_MSG(0Alpha) "%c\n", item0);
+    (void)CQqu_pull0(CQobj_p_qu0Alpha, &item0);
+    (void)printf(APP_PROMPT PULL_MSG(0Alpha) "%c\n", item0);
+    (void)CQqu_pull0(CQobj_p_qu0Alpha, &item0);
+    (void)printf(APP_PROMPT PULL_MSG(0Alpha) "%c\n", item0);
 
-    (void)printf(APP_PROMPT CNT_MSG(0) "%u\n", CQqu_cntFree0(CQobj_p_qu0));
+    (void)printf(APP_PROMPT CNT_MSG(0Alpha) "%u\n",
+                 CQqu_cntFree0(CQobj_p_qu0Alpha));
+
+    /* Queue 0 Beta
+     */
+
+    (void)puts(APP_PROMPT CTOR_MSG(0Beta));
+    CQobj_qu0BetaCtor(); /* Init. queue object */
+
+    (void)printf(APP_PROMPT CNT_MSG(0Beta) "%u\n",
+            CQqu_cntFree0(CQobj_p_qu0Beta));
 
     /* Queue 1
      */
 
     (void)puts(APP_PROMPT CTOR_MSG(1));
-    CQobj_ctor1(); /* Init. CirQu queue object */
+    CQobj_qu1Ctor(); /* Init. queue object */
 
     (void)printf(APP_PROMPT CNT_MSG(1) "%u\n", CQqu_cntFree1(CQobj_p_qu1));
 
