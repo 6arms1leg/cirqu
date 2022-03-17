@@ -671,11 +671,11 @@ m2=Tail</panel_attributes>
     <coordinates>
       <x>520</x>
       <y>90</y>
-      <w>180</w>
+      <w>150</w>
       <h>50</h>
     </coordinates>
-    <panel_attributes>Buffer size: 11 elements
-Queue size: 10 elements
+    <panel_attributes>Buffer size: 11 items
+Queue size: 10 items
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>

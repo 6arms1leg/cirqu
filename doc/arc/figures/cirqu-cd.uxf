@@ -54,10 +54,10 @@ fg=light_gray</panel_attributes>
 --
 -qu:CQqu_qu_t
 +p_qu:CQqu_qu_t*=&amp;qu
--buf[BUFSIZ]:CQqu_item_t
+-buf[BUF_SIZ]:CQqu_item_t
 
 --
-+ctor(void):void
++quCtor(void):void
 fg=light_gray</panel_attributes>
     <additional_attributes/>
   </element>
