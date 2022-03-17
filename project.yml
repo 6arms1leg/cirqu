@@ -50,6 +50,7 @@
 
 :flags:
   :common_c_flags: &common_c_flags
+    - -Wall
     - -Wextra
     - -Wpedantic
 #    - -Wredundant-decls
