@@ -103,5 +103,5 @@ int MAIN(void) {
 
     (void)puts(APP_PROMPT "~~~ Bye! ~~~");
 
-    return(0);
+    return (0);
 }
