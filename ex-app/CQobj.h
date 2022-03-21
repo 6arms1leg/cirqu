@@ -5,10 +5,6 @@
 
 #include "CQwrap.h" /* Wrapper module with multiple "instances" of CirQu lib. */
 
-/* ATTRIBUTES
- * ==========
- */
-
 #define CQOBJ_BUF0ALPHA_SIZ 4u
 #define CQOBJ_BUF0BETA_SIZ 3u
 #define CQOBJ_BUF1_SIZ 6u
@@ -17,6 +13,10 @@
 #define CQOBJ_QU0ALPHA_SIZ (CQOBJ_BUF0ALPHA_SIZ - 1u)
 #define CQOBJ_QU0BETA_SIZ (CQOBJ_BUF0BETA_SIZ - 1u)
 #define CQOBJ_QU1_SIZ (CQOBJ_BUF1_SIZ - 1u)
+
+/* ATTRIBUTES
+ * ==========
+ */
 
 /**
  * \{

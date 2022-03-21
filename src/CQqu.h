@@ -13,10 +13,6 @@
 #include "CQtyp.h" /* Must be provided; application/project-specific */
 #include "CQtemplSeUp.h" /* Setup template (allow multiple "instances" of lib.) */
 
-/* ATTRIBUTES
- * ==========
- */
-
 /** \brief Queue buffer item type */
 typedef CQTYP_ITEMQUAL_T CQtyp_item_t CQqu_item_t;
 

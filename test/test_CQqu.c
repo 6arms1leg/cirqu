@@ -21,6 +21,10 @@
 
 #include "CQobj.h"
 
+/* OPERATIONS
+ * ==========
+ */
+
 /** \brief Run before every test */
 void setUp(void) {
     CQobj_qu0Ctor(); /* Init. queue object */

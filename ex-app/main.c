@@ -11,6 +11,10 @@
 #define CNT_MSG(ID) "Count of free item slots in `qu" #ID "`:  "
 #define PULL_MSG(ID) "Pulled (tail) item from `qu" #ID "`:  "
 
+/* OPERATIONS
+ * ==========
+ */
+
 int MAIN(void) {
     /* Temporary storages for peeked/pulled queue items */
     char item0 = '\0';
