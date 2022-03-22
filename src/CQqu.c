@@ -146,14 +146,13 @@ const CQTYP_ITEMQUAL_T CQtyp_item_t* CQqu_peek(const CQqu_qu_t* const me,
     assert((NULL != me) &&
            (me->bufSiz - 1u > itemPos));
 
-    /* Init. variable used in peek item position calculation and return pointer */
-    CQtyp_idx_t diff = 0u;
-    const CQTYP_ITEMQUAL_T CQtyp_item_t* p_item = NULL;
+    const CQTYP_ITEMQUAL_T CQtyp_item_t* p_item = NULL; /* Return pointer */
 
     /* Requested item position is in range (points to non-vacant item slot)? */
     if (me->bufSiz - 1u - CQqu_cntFree(me) > itemPos) {
+        CQtyp_idx_t diff = me->bufSiz - me->tail; /* Peek item position calc. */
+
         /* Handle wrap around */
-        diff = me->bufSiz - me->tail;
         if (diff <= itemPos) {
             p_item = &me->p_buf[itemPos - diff];
         }
@@ -168,8 +167,7 @@ const CQTYP_ITEMQUAL_T CQtyp_item_t* CQqu_peek(const CQqu_qu_t* const me,
 CQtyp_idx_t CQqu_cntFree(const CQqu_qu_t* const me) {
     assert(NULL != me); /* Sanity check (Design by Contract) */
 
-    CQtyp_idx_t itemFreeCnt = 0u; /* Init. variable used in free item count
-                                     calculation */
+    CQtyp_idx_t itemFreeCnt = 0u; /* Var. used for free item count calc. */
 
     /* Handle free item count calculation depending on head/tail position */
     if (me->tail <= me->head) {

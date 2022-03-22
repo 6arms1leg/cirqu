@@ -55,12 +55,9 @@ void test_CQqu_quEmptyAfterInit(void) {
 /** \brief Test pull from empty queue object */
 void test_CQqu_pullFromEmptyQuReturnsFalse(void) {
     bool res = true;
+    uint8_t item = 0u; /* Tmp. storage for pulled queue item */
 
-    /* Temporary storage for pulled queue item */
-    uint8_t item = 0u;
-    uint8_t* const p_item = &item;
-
-    res = CQqu_pull0(CQobj_p_qu0, p_item);
+    res = CQqu_pull0(CQobj_p_qu0, &item);
 
     TEST_ASSERT_FALSE(res);
 }

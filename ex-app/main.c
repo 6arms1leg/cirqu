@@ -16,15 +16,13 @@
  */
 
 int MAIN(void) {
-    /* Temporary storages for peeked/pulled queue items */
-    char item0 = '\0';
-    float_t item1 = 0.0f;
-
     (void)puts(APP_PROMPT
                "~~~ Welcome to the CirQu queue example application! ~~~");
 
     /* Queue 0 Alpha
      */
+
+    char item0 = '\0'; /* Temporary storage for peeked/pulled queue items */
 
     (void)puts(APP_PROMPT CTOR_MSG(0Alpha));
     CQobj_qu0AlphaCtor(); /* Init. queue object */
@@ -85,6 +83,8 @@ int MAIN(void) {
 
     /* Queue 1
      */
+
+    float_t item1 = 0.0f; /* Temporary storage for peeked/pulled queue items */
 
     (void)puts(APP_PROMPT CTOR_MSG(1));
     CQobj_qu1Ctor(); /* Init. queue object */
