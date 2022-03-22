@@ -23,8 +23,7 @@
  * \param me Pointer to queue object
  */
 static inline void advHead(CQqu_qu_t* const me) {
-    /* No sanity check necessary since `me` argument was already checked in API
-       functions */
+    /* No sanity check necessary; `me` arg. already checked in API functions */
 
     if (me->bufSiz - 1u == me->head) { /* Head points to last item? */
         me->head = 0u; /* Wrap head around to first item */
@@ -40,8 +39,7 @@ static inline void advHead(CQqu_qu_t* const me) {
  * \param me Pointer to queue object
  */
 static void advTail(CQqu_qu_t* const me) {
-    /* No sanity check necessary since `me` argument was already checked in API
-       functions */
+    /* No sanity check necessary; `me` arg. already checked in API functions */
 
     if (me->bufSiz - 1u == me->tail) { /* Tail points to last item? */
         me->tail = 0u; /* Wrap tail around to first item */
@@ -57,8 +55,7 @@ static void advTail(CQqu_qu_t* const me) {
  * \param me Pointer to queue object
  */
 static inline void retHead(CQqu_qu_t* const me) {
-    /* No sanity check necessary since `me` argument was already checked in API
-       functions */
+    /* No sanity check necessary; `me` arg. already checked in API functions */
 
     if (0u == me->head) { /* Head points to first item? */
         me->head = me->bufSiz - (CQtyp_idx_t)1u;
@@ -76,8 +73,7 @@ static inline void retHead(CQqu_qu_t* const me) {
  * \param me Pointer to queue object
  */
 static inline void retTail(CQqu_qu_t* const me) {
-    /* No sanity check necessary since `me` argument was already checked in API
-       functions */
+    /* No sanity check necessary; `me` arg. already checked in API functions */
 
     if (0u == me->tail) { /* Tail points to first item? */
         me->tail = me->bufSiz - (CQtyp_idx_t)1u;
