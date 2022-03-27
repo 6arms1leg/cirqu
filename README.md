@@ -216,9 +216,9 @@ CQqu_init0(...);
 
 ![UML package diagram](./doc/arc/figures/cirqu-pd.png)
 
-## Coding Standard
+## Coding standard
 
-### Applicable Guidelines
+### Applicable guidelines
 
 This project aims to adhere to the following guidelines (with exceptions):
 
@@ -229,7 +229,7 @@ This project aims to adhere to the following guidelines (with exceptions):
 If necessary, deviations from the guidelines are allowed but must be justified
 and documented by means of inline comments.
 
-### Further Style Conventions
+### Further style conventions
 
 Furthermore, the style is only loosely defined:
 
