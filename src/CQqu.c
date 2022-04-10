@@ -102,7 +102,10 @@ void CQqu_init(CQqu_qu_t* const me,
 }
 
 void CQqu_pushHead(CQqu_qu_t* const me, const CQtyp_item_t item) {
-    assert(NULL != me); /* Sanity check (Design by Contract) */
+    /* Sanity check (Design by Contract) */
+    assert((NULL != me) &&
+           (NULL != me->p_buf) &&
+           (1u < me->bufSiz));
 
     if (0u == CQqu_cntFree(me)) { /* Full? */
         advTail(me);
@@ -113,7 +116,10 @@ void CQqu_pushHead(CQqu_qu_t* const me, const CQtyp_item_t item) {
 }
 
 void CQqu_pushTail(CQqu_qu_t* const me, const CQtyp_item_t item) {
-    assert(NULL != me); /* Sanity check (Design by Contract) */
+    /* Sanity check (Design by Contract) */
+    assert((NULL != me) &&
+           (NULL != me->p_buf) &&
+           (1u < me->bufSiz));
 
     if (0u == CQqu_cntFree(me)) { /* Full? */
         retHead(me);
@@ -126,6 +132,8 @@ void CQqu_pushTail(CQqu_qu_t* const me, const CQtyp_item_t item) {
 bool CQqu_pull(CQqu_qu_t* const me, CQtyp_item_t* const p_item) {
     /* Sanity check (Design by Contract) */
     assert((NULL != me) &&
+           (NULL != me->p_buf) &&
+           (1u < me->bufSiz) &&
            (NULL != p_item));
 
     bool res = false;
@@ -144,6 +152,8 @@ const CQTYP_ITEMQUAL_T CQtyp_item_t* CQqu_peek(const CQqu_qu_t* const me,
                                                const CQtyp_idx_t itemPos) {
     /* Sanity check (Design by Contract) */
     assert((NULL != me) &&
+           (NULL != me->p_buf) &&
+           (1u < me->bufSiz) &&
            (me->bufSiz - 1u > itemPos));
 
     const CQTYP_ITEMQUAL_T CQtyp_item_t* p_item = NULL; /* Return pointer */
@@ -165,7 +175,10 @@ const CQTYP_ITEMQUAL_T CQtyp_item_t* CQqu_peek(const CQqu_qu_t* const me,
 }
 
 CQtyp_idx_t CQqu_cntFree(const CQqu_qu_t* const me) {
-    assert(NULL != me); /* Sanity check (Design by Contract) */
+    /* Sanity check (Design by Contract) */
+    assert((NULL != me) &&
+           (NULL != me->p_buf) &&
+           (1u < me->bufSiz));
 
     CQtyp_idx_t itemFreeCnt = 0u; /* Var. used for free item count calc. */
 
