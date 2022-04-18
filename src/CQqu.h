@@ -38,7 +38,7 @@ typedef struct {
 /**
  * \brief Initialize queue
  *
- * *Queue size = buffer size - 1*, since one item slot is used to distinguish
+ * `Queue size = buffer size - 1`, since one item slot is used to distinguish
  * full and empty fill level.
  * Re-initialization can be used to empty/clear queue again.
  *
@@ -55,7 +55,7 @@ void CQqu_init(CQqu_qu_t* const me,
  *
  * If full, tail item in queue is overwritten.
  * Conditional insertion (i.e., if queue not full) can easily be implemented by
- * checking if queue is full first (via `CQqu_cntFree()`).
+ * checking if queue is full first (via \ref CQqu_cntFree).
  *
  * \param me Pointer to queue object
  * \param item Item to be inserted into queue
@@ -67,7 +67,7 @@ void CQqu_pushHead(CQqu_qu_t* const me, const CQtyp_item_t item);
  *
  * If full, head item in queue is overwritten.
  * Conditional insertion (i.e., if queue not full) can easily be implemented by
- * checking if queue is full first (via `CQqu_cntFree()`).
+ * checking if queue is full first (via \ref CQqu_cntFree.
  *
  * \param me Pointer to queue object
  * \param item Item to be inserted into queue
@@ -90,7 +90,7 @@ bool CQqu_pull(CQqu_qu_t* const me, CQtyp_item_t* const p_item);
  * queue
  *
  * Position is the index offset from tail (i.e. `0` corresponds to tail and
- * retrieves a pointer to the same item as `CQqu_pull()` would retrieve but
+ * retrieves a pointer to the same item as \ref CQqu_pull would retrieve but
  * without removal, `1` corresponds to the item next to tail, etc.).
  * Returns `NULL` if requested item position is not in range (points to vacant
  * item slot).
