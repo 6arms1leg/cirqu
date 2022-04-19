@@ -28,33 +28,33 @@ fontfamily=SansSerif //possible: SansSerif,Serif,Monospaced
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>873</x>
-      <y>369</y>
-      <w>207</w>
+      <x>765</x>
+      <y>423</y>
+      <w>153</w>
       <h>90</h>
     </coordinates>
     <panel_attributes>&lt;&lt;file&gt;&gt;
 CQtyp.h
 --
-#define CQTYP_ITEMQUAL_T ...
-typedef ... CQtyp_item_t;
-typedef ... CQtyp_idx_t;
+#define ITEMQUAL_T ...
+typedef ... item_t;
+typedef ... idx_t;
 fg=light_gray</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>693</x>
+      <x>540</x>
       <y>747</y>
-      <w>171</w>
+      <w>153</w>
       <h>117</h>
     </coordinates>
     <panel_attributes>queueObject
 --
--qu:CQqu_qu_t
-+p_qu:CQqu_qu_t*=&amp;qu
--buf[BUF_SIZ]:CQqu_item_t
+-qu:qu_t
++p_qu:qu_t*=&amp;qu
+-buf[BUF_SIZ]:qu_item_t
 
 --
 +quCtor(void):void
@@ -64,33 +64,33 @@ fg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>666</x>
+      <x>495</x>
       <y>423</y>
-      <w>225</w>
+      <w>288</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;use&gt;&gt;</panel_attributes>
-    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>300.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>666</x>
+      <x>495</x>
       <y>594</y>
-      <w>81</w>
+      <w>99</w>
       <h>171</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=me
 m1=*
 m2=1</panel_attributes>
-    <additional_attributes>50.0;170.0;50.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>70.0;170.0;70.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>657</x>
+      <x>504</x>
       <y>639</y>
       <w>36</w>
       <h>27</h>
@@ -102,7 +102,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>693</x>
+      <x>540</x>
       <y>459</y>
       <w>36</w>
       <h>27</h>
@@ -114,7 +114,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>684</x>
+      <x>531</x>
       <y>630</y>
       <w>45</w>
       <h>36</h>
@@ -125,7 +125,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>693</x>
+      <x>540</x>
       <y>432</y>
       <w>36</w>
       <h>45</h>
@@ -136,7 +136,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>270</x>
+      <x>207</x>
       <y>81</y>
       <w>585</w>
       <h>324</h>
@@ -150,11 +150,11 @@ The IF consists of the following parts:
 The LIB provides a queue buffer item type to allocate storage for a buffer and a queue object type to instantiate a queue object.
 
 *IF1*
-The LIB requires a `CQtyp.h` header file with `#define`s/`typedefs` for:
+The LIB requires definitions for:
 
-* `CQTYP_ITEMQUAL_T` -- Optional type qualifier(s) for the queue buffer (e.g. `volatile`)
-* `CQtyp_item_t` -- The type of items in the queue buffer to be managed by the LIB (e.g., `uint8_t`)
-* `CQtyp_idx_t` -- The type of the queue buffer index to be used by the LIB (must be an unsigned
+* (`CQTYP_`)`ITEMQUAL_T` -- Optional type qualifier(s) for the queue buffer (e.g. `volatile`)
+* (`CQtyp_`)`item_t` -- The type of items in the queue buffer to be managed by the LIB (e.g., `uint8_t`)
+* (`CQtyp_`)`idx_t` -- The type of the queue buffer index to be used by the LIB (must be an unsigned
    integer, i.e. `uint8_t`, `uint16_t`, ...)
 
 *IF2*
@@ -168,9 +168,9 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>252</x>
+      <x>189</x>
       <y>0</y>
-      <w>846</w>
+      <w>747</w>
       <h>882</h>
     </coordinates>
     <panel_attributes>cd CirQu
@@ -182,7 +182,7 @@ fontsize=30</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>648</x>
+      <x>585</x>
       <y>18</y>
       <w>63</w>
       <h>27</h>
@@ -195,7 +195,7 @@ layer=1</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>729</x>
+      <x>666</x>
       <y>18</y>
       <w>90</w>
       <h>45</h>
@@ -207,50 +207,50 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>270</x>
+      <x>207</x>
       <y>423</y>
-      <w>405</w>
+      <w>297</w>
       <h>198</h>
     </coordinates>
     <panel_attributes>queue
 --
 
 --
--advHead(me:CQqu_qu_t*):void
--advTail(me:CQqu_qu_t*):void
--retHead(me:CQqu_qu_t*):void
--retTail(me:CQqu_qu_t*):void
-+init(me:CQqu_qu_t*, p_buf:CQqu_item_t*, bufSiz:CQtyp_idx_t):void
-+pushHead(me:CQqu_qu_t*, item:CQtyp_item_t):void
-+pushTail(me:CQqu_qu_t*, item:CQtyp_item_t):void
-+pull(me:CQqu_qu_t*, item:CQtyp_item_t*):bool
-+peek(me:CQqu_qu_t*, itemPos:CQtyp_idx_t):CQtyp_item_t*
-+cntFree(me:CQqu_qu_t*):CQtyp_idx_t</panel_attributes>
+-advHead(me:qu_t*):void
+-advTail(me:qu_t*):void
+-retHead(me:qu_t*):void
+-retTail(me:qu_t*):void
++init(me:qu_t*, p_buf:qu_item_t*, bufSiz:idx_t):void
++pushHead(me:qu_t*, item:item_t):void
++pushTail(me:qu_t*, item:item_t):void
++pull(me:qu_t*, item:item_t*):bool
++peek(me:qu_t*, itemPos:idx_t):item_t*
++cntFree(me:qu_t*):idx_t</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>342</x>
+      <x>279</x>
       <y>648</y>
-      <w>279</w>
+      <w>189</w>
       <h>135</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Type&gt;&gt;
 queueObjectType
 --
 typedef struct {
-    CQTYP_ITEMQUAL_T CQtyp_item_t* p_buf;
-    CQtyp_idx_t bufSiz;
-    CQTYP_ITEMQUAL_T CQtyp_idx_t head;
-    CQTYP_ITEMQUAL_T CQtyp_idx_t tail;
-} CQqu_qu_t;</panel_attributes>
+    ITEMQUAL_T item_t* p_buf;
+    idx_t bufSiz;
+    ITEMQUAL_T idx_t head;
+    ITEMQUAL_T idx_t tail;
+} qu_t;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>522</x>
+      <x>360</x>
       <y>612</y>
       <w>63</w>
       <h>54</h>
@@ -262,7 +262,7 @@ typedef struct {
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>612</x>
+      <x>459</x>
       <y>747</y>
       <w>99</w>
       <h>36</h>
@@ -274,7 +274,7 @@ typedef struct {
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>639</x>
+      <x>486</x>
       <y>792</y>
       <w>36</w>
       <h>27</h>
@@ -286,7 +286,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>648</x>
+      <x>495</x>
       <y>756</y>
       <w>36</w>
       <h>54</h>
@@ -297,21 +297,21 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>270</x>
+      <x>207</x>
       <y>801</y>
-      <w>351</w>
+      <w>243</w>
       <h>63</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Type&gt;&gt;
 queueItemType
 --
-typedef CQTYP_ITEMQUAL_T CQtyp_item_t CQqu_item_t;</panel_attributes>
+typedef ITEMQUAL_T item_t qu_item_t;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>279</x>
+      <x>216</x>
       <y>612</y>
       <w>63</w>
       <h>207</h>
@@ -323,19 +323,19 @@ typedef CQTYP_ITEMQUAL_T CQtyp_item_t CQqu_item_t;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>612</x>
+      <x>441</x>
       <y>828</y>
-      <w>99</w>
+      <w>117</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;use&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;90.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;110.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>657</x>
+      <x>504</x>
       <y>810</y>
       <w>36</w>
       <h>54</h>
@@ -346,17 +346,17 @@ typedef CQTYP_ITEMQUAL_T CQtyp_item_t CQqu_item_t;</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>747</x>
+      <x>594</x>
       <y>612</y>
-      <w>189</w>
+      <w>117</w>
       <h>117</h>
     </coordinates>
     <panel_attributes>&lt;&lt;file&gt;&gt;
 CQwrap.h
 --
-#define CQTEMPLSEUP_ID ...
+#define ID ...
 #include "CQqu.h"
-#undef CQTEMPLSEUP_ID
+#undef ID
 
 ...
 fg=light_gray</panel_attributes>
@@ -365,30 +365,29 @@ fg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>666</x>
+      <x>495</x>
       <y>549</y>
-      <w>117</w>
+      <w>135</w>
       <h>81</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
-&lt;&lt;use&gt;&gt;
-fg=light_gray</panel_attributes>
-    <additional_attributes>10.0;20.0;110.0;20.0;110.0;70.0</additional_attributes>
+&lt;&lt;use&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;130.0;20.0;130.0;70.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>783</x>
+      <x>630</x>
       <y>477</y>
-      <w>189</w>
+      <w>117</w>
       <h>117</h>
     </coordinates>
     <panel_attributes>&lt;&lt;file&gt;&gt;
 CQwrap.c
 --
-#define CQTEMPLSEUP_ID ...
+#define ID ...
 #include "CQqu.c"
-#undef CQTEMPLSEUP_ID
+#undef ID
 
 ...
 fg=light_gray</panel_attributes>
@@ -397,20 +396,19 @@ fg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>666</x>
+      <x>495</x>
       <y>486</y>
-      <w>135</w>
+      <w>153</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
-&lt;&lt;use&gt;&gt;
-fg=light_gray</panel_attributes>
-    <additional_attributes>10.0;20.0;130.0;20.0</additional_attributes>
+&lt;&lt;use&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;150.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>954</x>
+      <x>729</x>
       <y>612</y>
       <w>99</w>
       <h>126</h>
@@ -423,7 +421,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>927</x>
+      <x>702</x>
       <y>621</y>
       <w>45</w>
       <h>45</h>
@@ -434,7 +432,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>927</x>
+      <x>702</x>
       <y>585</y>
       <w>45</w>
       <h>63</h>
@@ -445,7 +443,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>729</x>
+      <x>576</x>
       <y>522</y>
       <w>36</w>
       <h>27</h>
@@ -457,7 +455,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>738</x>
+      <x>585</x>
       <y>495</y>
       <w>36</w>
       <h>45</h>
@@ -468,7 +466,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>738</x>
+      <x>585</x>
       <y>540</y>
       <w>36</w>
       <h>45</h>
