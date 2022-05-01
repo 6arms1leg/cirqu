@@ -9,7 +9,7 @@
 #define CQOBJ_BUF0BETA_SIZ 3u
 #define CQOBJ_BUF1_SIZ 6u
 
-/* `-1` because one item slot is used to distinguish full and empty fill level */
+/* One item slot used to discern full/empty fill level */
 #define CQOBJ_QU0ALPHA_SIZ (CQOBJ_BUF0ALPHA_SIZ - 1u)
 #define CQOBJ_QU0BETA_SIZ (CQOBJ_BUF0BETA_SIZ - 1u)
 #define CQOBJ_QU1_SIZ (CQOBJ_BUF1_SIZ - 1u)

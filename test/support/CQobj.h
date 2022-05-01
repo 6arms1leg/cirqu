@@ -14,9 +14,8 @@
 #endif /* CQQU_H0 */
 
 #define CQOBJ_BUF0_SIZ 4u
-#define CQOBJ_QU0_SIZ (CQOBJ_BUF0_SIZ - 1u)
-    /* `-1` because one item slot is used to distinguish full and empty fill
-       level */
+#define CQOBJ_QU0_SIZ (CQOBJ_BUF0_SIZ - 1u) /* One item slot used to discern
+                                               full/empty fill level */
 
 /* ATTRIBUTES
  * ==========
