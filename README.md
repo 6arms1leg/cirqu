@@ -4,6 +4,8 @@ buffer, circular, embedded, embedded-systems, fifo, library, lifo, queue, ring,
 template
 -->
 
+![logo](./doc/logo/logo.png)
+
 # CirQu - Simple circular queue library
 
 This library employs a simple and tiny
